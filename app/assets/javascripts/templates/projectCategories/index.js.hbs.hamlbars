@@ -1,0 +1,18 @@
+%h1
+  Project Categories
+%table.table.table-striped
+  %tr
+    %th
+      ID
+    %th
+      Name
+  = hb 'each projectCategory in content' do
+    %tr
+      %td
+        = hb 'projectCategory.id'
+      %td
+        = hb 'linkTo projectCategory.show projectCategory' do
+          = hb 'projectCategory.name'
+= hb 'linkTo projectCategories.new' do
+  .btn.btn-primary
+    Create

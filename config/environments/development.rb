@@ -34,4 +34,7 @@ Feathers::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # dont buffer std out, this gets our messages to foreman
+  $stdout.sync = true
 end

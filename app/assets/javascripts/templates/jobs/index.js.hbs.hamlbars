@@ -1,0 +1,34 @@
+%h1
+  Jobs
+%table.table.table-striped
+  %tr
+    %th
+      ID
+    %th
+      Text
+    %th
+      Detail
+    %th
+      Employer
+    %th
+      Rank
+    %th
+      Picture
+  = hb 'each job in content' do
+    %tr
+      %td
+        = hb 'job.id'
+      %td
+        = hb 'linkTo job.show job' do
+          = hb 'job.text'
+      %td
+        = hb 'job.detail'
+      %td
+        = hb 'job.employer'
+      %td
+        = hb 'job.rank'
+      %td
+        = hb 'job.picture.thumb.url'
+= hb 'linkTo jobs.new' do
+  .btn.btn-primary
+    Create

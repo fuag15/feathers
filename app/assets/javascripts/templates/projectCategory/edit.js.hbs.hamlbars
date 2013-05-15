@@ -1,0 +1,2 @@
+= hb 'template "projectCategory/form"'
+%a.btn.btn-danger{ :_action => 'destroy' } Destroy

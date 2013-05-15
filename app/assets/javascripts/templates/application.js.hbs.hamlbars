@@ -1,0 +1,61 @@
+#Center
+  #Holder
+    #topMainBorder
+    #dropShadowHolder
+      #leftMainBorder
+      #BackGround
+        #Text
+          = hb 'outlet'
+  .Nav
+    .TimeStamp
+      = hb 'linkTo home' do
+        %center
+          Last Edited:
+          %br
+          %b
+            = hb 'lastEditedMonth'
+            %br
+            = hb 'lastEditedDetail'
+    #TimeStampBot
+    = hb 'linkTo work' do
+      #PicBoxTop
+      #PicBoxLeft
+      #PicBox
+      #PicBoxRight
+      #clear
+      #PicBoxBot
+      .NavHolder
+        Clients
+    = hb 'linkTo play' do
+      #PicBoxTop
+      #PicBoxLeft
+      #PicBoxProj
+      #PicBoxRight
+      #clear
+      #PicBoxBot
+      .NavHolder
+        Projects
+    %a
+      #PicBoxTop
+      #PicBoxLeft
+      #PicBoxResume
+      #PicBoxRight
+      #clear
+      #PicBoxBot
+      .NavHolder
+        Resume
+    = hb 'linkTo contact' do
+      #PicBoxTop
+      #PicBoxLeft
+      #PicBoxContact
+      #PicBoxRight
+      #clear
+      #PicBoxBot
+      .NavHolder
+        Contact
+  #clear
+  .Sig
+    %i
+      C
+      = hb 'lastEditedYear'
+      Michael Boone

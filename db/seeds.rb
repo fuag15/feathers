@@ -1,7 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# if we are in development we create a test user and delete all others
+# if we are in production we  create a user and dont destroy all as we want it to raise errors!
+# should not delete a user as it will purge related resources
+if Rails.env == 'development'
+  User.destroy_all
+  User.create! email: 'test@test.com', password: 'testing', role: 'admin'
+elsif Rails.env == 'production'
+  User.create! email: 'mike@steelpigeondesign.com', password: 'changeme', role: 'admin'
+end

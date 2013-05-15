@@ -1,0 +1,20 @@
+%h1
+  Project Pictures
+%table.table.table-striped
+  %tr
+    %th
+      ID
+    %th
+      Picture
+  = hb 'each projectPicture in content' do
+    %tr
+      %td
+        = hb 'projectPicture.id'
+      %td
+        = hb 'imageSrc projectPicture.picture.thumb.url'
+        = hb 'linkTo projectPicture.show projectPicture' do
+          .btn
+            Edit
+= hb 'linkTo postPictures.new' do
+  .btn.btn-primary
+    Create

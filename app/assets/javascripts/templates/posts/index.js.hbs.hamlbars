@@ -1,0 +1,36 @@
+%h1
+  Posts
+%table.table.table-striped
+  %tr
+    %th
+      ID
+    %th
+      Title
+    %th
+      Content
+    %th
+      Created
+    %th
+      Picture
+  = hb 'each post in content' do
+    %tr
+      %td
+        = hb 'post.id'
+      %td
+        = hb 'linkTo post.show post' do
+          = hb 'post.title'
+      %td
+        = hb 'post.full'
+      %td
+        = hb 'post.humanDate'
+      %td
+        = hb 'post.picture.thumb'
+      = hb 'each postPicture in post.postPictures' do
+        %td
+          = hb 'postPicture.picture.thumb.url'
+          = hb 'linkTo postPictures.show postPicture' do
+            .btn
+              Edit
+= hb 'linkTo posts.new' do
+  .btn.btn-primary
+    Create

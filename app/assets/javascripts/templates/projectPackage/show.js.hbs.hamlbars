@@ -1,0 +1,6 @@
+= hb 'linkTo projectPackages.index' do
+  .btn
+    Back
+= hb 'linkTo projectPackage.edit' do
+  .btn.btn-primary
+    Edit

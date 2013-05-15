@@ -1,0 +1,25 @@
+%center
+  #mainTitle
+    Slash dev Slash Boone
+%br
+%br
+%img{:src => "/assets/DavisDeathStar.jpg"}
+%br
+%br
+= hb 'each post in content' do
+  %br
+  %br
+  #EntryHolder
+    #EntryLine
+      .EntryHeader
+        = hb 'post.humanDate'
+  #blogImage
+    = hb 'if post.picture.picture.thumb.url' do
+      = hb 'imageSrc post.picture.picture.thumb.url'
+  = hb 'post.full'
+  #clear
+  = hb 'each post_picture in post.postPictures' do
+    #blogExtraImage
+      = hb 'if post_picture.picture.thumb.url' do
+        = hb 'imageSrc post_picture.picture.thumb.url'
+  #clear
