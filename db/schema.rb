@@ -11,7 +11,78 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515053427) do
+ActiveRecord::Schema.define(:version => 20130515065053) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "name"
+    t.string   "street"
+    t.string   "city"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "job_categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "rank",       :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "jobs", :force => true do |t|
+    t.string   "name"
+    t.text     "blurb"
+    t.integer  "job_category_id"
+    t.text     "detail"
+    t.string   "employer"
+    t.integer  "rank",            :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "jobs", ["job_category_id"], :name => "index_jobs_on_job_category_id"
+
+  create_table "jobs_pictures", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "picture_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "jobs_pictures", ["job_id"], :name => "index_jobs_pictures_on_job_id"
+  add_index "jobs_pictures", ["picture_id"], :name => "index_jobs_pictures_on_picture_id"
+
+  create_table "packages", :force => true do |t|
+    t.string   "version"
+    t.string   "file"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "packages_projects", :force => true do |t|
+    t.integer  "package_id"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "packages_projects", ["package_id"], :name => "index_packages_projects_on_package_id"
+  add_index "packages_projects", ["project_id"], :name => "index_packages_projects_on_project_id"
+
+  create_table "pictures", :force => true do |t|
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "pictures_projects", :force => true do |t|
+    t.integer  "picture_id"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "pictures_projects", ["picture_id"], :name => "index_pictures_projects_on_picture_id"
+  add_index "pictures_projects", ["project_id"], :name => "index_pictures_projects_on_project_id"
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -20,6 +91,44 @@ ActiveRecord::Schema.define(:version => 20130515053427) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "project_categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "rank",       :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.text     "blurb"
+    t.string   "version"
+    t.text     "detail"
+    t.string   "team"
+    t.integer  "rank",                :default => 0
+    t.integer  "project_category_id"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "projects", ["project_category_id"], :name => "index_projects_on_project_category_id"
+
+  create_table "resume_categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "rank",       :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "resume_entries", :force => true do |t|
+    t.string   "name"
+    t.integer  "rank",               :default => 0
+    t.integer  "resume_category_id"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  add_index "resume_entries", ["resume_category_id"], :name => "index_resume_entries_on_resume_category_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

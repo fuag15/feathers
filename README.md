@@ -44,7 +44,10 @@ You should be able to view the site on `localhost:3000`, or [here][local-host]
 
 ## Roadmap
 
-- import basic functionality with tests
+- uploaders / mailers
+- views
+- comments
+- tests / optimization
 - add markdown parsing
 - add pagination
 - modernize contact page
