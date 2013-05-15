@@ -44,13 +44,13 @@ You should be able to view the site on `localhost:3000`, or [here][local-host]
 
 ## Roadmap
 
-- uploaders / mailers
-- views
-- comments
-- tests / optimization
+- translate views from ember prototype
+- doc / doc coverage
+- tests / coverage / optimization
 - add markdown parsing
 - add pagination
 - modernize contact page
+- modernize css / js
 - host and transfer data
 
 [local-host]: http://localhost:3000 "Local default server port"
