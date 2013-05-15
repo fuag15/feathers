@@ -1,0 +1,27 @@
+= Portfolio site revame
+
+Bringing my portfolio site more up-to-date. No redesign.
+
+== Dev Guidlines
+
+- Use git flow
+- Use the issue tracker
+- Comment
+- Test
+- Keep docs up to date!
+
+=== Testing
+
+- rake spec
+- rake spec:coverage
+- rake analyzer:all
+- rake spec:view
+
+==== Coverage Report
+
+- see coverage[link:../coverage/index.html]
+
+=== Doccing
+
+- rake doc:reapp
+- rake doc:view
