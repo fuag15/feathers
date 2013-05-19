@@ -1,0 +1,9 @@
+%h2
+  Displaying Picture
+%p
+  = @picture.file.url
+%p
+  .btn-group.pull-left
+    = link_to 'back', pictures_path, class: 'btn'
+    = link_to 'edit', edit_picture_path(@picture), class: 'btn btn-primary'
+= button_to 'destroy', @picture, method: :delete, class: 'btn btn-danger pull-right'

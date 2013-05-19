@@ -1,0 +1,7 @@
+= form for resume_entry do |f|
+  = render partial: 'shared/form_error', collection: resume_entry.errors.full_messages
+  %p
+    = f.text_field :name
+  %p
+    = f.text_field :rank
+  = f.submit class: 'btn btn-primary'

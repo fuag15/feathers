@@ -1,0 +1,11 @@
+%h2
+  = @resume_entry.name
+%p
+  = @resume_entry.name
+%p
+  = @resume_entry.rank
+%p
+  .btn-group.pull-left
+    = link_to 'back', resume_entries_path, class: 'btn'
+    = link_to 'edit', edit_resume_entry_path(@resume_entry), class: 'btn btn-primary'
+= button_to 'destroy', @resume_entry, method: :delete, class: 'btn btn-danger pull-right'

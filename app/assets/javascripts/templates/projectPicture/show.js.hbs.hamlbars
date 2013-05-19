@@ -1,6 +1,0 @@
-= hb 'linkTo projectPictures.index' do
-  .btn
-    Back
-= hb 'linkTo projectPicture.edit' do
-  .btn.btn-primary
-    Edit

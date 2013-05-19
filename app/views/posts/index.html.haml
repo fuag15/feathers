@@ -1,1 +1,11 @@
-Yo man
+- content_for :browser do
+  \/dev/boone
+- content_for :title do
+  Slash dev Slash Boone
+  = render partial: 'shared/authentication'
+= image_tag 'DavisDeathStar.jpg'
+%br
+%br
+- if current_user.admin?
+  = link_to 'create post', new_post_path
+= render @posts

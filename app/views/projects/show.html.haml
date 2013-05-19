@@ -1,0 +1,26 @@
+- content_for :browser do
+  \/dev/boone/projects/#{@project.name}
+- content_for :title do
+  = @project.version
+  = render partial: 'shared/authentication'
+- if current_user.admin?
+  = link_to 'edit project', edit_project_category_project_path(@project.project_category, @project)
+  = button_to 'destroy project', destroy_project_path(@job), method: :destroy
+#projectDetailImage
+  = link_to @project.pictures.first.image.url(:bestfit)
+    = image_tag @project.pictures.first.image.url(:bestfit)
+#projectDetailSubImageHolder
+  - @project.pictures.each do |picture|
+    #projectDetailSubImage
+      = link_to picture.image.url(:bestfit)
+        = image_tag picture.image.url(:small)
+  #clear
+= @project.detail
+%br
+%br
+#employerTag
+  Team Members: #{@project.team}
+#clear
+- @project.packages.each do |package|
+  = link_to package.name, package.file.url
+  %br

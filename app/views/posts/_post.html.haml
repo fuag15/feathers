@@ -1,0 +1,19 @@
+%br
+%br
+#EntryHolder
+  #EntryLine
+    .EntryHeader
+      = post.created_at.to_time.strftime("%B %d, %Y")
+- if post.pictures.present?
+  #blogImage
+    = link_to post.pictures.first.image.url(:large) do
+      = image_tag post.pictures.first.image.url(:small)
+= raw simple_format(post.content)
+- if current_user.admin?
+  = link_to 'show', post_path(post)
+#clear
+- post.pictures.each do |picture|
+  #blogExtraImage
+    = link_to picture.image.url(:large) do
+      = image_tag picture.image.url(:thumb)
+#clear

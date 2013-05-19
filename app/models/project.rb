@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  default_scope order 'rank asc'
   belongs_to :project_category
   attr_accessible :blurb, :detail, :name, :rank, :team, :version
 

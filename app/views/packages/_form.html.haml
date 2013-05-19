@@ -1,0 +1,7 @@
+= form for package do |f|
+  = render partial: 'shared/form_error', collection: package.errors.full_messages
+  %p
+    = f.file_field :file
+  %p
+    = f.text_field :version
+  = f.submit class: 'btn btn-primary'

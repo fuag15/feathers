@@ -1,8 +1,0 @@
-%br
-  = hb 'picture.thumb.url'
-= hb 'linkTo jobPictures.index' do
-  .btn
-    Back
-= hb 'linkTo jobPicture.edit' do
-  .btn.btn-primary
-    Edit

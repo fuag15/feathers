@@ -1,8 +1,0 @@
-%br
-  = hb 'imageSrc thumb'
-= hb 'linkTo postPictures.index' do
-  .btn
-    Back
-= hb 'linkTo postPicture.edit' do
-  .btn.btn-primary
-    Edit

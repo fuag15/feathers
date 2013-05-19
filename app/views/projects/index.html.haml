@@ -1,0 +1,26 @@
+- content_for :browser do
+  \/dev/boone/projects
+- content_for :title do
+  Projects
+  = render partial: 'shared/authentication'
+= image_tag 'DavisDeathStar.jpg'
+%br
+%br
+- if current_user.admin?
+  = link_to 'manage projects', project_categories_path
+- @project_categories.each do |project_category|
+  #categorySeperator
+  = project_category.name
+  - project_category.projects.each do |project|
+    .project
+      = link_to project_category_projects_path(project_category, project) do
+        #subTitle
+          = project.name
+        %br
+        %center
+          #projectImage
+            = image_tag project.pictures.first.image.url(:galley)
+        %br
+        %br
+        = project.blurb
+  #clear

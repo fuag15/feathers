@@ -1,0 +1,7 @@
+= form for post do |f|
+  = render partial: 'shared/form_error', collection: article.errors.full_messages
+  %p
+    = f.text_field :name
+  %p
+    = f.text_field :content
+  = f.submit class: 'btn btn-primary'

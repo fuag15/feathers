@@ -1,0 +1,17 @@
+%h2
+  Packages
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        file
+      %th
+        version
+  %tbody
+    - @packages.each do |package|
+      %tr
+        %td
+          = link_to package.file.url, package
+        %td
+          = package.version
+= link_to 'create package', new_package_path, class: 'btn btn-primary'

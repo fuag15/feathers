@@ -1,0 +1,26 @@
+- content_for :browser do
+  \/dev/boone/clients
+- content_for :title do
+  Clients
+  = render partial: 'shared/authentication'
+= image_tag 'DavisDeathStar.jpg'
+%br
+%br
+- if current_user.admin?
+  = link_to 'manage jobs', job_categories_path
+- @job_categories.each do |job_category|
+  #categorySeperator
+  = job_category.name
+  - job_category.jobs.each do |job|
+    .project
+      = link_to job_category_jobs_path(job_category, job) do
+        #subTitle
+          = job.name
+        %br
+        %center
+          #projectImage
+            = image_tag job.pictures.first.image.url(:galley)
+        %br
+        %br
+        = job.blurb
+  #clear

@@ -1,0 +1,15 @@
+= form for job do |f|
+  = render partial: 'shared/form_error', collection: job.errors.full_messages
+  %p
+    = f.text_field :name
+  %p
+    = f.text_field :rank
+  %p
+    = f.text_field :team
+  %p
+    = f.text_area :blurb
+  %p
+    = f.text_area :detail
+  %p
+    = f.text_field :version
+  = f.submit class: 'btn btn-primary'

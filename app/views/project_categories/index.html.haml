@@ -1,0 +1,17 @@
+%h2
+  Project Categories
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        name
+      %th
+        rank
+  %tbody
+    - @project_categories.each do |project_category|
+      %tr
+        %td
+          = link_to project_category.name, project_category
+        %td
+          = project_category.rank
+= link_to 'create project_category', new_project_category_path, class: 'btn btn-primary'

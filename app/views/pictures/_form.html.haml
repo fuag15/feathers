@@ -1,0 +1,5 @@
+= form for picture do |f|
+  = render partial: 'shared/form_error', collection: picture.errors.full_messages
+  %p
+    = f.file_field :image
+  = f.submit class: 'btn btn-primary'

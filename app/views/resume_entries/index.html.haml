@@ -1,0 +1,17 @@
+%h2
+  Resume Entries
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        name
+      %th
+        rank
+  %tbody
+    - @resume_entries.each do |resume_entry|
+      %tr
+        %td
+          = link_to resume_entry.name, resume_entry
+        %td
+          = resume_entry.rank
+= link_to 'create resume_entry', new_resume_entry_path, class: 'btn btn-primary'

@@ -1,0 +1,21 @@
+%h2
+  Adresses
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        name
+      %th
+        street
+      %th
+        city
+  %tbody
+    - @addresses.each do |address|
+      %tr
+        %td
+          = link_to address.name, address
+        %td
+          = address.street
+        %td
+          = address.city
+= link_to 'create address', new_address_path, class: 'btn btn-primary'

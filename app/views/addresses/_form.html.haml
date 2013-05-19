@@ -1,0 +1,9 @@
+= form for address do |f|
+  = render partial: 'shared/form_error', collection: address.errors.full_messages
+  %p
+    = f.text_field :name
+  %p
+    = f.text_field :street
+  %p
+    = f.text_field :city
+  = f.submit class: 'btn btn-primary'

@@ -1,4 +1,6 @@
 class Job < ActiveRecord::Base
+  default_scope order 'rank asc'
+
   belongs_to :job_category
   attr_accessible :blurb, :detail, :employer, :name, :rank
 

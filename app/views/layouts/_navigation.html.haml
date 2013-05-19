@@ -1,0 +1,48 @@
+.Nav
+  .TimeStamp
+    = link_to root_path do
+      %center
+        Last Edited:
+        %br
+        - if Post.first.present?
+          %b
+            = Post.first.updated_at.to_time.strftime("%B %d, %Y")
+            %br
+            = Post.first.updated_at.to_time.strftime("%H:%M:%S")
+  #TimeStampBot
+  = link_to jobs_path do
+    #PicBoxTop
+    #PicBoxLeft
+    #PicBox
+    #PicBoxRight
+    #clear
+    #PicBoxBot
+    .NavHolder
+      Clients
+  = link_to projects_path do
+    #PicBoxTop
+    #PicBoxLeft
+    #PicBoxProj
+    #PicBoxRight
+    #clear
+    #PicBoxBot
+    .NavHolder
+      Projects
+  = link_to resume_path do
+    #PicBoxTop
+    #PicBoxLeft
+    #PicBoxResume
+    #PicBoxRight
+    #clear
+    #PicBoxBot
+    .NavHolder
+      Resume
+  = link_to contact_path do
+    #PicBoxTop
+    #PicBoxLeft
+    #PicBoxContact
+    #PicBoxRight
+    #clear
+    #PicBoxBot
+    .NavHolder
+      Contact
