@@ -2,6 +2,11 @@ Feathers::Application.routes.draw do
   # session control
   devise_for :users
 
+  # allow easy sign in
+  devise_scope :user do
+    get "login", to: "devise/sessions#new"
+  end
+
   # base resource routes
   resources :addresses, :jobs, :job_categories, :packages, :pictures, :posts, :projects, :project_categories, :resume_categories, :resume_entries
 
@@ -38,9 +43,6 @@ Feathers::Application.routes.draw do
 
   # map submit to contact submit
   match 'submit', to: 'contact#submit'
-
-  # easy access to login
-  match 'login', to: 'users#sign_in'
 
   # we want posts#index to be our landing page
   root to: 'posts#index'

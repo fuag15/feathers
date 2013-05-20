@@ -1,15 +1,13 @@
-= form for job do |f|
-  = render partial: 'shared/form_error', collection: job.errors.full_messages
+= form_for [project_category, project] do |f|
+  = render partial: 'shared/form_error', collection: project.errors.full_messages
   %p
-    = f.text_field :name
+    = f.text_field :name, placeholder: 'name'
   %p
-    = f.text_field :rank
+    = f.text_field :rank, placeholder: 'rank'
   %p
-    = f.text_field :team
+    = f.text_field :team, placeholder: 'team'
   %p
-    = f.text_area :blurb
+    = f.text_area :blurb, placeholder: 'blurb'
   %p
-    = f.text_area :detail
-  %p
-    = f.text_field :version
+    = f.text_area :detail, placeholder: 'detail'
   = f.submit class: 'btn btn-primary'

@@ -6,6 +6,6 @@
 = image_tag 'DavisDeathStar.jpg'
 %br
 %br
-- if current_user.admin?
+- if current_user.present? and current_user.admin?
   = link_to 'create post', new_post_path
 = render @posts

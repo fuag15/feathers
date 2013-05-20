@@ -1,4 +1,4 @@
-%h2
+- content_for :title do
   Job Categories
 %table.table.table-striped
   %thead
@@ -14,4 +14,7 @@
           = link_to job_category.name, job_category
         %td
           = job_category.rank
-= link_to 'create job_category', new_job_category_path, class: 'btn btn-primary'
+%p
+  .btn-group.pull-left
+    = link_to 'create job category', new_job_category_path, class: 'btn btn-primary'
+    = link_to 'back', jobs_path, class: 'btn'

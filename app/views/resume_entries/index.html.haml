@@ -1,4 +1,4 @@
-%h2
+- content_for :title do
   Resume Entries
 %table.table.table-striped
   %thead
@@ -14,4 +14,7 @@
           = link_to resume_entry.name, resume_entry
         %td
           = resume_entry.rank
-= link_to 'create resume_entry', new_resume_entry_path, class: 'btn btn-primary'
+%p
+  .btn-group.pull-left
+    = link_to 'create resume entry', new_resume_entry_path, class: 'btn btn-primary'
+    = link_to 'back', resume_path, class: 'btn'

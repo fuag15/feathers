@@ -1,18 +1,19 @@
 - content_for :browser do
   \/dev/boone/clients/#{@job.name}
 - content_for :title do
-  = @job.version
+  = @job.name
   = render partial: 'shared/authentication'
-- if current_user.admin?
+- if current_user.present? and current_user.admin?
   = link_to 'edit job', edit_job_category_job_path(@job.job_category, @job)
-  = button_to 'destroy job', destroy_job_path(@job), method: :destroy
+  = button_to 'destroy job', job_path(@job), method: :destroy
 #projectDetailImage
-  = link_to @job.pictures.first.image.url(:bestfit)
-    = image_tag @job.pictures.first.image.url(:bestfit)
+  - if @job.pictures.present?
+    = link_to @job.pictures.first.image.url(:bestfit) do
+      = image_tag @job.pictures.first.image.url(:bestfit)
 #projectDetailSubImageHolder
   - @job.pictures.each do |picture|
     #projectDetailSubImage
-      = link_to picture.image.url(:bestfit)
+      = link_to picture.image.url(:bestfit) do
         = image_tag picture.image.url(:small)
   #clear
 = @job.detail

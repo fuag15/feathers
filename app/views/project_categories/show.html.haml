@@ -1,4 +1,4 @@
-%h2
+- content_for :title do
   = @project_category.name
 %table.table.table-striped
   %thead
@@ -14,7 +14,7 @@
           = link_to project.name, project
         %td
           = project.rank
-= link_to 'create project', new_project_path, class: 'btn btn-primary'
+= link_to 'create project', new_project_category_project_path(@project_category), class: 'btn btn-primary'
 %p
   .btn-group.pull-left
     = link_to 'back', project_categories_path, class: 'btn'

@@ -1,5 +1,5 @@
-%h2
-  Packages
+- content_for :title do
+  #{@project.name} Package List
 %table.table.table-striped
   %thead
     %tr
@@ -14,4 +14,7 @@
           = link_to package.file.url, package
         %td
           = package.version
-= link_to 'create package', new_package_path, class: 'btn btn-primary'
+%p
+  .btn-group.pull-left
+    = link_to 'create package', new_project_package_path(@project), class: 'btn btn-primary'
+    = link_to 'back', @project, class: 'btn'

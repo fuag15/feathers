@@ -4,12 +4,11 @@
   #EntryLine
     .EntryHeader
       = post.created_at.to_time.strftime("%B %d, %Y")
-- if post.pictures.present?
-  #blogImage
-    = link_to post.pictures.first.image.url(:large) do
-      = image_tag post.pictures.first.image.url(:small)
+#blogImage
+  = link_to post.picture.url(:large) do
+    = image_tag post.picture.url(:small)
 = raw simple_format(post.content)
-- if current_user.admin?
+- if current_user.present? and current_user.admin?
   = link_to 'show', post_path(post)
 #clear
 - post.pictures.each do |picture|

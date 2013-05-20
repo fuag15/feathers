@@ -1,11 +1,11 @@
-%h2
-  = @package.version
+- content_for :title do
+  Showing Package
 %p
   = @package.version
 %p
   = @package.file.url
 %p
   .btn-group.pull-left
-    = link_to 'back', packages_path, class: 'btn'
-    = link_to 'edit', edit_package_path(@package), class: 'btn btn-primary'
+    = link_to 'back', project_packages_path(@package.projects.first), class: 'btn'
+    = link_to 'edit', edit_project_package_path(@package.projects.first, @package), class: 'btn btn-primary'
 = button_to 'destroy', @package, method: :delete, class: 'btn btn-danger pull-right'

@@ -2,11 +2,12 @@
 %html
   %head
     = render partial: 'layouts/meta'
+    %title
+      = yield :browser
     = stylesheet_link_tag "resume", media: "screen"
     = stylesheet_link_tag "resume_print", media: "print"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    = yield :head
   %body
     #Center
       #Water
@@ -15,12 +16,12 @@
           #Name Michael D. Boone
           #pdfLink
             = link_to 'Back', root_path
-            - if current_user.admin?
+            - if current_user.present? and current_user.admin?
               = link_to 'edit', resume_categories_path
               = link_to 'logout', destroy_user_session_path, method: :delete
-        #clearMe
-        %br
-        #Address
-          = yield :address
-      #Text
-        = yield
+          #clearMe
+          %br
+          #Address
+            = yield :address
+        #Text
+          = yield
