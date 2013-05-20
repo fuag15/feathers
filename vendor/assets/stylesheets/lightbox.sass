@@ -5,9 +5,6 @@
   z-index: 100
   text-align: center
   line-height: 0
-  img
-    width: auto
-    height: auto
   a img
     border: none
 
@@ -47,7 +44,7 @@
 #prevLink, #nextLink
   width: 49%
   height: 100%
-  background-image: url(data:image/gif;base64,AAAA)
+  background: transparent url(/assets/blank.gif) no-repeat
   /* Trick IE into showing hover
   display: block
 
@@ -61,23 +58,41 @@
 
 #prevLink
   &:hover, &:visited:hover
-    background: url(../images/prevlabel.gif) left 15% no-repeat
+    background: url(/assets/prev.gif) left 50% no-repeat
 
 #nextLink
   &:hover, &:visited:hover
-    background: url(../images/nextlabel.gif) right 15% no-repeat
+    background: url(/assets/next.gif) right 50% no-repeat
+
+/*** START : next / previous text links **
+
+#nextLinkText, #prevLinkText
+  color: #FF9834
+  font-weight: bold
+  text-decoration: none
+
+#nextLinkText
+  padding-left: 20px
+
+#prevLinkText
+  padding-right: 20px
+
+/*** END : next / previous text links **
+/*** START : added padding when navbar is on top **
+
+.ontop #imageData
+  padding-top: 5px
+
+/*** END : added padding when navbar is on top **
 
 #imageDataContainer
   font: 10px Verdana, Helvetica, sans-serif
   background-color: #fff
   margin: 0 auto
   line-height: 1.4em
-  overflow: auto
-  width: 100%
 
 #imageData
   padding: 0 10px
-  color: #666
   #imageDetails
     width: 70%
     float: left
@@ -88,11 +103,18 @@
     display: block
     clear: left
     padding-bottom: 1.0em
+    a
+      color: black
+      padding-left: 5px
+      padding-right: 5px
   #bottomNavClose
     width: 66px
     float: right
     padding-bottom: 0.7em
-    outline: none
+  #helpDisplay
+    clear: left
+    float: left
+    display: block
 
 #overlay
   position: absolute
@@ -102,3 +124,26 @@
   width: 100%
   height: 500px
   background-color: #000
+  filter: alpha(opacity = 60)
+  -moz-opacity: 0.6
+  opacity: 0.6 !important
+  display: none
+
+.clearfix:after
+  content: "."
+  display: block
+  height: 0
+  clear: both
+  visibility: hidden
+
+* html
+  > body .clearfix
+    display: inline-block
+    width: 100%
+  .clearfix
+    /* Hides from IE-mac \
+    height: 1%
+    /* End hide from IE-mac
+
+#lightboxIframe
+  display: none

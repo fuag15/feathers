@@ -1,0 +1,411 @@
+###
+jQuery Lightbox
+@author Warren Krewenki
+
+This package is distributed under the BSD license.
+For full license information, see LICENSE.TXT
+
+Based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lightbox2/)
+###
+(($) ->
+  $.fn.lightbox = (options) ->
+
+    # build main options
+
+    # initialize the lightbox
+
+    #
+    #		# Initialize the lightbox by creating our html and reading some image data
+    #		# This method is called by the constructor after any click events trigger it
+    #		# You will never call it by itself, to my knowledge.
+    #
+    initialize = ->
+      $("#overlay, #lightbox").remove()
+      opts.inprogress = false
+
+      # if jsonData, build the imageArray from data provided in JSON format
+      if opts.jsonData and opts.jsonData.length > 0
+        parser = (if opts.jsonDataParser then opts.jsonDataParser else $.fn.lightbox.parseJsonData)
+        opts.imageArray = []
+        opts.imageArray = parser(opts.jsonData)
+      outerImage = "<div id=\"outerImageContainer\"><div id=\"imageContainer\"><iframe id=\"lightboxIframe\"></iframe><img id=\"lightboxImage\" /><div id=\"hoverNav\"><a href=\"javascript://\" title=\"" + opts.strings.prevLinkTitle + "\" id=\"prevLink\"></a><a href=\"javascript://\" id=\"nextLink\" title=\"" + opts.strings.nextLinkTitle + "\"></a></div><div id=\"loading\"><a href=\"javascript://\" id=\"loadingLink\"><img src=\"" + opts.fileLoadingImage + "\"></a></div></div></div>"
+      imageData = "<div id=\"imageDataContainer\" class=\"clearfix\"><div id=\"imageData\"><div id=\"imageDetails\"><span id=\"caption\"></span><span id=\"numberDisplay\"></span></div><div id=\"bottomNav\">"
+      imageData += "<span id=\"helpDisplay\">" + opts.strings.help + "</span>"  if opts.displayHelp
+      imageData += "<a href=\"javascript://\" id=\"bottomNavClose\" title=\"" + opts.strings.closeTitle + "\"><img src=\"" + opts.fileBottomNavCloseImage + "\"></a></div></div></div>"
+      string = undefined
+      if opts.navbarOnTop
+        string = "<div id=\"overlay\"></div><div id=\"lightbox\">" + imageData + outerImage + "</div>"
+        $("body").append string
+        $("#imageDataContainer").addClass "ontop"
+      else
+        string = "<div id=\"overlay\"></div><div id=\"lightbox\">" + outerImage + imageData + "</div>"
+        $("body").append string
+      $("#lightbox").css "position", "fixed"  if opts.imageScroll is true
+      $("#overlay, #lightbox").click(->
+        end()
+      ).hide()
+      $("#loadingLink, #bottomNavClose").click ->
+        end()
+        false
+
+      $("#outerImageContainer").width(opts.widthCurrent).height opts.heightCurrent
+      $("#imageDataContainer").width opts.widthCurrent
+      unless opts.imageClickClose
+        $("#lightboxImage").click ->
+          false
+
+        $("#hoverNav").click ->
+          false
+
+      true
+
+    #
+    #		# Get the document and window width/heigh
+    #		#
+    #		# Examples
+    #		#
+    #		#	getPageSize()
+    #		#	# => [1024,768,1024,768]
+    #		#
+    #		# Returns a numerically indexed array of document width/height and window width/height
+    #
+    getPageSize = ->
+      jqueryPageSize = new Array($(document).width(), $(document).height(), $(window).width(), $(window).height())
+      jqueryPageSize
+    getPageScroll = ->
+      xScroll = undefined
+      yScroll = undefined
+      if self.pageYOffset
+        yScroll = self.pageYOffset
+        xScroll = self.pageXOffset
+      else if document.documentElement and (document.documentElement.scrollTop or document.documentElement.scrollLeft) # Explorer 6 Strict, Firefox
+        yScroll = document.documentElement.scrollTop
+        xScroll = document.documentElement.scrollLeft
+      else if document.body # all other Explorers
+        yScroll = document.body.scrollTop
+        xScroll = document.body.scrollLeft
+      arrayPageScroll = new Array(xScroll, yScroll)
+      arrayPageScroll
+
+    #
+    #		# Deploy the sexy overlay and display the lightbox
+    #		#
+    #		# imageObject - the jQuery object passed via the click event in the constructor
+    #		#
+    #		# Examples
+    #		#
+    #		#	showLightbox($('#CheesusCrust'))
+    #		#
+    #		# Returns a boolean true, because it's got nothing else to return. It should give visual feedback when run
+    #
+    showLightbox = (imageObject) ->
+
+      ###
+      select, embed and object tags render over the lightbox in some browsers
+      Right now, the best way to fix it is to hide them, but that can trigger reloading of some flash content
+      I don't have a better fix for this right now, but I want ot leave this comment here so you and I both
+      know that i'm aware of it, and I would love to fix it, if you have any suggestions.
+      ###
+      $("select, embed, object").hide()
+
+      # Resize and display the sexy, sexy overlay.
+      resizeOverlayToFitWindow()
+      $("#overlay").hide().css(opacity: opts.overlayOpacity).fadeIn()
+      imageNum = 0
+
+      # if data is not provided by jsonData parameter
+      unless opts.jsonData
+        opts.imageArray = []
+
+        # if image is NOT part of a set..
+        if (not imageObject.rel or (imageObject.rel is "")) and not opts.allSet
+
+          # add single image to Lightbox.imageArray
+          opts.imageArray.push new Array(imageObject.href, (if opts.displayTitle then imageObject.title else ""))
+        else
+
+          # if image is part of a set..
+          $("a").each ->
+            opts.imageArray.push new Array(@href, (if opts.displayTitle then @title else ""))  if @href and (@rel is imageObject.rel)
+
+      if opts.imageArray.length > 1
+        i = 0
+        while i < opts.imageArray.length
+          j = opts.imageArray.length - 1
+          while j > i
+            opts.imageArray.splice j, 1  if opts.imageArray[i][0] is opts.imageArray[j][0]
+            j--
+          i++
+        imageNum++  until opts.imageArray[imageNum][0] is imageObject.href
+
+      # calculate top and left offset for the lightbox
+      arrayPageScroll = getPageScroll()
+      lightboxTop = arrayPageScroll[1] + ($(window).height() / 10)
+      lightboxLeft = arrayPageScroll[0]
+      $("#lightbox").css(
+        top: lightboxTop + "px"
+        left: lightboxLeft + "px"
+      ).show()
+      $("#imageData").hide()  unless opts.slideNavBar
+      changeImage imageNum
+    changeImage = (imageNum) ->
+      if opts.inprogress is false
+        opts.inprogress = true
+
+        # update global var
+        opts.activeImage = imageNum
+
+        # hide elements during transition
+        $("#loading").show()
+        $("#lightboxImage, #hoverNav, #prevLink, #nextLink").hide()
+
+        # delay preloading image until navbar will slide up
+        if opts.slideNavBar
+          $("#imageDataContainer").hide()
+          $("#imageData").hide()
+        doChangeImage()
+    doChangeImage = ->
+      imgPreloader = new Image()
+
+      # once image is preloaded, resize image container
+      imgPreloader.onload = ->
+        newWidth = imgPreloader.width
+        newHeight = imgPreloader.height
+        if opts.scaleImages
+          newWidth = parseInt(opts.xScale * newWidth)
+          newHeight = parseInt(opts.yScale * newHeight)
+        if opts.fitToScreen
+          arrayPageSize = getPageSize()
+          ratio = undefined
+          initialPageWidth = arrayPageSize[2] - 2 * opts.borderSize
+          initialPageHeight = arrayPageSize[3] - 200
+          dI = initialPageWidth / initialPageHeight
+          dP = imgPreloader.width / imgPreloader.height
+          if (imgPreloader.height > initialPageHeight) or (imgPreloader.width > initialPageWidth)
+            if dI > dP
+              newWidth = parseInt((initialPageHeight / imgPreloader.height) * imgPreloader.width)
+              newHeight = initialPageHeight
+            else
+              newHeight = parseInt((initialPageWidth / imgPreloader.width) * imgPreloader.height)
+              newWidth = initialPageWidth
+        $("#lightboxImage").attr("src", opts.imageArray[opts.activeImage][0]).width(newWidth).height newHeight
+        resizeImageContainer newWidth, newHeight
+
+      imgPreloader.src = opts.imageArray[opts.activeImage][0]
+    end = ->
+      disableKeyboardNav()
+      $("#lightbox").hide()
+      $("#overlay").fadeOut()
+      $("select, object, embed").show()
+    preloadNeighborImages = ->
+      preloadPrevImage = undefined
+      preloadNextImage = undefined
+      if opts.loopImages and opts.imageArray.length > 1
+        preloadNextImage = new Image()
+        preloadNextImage.src = opts.imageArray[(if (opts.activeImage is (opts.imageArray.length - 1)) then 0 else opts.activeImage + 1)][0]
+        preloadPrevImage = new Image()
+        preloadPrevImage.src = opts.imageArray[(if (opts.activeImage is 0) then (opts.imageArray.length - 1) else opts.activeImage - 1)][0]
+      else
+        if (opts.imageArray.length - 1) > opts.activeImage
+          preloadNextImage = new Image()
+          preloadNextImage.src = opts.imageArray[opts.activeImage + 1][0]
+        if opts.activeImage > 0
+          preloadPrevImage = new Image()
+          preloadPrevImage.src = opts.imageArray[opts.activeImage - 1][0]
+    resizeImageContainer = (imgWidth, imgHeight) ->
+
+      # get current width and height
+      opts.widthCurrent = $("#outerImageContainer").outerWidth()
+      opts.heightCurrent = $("#outerImageContainer").outerHeight()
+
+      # get new width and height
+      widthNew = Math.max(350, imgWidth + (opts.borderSize * 2))
+      heightNew = (imgHeight + (opts.borderSize * 2))
+
+      # calculate size difference between new and old image, and resize if necessary
+      wDiff = opts.widthCurrent - widthNew
+      hDiff = opts.heightCurrent - heightNew
+      $("#imageDataContainer").animate
+        width: widthNew
+      , opts.resizeSpeed, "linear"
+      $("#outerImageContainer").animate
+        width: widthNew
+      , opts.resizeSpeed, "linear", ->
+        $("#outerImageContainer").animate
+          height: heightNew
+        , opts.resizeSpeed, "linear", ->
+          showImage()
+
+
+      afterTimeout = ->
+        $("#prevLink").height imgHeight
+        $("#nextLink").height imgHeight
+
+
+      # if new and old image are same size and no scaling transition is necessary,
+      # do a quick pause to prevent image flicker.
+      if (hDiff is 0) and (wDiff is 0)
+        setTimeout afterTimeout, 100
+      else
+
+        # otherwise just trigger the height and width change
+        afterTimeout()
+    showImage = ->
+      $("#loading").hide()
+      $("#lightboxImage").fadeIn "fast"
+      updateDetails()
+      preloadNeighborImages()
+      opts.inprogress = false
+    updateDetails = ->
+      $("#numberDisplay").html ""
+      $("#caption").html(opts.imageArray[opts.activeImage][1]).show()  if opts.imageArray[opts.activeImage][1]
+
+      # if image is part of set display 'Image x of x'
+      if opts.imageArray.length > 1
+        nav_html = undefined
+        nav_html = opts.strings.image + (opts.activeImage + 1) + opts.strings.of + opts.imageArray.length
+        nav_html += "<a href='" + opts.imageArray[opts.activeImage][0] + "'>" + opts.strings.download + "</a>"  if opts.displayDownloadLink
+        unless opts.disableNavbarLinks
+
+          # display previous / next text links
+          nav_html = "<a title=\"" + opts.strings.prevLinkTitle + "\" href=\"#\" id=\"prevLinkText\">" + opts.strings.prevLinkText + "</a>" + nav_html  if (opts.activeImage) > 0 or opts.loopImages
+          nav_html += "<a title=\"" + opts.strings.nextLinkTitle + "\" href=\"#\" id=\"nextLinkText\">" + opts.strings.nextLinkText + "</a>"  if ((opts.activeImage + 1) < opts.imageArray.length) or opts.loopImages
+        $("#numberDisplay").html(nav_html).show()
+      if opts.slideNavBar
+        $("#imageData").slideDown opts.navBarSlideSpeed
+      else
+        $("#imageData").show()
+      resizeOverlayToFitWindow()
+      updateNav()
+
+    #
+    #			# Resize the sexy overlay to fit the constraints of your current viewing environment
+    #			#
+    #			# This should now happen whenever a window is resized, so you should always see a full overlay
+    #
+    resizeOverlayToFitWindow = ->
+      $("#overlay").css
+        width: $(document).width()
+        height: $(document).height()
+
+
+    #  ^^^^^^^ <- sexy!
+    updateNav = ->
+      if opts.imageArray.length > 1
+        $("#hoverNav").show()
+
+        # if loopImages is true, always show next and prev image buttons
+        if opts.loopImages
+          $("#prevLink,#prevLinkText").show().click ->
+            changeImage (if (opts.activeImage is 0) then (opts.imageArray.length - 1) else opts.activeImage - 1)
+            false
+
+          $("#nextLink,#nextLinkText").show().click ->
+            changeImage (if (opts.activeImage is (opts.imageArray.length - 1)) then 0 else opts.activeImage + 1)
+            false
+
+        else
+
+          # if not first image in set, display prev image button
+          unless opts.activeImage is 0
+            $("#prevLink,#prevLinkText").show().click ->
+              changeImage opts.activeImage - 1
+              false
+
+
+          # if not last image in set, display next image button
+          unless opts.activeImage is (opts.imageArray.length - 1)
+            $("#nextLink,#nextLinkText").show().click ->
+              changeImage opts.activeImage + 1
+              false
+
+      enableKeyboardNav()
+    keyboardAction = (e) ->
+      o = e.data.opts
+      keycode = e.keyCode
+      escapeKey = 27
+      key = String.fromCharCode(keycode).toLowerCase()
+
+      # close lightbox
+      if (key is "x") or (key is "o") or (key is "c") or (keycode is escapeKey)
+        end()
+
+      # display previous image
+      else if (key is "p") or (keycode is 37)
+        if o.loopImages
+          disableKeyboardNav()
+          changeImage (if (o.activeImage is 0) then (o.imageArray.length - 1) else o.activeImage - 1)
+        else unless o.activeImage is 0
+          disableKeyboardNav()
+          changeImage o.activeImage - 1
+
+      # display next image
+      else if (key is "n") or (keycode is 39)
+        if opts.loopImages
+          disableKeyboardNav()
+          changeImage (if (o.activeImage is (o.imageArray.length - 1)) then 0 else o.activeImage + 1)
+        else unless o.activeImage is (o.imageArray.length - 1)
+          disableKeyboardNav()
+          changeImage o.activeImage + 1
+    enableKeyboardNav = ->
+      $(document).bind "keydown",
+        opts: opts
+      , keyboardAction
+    disableKeyboardNav = ->
+      $(document).unbind "keydown"
+    opts = $.extend({}, $.fn.lightbox.defaults, options)
+    $(window).resize resizeOverlayToFitWindow
+    return $(this).on(opts.triggerEvent, ->
+      initialize()
+      showLightbox this
+      false
+    )
+
+  $.fn.lightbox.parseJsonData = (data) ->
+    imageArray = []
+    $.each data, ->
+      imageArray.push new Array(@url, @title)
+
+    imageArray
+
+  $.fn.lightbox.defaults =
+    triggerEvent: "click"
+    allSet: false
+    fileLoadingImage: "/assets/loading.gif"
+    fileBottomNavCloseImage: "/assets/closelabel.gif"
+    overlayOpacity: 0.6
+    borderSize: 10
+    imageArray: new Array
+    activeImage: null
+    imageScroll: false
+    inprogress: false
+    resizeSpeed: 350
+    widthCurrent: 250
+    heightCurrent: 250
+    scaleImages: false
+    xScale: 1
+    yScale: 1
+    displayTitle: true
+    navbarOnTop: false
+    displayDownloadLink: false
+    slideNavBar: false
+    navBarSlideSpeed: 350
+    displayHelp: false
+    strings:
+      help: " ← / P - previous image    → / N - next image    ESC / X - close image gallery"
+      prevLinkTitle: "previous image"
+      nextLinkTitle: "next image"
+      prevLinkText: "&laquo; Previous"
+      nextLinkText: "Next &raquo;"
+      closeTitle: "close image gallery"
+      image: "Image "
+      of: " of "
+      download: "Download"
+
+    fitToScreen: false
+    disableNavbarLinks: false
+    loopImages: false
+    imageClickClose: true
+    jsonData: null
+    jsonDataParser: null
+) jQuery

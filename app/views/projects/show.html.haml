@@ -10,12 +10,12 @@
   = link_to 'manage pictures', project_pictures_path(@project)
 #projectDetailImage
   - if @project.pictures.present?
-    = link_to @project.pictures.first.image.url(:bestfit) do
+    = link_to @project.pictures.first.image.url(:bestfit), class: 'lightbox', rel: "project_#{@project.id}" do
       = image_tag @project.pictures.first.image.url(:bestfit)
 #projectDetailSubImageHolder
   - @project.pictures.each do |picture|
     #projectDetailSubImage
-      = link_to picture.image.url(:bestfit) do
+      = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "project_#{@project.id}" do
         = image_tag picture.image.url(:small)
   #clear
 = @project.detail

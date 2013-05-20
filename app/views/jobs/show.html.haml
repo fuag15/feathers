@@ -9,12 +9,12 @@
   = link_to 'manage pictures', job_pictures_path(@job)
 #projectDetailImage
   - if @job.pictures.present?
-    = link_to @job.pictures.first.image.url(:bestfit) do
+    = link_to @job.pictures.first.image.url(:bestfit), class: 'lightbox', rel: "job_#{@job.id}" do
       = image_tag @job.pictures.first.image.url(:bestfit)
 #projectDetailSubImageHolder
   - @job.pictures.each do |picture|
     #projectDetailSubImage
-      = link_to picture.image.url(:bestfit) do
+      = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "job_#{@job.id}" do
         = image_tag picture.image.url(:small)
   #clear
 = @job.detail

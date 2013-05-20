@@ -5,7 +5,7 @@
     .EntryHeader
       = post.created_at.to_time.strftime("%B %d, %Y")
 #blogImage
-  = link_to post.picture.url(:large) do
+  = link_to post.picture.url(:large), class: 'lightbox', rel: "post_#{post.id}" do
     = image_tag post.picture.url(:small)
 = raw simple_format(post.content)
 - if current_user.present? and current_user.admin?
@@ -13,6 +13,6 @@
 #clear
 - post.pictures.each do |picture|
   #blogExtraImage
-    = link_to picture.image.url(:large) do
+    = link_to picture.image.url(:large), class: 'lightbox', rel: "post_#{post.id}" do
       = image_tag picture.image.url(:thumb)
 #clear

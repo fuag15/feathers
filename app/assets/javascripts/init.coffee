@@ -1,0 +1,2 @@
+$ ->
+  $('a.lightbox').lightbox()
