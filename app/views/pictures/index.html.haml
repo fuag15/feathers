@@ -1,0 +1,20 @@
+- content_for :title do
+  Pictures
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        image
+      %th
+        name
+  %tbody
+    - @pictures.each do |picture|
+      %tr
+        %td
+          = link_to picture.image.url, [picture.owner, picture]
+        %td
+          = picture.name
+%p
+  .btn-group.pull-left
+    = link_to 'create picture', owner_aware_new_picture_path(@owner), class: 'btn btn-primary'
+    = link_to 'back', @owner, class: 'btn'

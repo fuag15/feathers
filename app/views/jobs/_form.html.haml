@@ -1,0 +1,13 @@
+= form_for [job_category, job] do |f|
+  = render partial: 'shared/form_error', collection: job.errors.full_messages
+  %p
+    = f.text_field :name, placeholder: 'name'
+  %p
+    = f.text_field :rank, placeholder: 'rank'
+  %p
+    = f.text_field :employer, placeholder: 'empoyer'
+  %p
+    = f.text_area :blurb, placeholder: 'blurb'
+  %p
+    = f.text_area :detail, placeholder: 'detail'
+  = f.submit class: 'btn btn-primary'

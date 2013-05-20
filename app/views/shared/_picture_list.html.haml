@@ -1,0 +1,4 @@
+%ul.unstyled
+  - pictures.each do |picture|
+    %li
+      = link_to picture.name, picture.image.url, class: 'lightbox'

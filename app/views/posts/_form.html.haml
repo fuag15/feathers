@@ -1,0 +1,9 @@
+= form_for post do |f|
+  = render partial: 'shared/form_error', collection: post.errors.full_messages
+  %p
+    = f.text_field :title, placeholder: 'title'
+  %p
+    = f.text_area :content, placeholder: 'content'
+  %p
+    = f.file_field :picture
+  = f.submit class: 'btn btn-primary'

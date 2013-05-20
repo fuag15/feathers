@@ -1,0 +1,13 @@
+- content_for :title do
+  Showing Address
+%p
+  = @address.name
+%p
+  = @address.street
+%p
+  = @address.city
+%p
+  .btn-group.pull-left
+    = link_to 'back', addresses_path, class: 'btn'
+    = link_to 'edit', edit_address_path(@address), class: 'btn btn-primary'
+= button_to 'destroy', @address, method: :delete, class: 'btn btn-danger pull-right'

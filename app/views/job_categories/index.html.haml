@@ -1,0 +1,20 @@
+- content_for :title do
+  Job Categories
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        name
+      %th
+        rank
+  %tbody
+    - @job_categories.each do |job_category|
+      %tr
+        %td
+          = link_to job_category.name, job_category
+        %td
+          = job_category.rank
+%p
+  .btn-group.pull-left
+    = link_to 'create job category', new_job_category_path, class: 'btn btn-primary'
+    = link_to 'back', jobs_path, class: 'btn'

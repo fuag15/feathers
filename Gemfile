@@ -17,6 +17,8 @@ gem 'flay', '~> 2.1.0' # how much does our code repeat itself
 gem 'rails_best_practices', '~> 1.13.4' # how close are we to standards
 gem 'reek', '~> 1.3.1' # how smelly are we
 gem 'redcarpet', '~> 2.2.2' # markdown parsing
+gem 'kaminari', '~> 0.14.1' # pagination
+gem 'bootstrap-kaminari-views', '~> 0.0.2' # bootstrap compatable kaminari templates
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3' # sass interpretation

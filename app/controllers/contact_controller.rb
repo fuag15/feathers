@@ -1,4 +1,10 @@
 class ContactController < ApplicationController
+  skip_authorization_check
+
+  # dummy def just loads form
+  def index
+  end
+
   # this method handles input from the contact form
   # shoots off a mail from ContactMailer#contact
   def submit

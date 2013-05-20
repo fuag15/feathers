@@ -1,0 +1,20 @@
+- content_for :title do
+  #{@project.name} Package List
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        file
+      %th
+        version
+  %tbody
+    - @packages.each do |package|
+      %tr
+        %td
+          = link_to package.file.url, package
+        %td
+          = package.version
+%p
+  .btn-group.pull-left
+    = link_to 'create package', new_project_package_path(@project), class: 'btn btn-primary'
+    = link_to 'back', @project, class: 'btn'

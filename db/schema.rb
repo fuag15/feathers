@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515065053) do
+ActiveRecord::Schema.define(:version => 20130520020211) do
 
   create_table "addresses", :force => true do |t|
     t.string   "name"
@@ -72,7 +72,18 @@ ActiveRecord::Schema.define(:version => 20130515065053) do
     t.string   "image"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "name"
   end
+
+  create_table "pictures_posts", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "picture_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "pictures_posts", ["picture_id"], :name => "index_pictures_posts_on_picture_id"
+  add_index "pictures_posts", ["post_id"], :name => "index_pictures_posts_on_post_id"
 
   create_table "pictures_projects", :force => true do |t|
     t.integer  "picture_id"
@@ -102,7 +113,6 @@ ActiveRecord::Schema.define(:version => 20130515065053) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "blurb"
-    t.string   "version"
     t.text     "detail"
     t.string   "team"
     t.integer  "rank",                :default => 0

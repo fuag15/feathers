@@ -1,0 +1,76 @@
+// COMMON STYLING
+
+.social ul, ul
+  list-style: none
+  margin: 0 auto
+  padding: 0
+
+.social ul.inlined, ul.inlined
+  float: left
+
+.social ul li
+  width: 32px
+  height: 32px
+  margin: 5px
+  text-indent: -9999px
+  a
+    display: block
+    width: 100%
+    height: 100%
+    opacity: 0.8
+    -moz-opacity: 0.8
+    filter: alpha(opacity = 80)
+
+.social ul li a:hover
+  opacity: 1
+  -moz-opacity: 1
+  filter: alpha(opacity = 1)
+
+// SOCIAL LARGE SIZE
+
+.social ul a
+  &.github
+    background: url(/assets/jquery_jsocial/github.png)
+  &.googleplus
+    background: url(/assets/jquery_jsocial/googleplus.png)
+  &.facebook
+    background: url(/assets/jquery_jsocial/facebook.png)
+  &.linked-in
+    background: url(/assets/jquery_jsocial/linkedin.png)
+  &.youtube
+    background: url(/assets/jquery_jsocial/youtube.png)
+  &.feed
+    background: url(/assets/jquery_jsocial/rss.png)
+
+// Clearfix
+
+html body *
+  span.clear, div.clear, li.clear, dd.clear
+    background: none
+    border: 0
+    clear: both
+    display: block
+    float: none
+    font-size: 0
+    list-style: none
+    margin: 0
+    padding: 0
+    overflow: hidden
+    visibility: hidden
+    width: 0
+    height: 0
+
+.clearfix
+  &:after
+    clear: both
+    content: '.'
+    display: block
+    visibility: hidden
+    height: 0
+  display: inline-block
+
+* html .clearfix
+  height: 1%
+
+.clearfix
+  display: block

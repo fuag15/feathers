@@ -1,0 +1,4 @@
+- content_for :title do
+  Creating Post
+= render 'form', post: @post
+= render 'shared/author_helper', owner: @post
