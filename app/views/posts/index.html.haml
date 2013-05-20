@@ -9,3 +9,4 @@
 - if current_user.present? and current_user.admin?
   = link_to 'create post', new_post_path
 = render @posts
+= paginate @posts, theme: 'twitter-bootstrap'

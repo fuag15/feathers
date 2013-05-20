@@ -2,6 +2,12 @@ class PostsController < ApplicationController
   load_and_authorize_resource
   respond_to :html
 
+  # pagination
+  def index
+    @posts = Post.page params[:page]
+    respond_with @post
+  end
+
   # simple create method on true sends a good notice
   def create
     flash[:notice] = 'Post Created' if @post.save
