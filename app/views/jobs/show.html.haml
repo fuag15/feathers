@@ -1,7 +1,7 @@
 - content_for :browser do
   \/dev/boone/clients/#{@job.name}
 - content_for :title do
-  = @job.name
+  = markdown @job.name
   = render partial: 'shared/authentication'
 - if current_user.present? and current_user.admin?
   = link_to 'edit job', edit_job_category_job_path(@job.job_category, @job)
@@ -17,9 +17,9 @@
       = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "job_#{@job.id}" do
         = image_tag picture.image.url(:small)
   #clear
-= @job.detail
+= markdown @job.detail
 %br
 %br
 #employerTag
-  Employer: #{@job.employer}
+  Employer: #{markdown @job.employer}
 #clear

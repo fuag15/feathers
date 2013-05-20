@@ -1,3 +1,4 @@
 - content_for :title do
   Creating Job
 = render 'form', job: @job, job_category: @job_category
+= render 'shared/author_helper', owner: @job

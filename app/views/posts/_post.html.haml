@@ -7,7 +7,7 @@
 #blogImage
   = link_to post.picture.url(:large), class: 'lightbox', rel: "post_#{post.id}" do
     = image_tag post.picture.url(:small)
-= raw simple_format(post.content)
+= markdown post.content
 - if current_user.present? and current_user.admin?
   = link_to 'show', post_path(post)
 #clear

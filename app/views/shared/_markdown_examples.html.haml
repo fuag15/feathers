@@ -12,9 +12,9 @@
           = text
         %td
           = markdown text
-    - if Image.first
+    - if Picture.first
       %tr
         %td
-          = "__#{Image.first.name}__"
+          = "__#{Picture.first.name}__"
         %td
-          = markdown "__#{Image.first.name}__"
+          = markdown "__#{Picture.first.name}__"

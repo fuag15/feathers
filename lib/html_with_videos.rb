@@ -2,7 +2,7 @@
 class HTMLWithVideos < Redcarpet::Render::HTML
   def double_emphasis text
     if Picture.where(name: text).present?
-      "<img src='#{Picture.where(name: text).first.image.url}' />"
+      "<a href='#{Picture.where(name: text).first.image.url}' class='lightbox'><img src='#{Picture.where(name: text).first.image.url}' /></a>"
     else
       nil
     end
