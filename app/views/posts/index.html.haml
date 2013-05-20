@@ -7,6 +7,7 @@
 %br
 %br
 - if current_user.present? and current_user.admin?
-  = link_to 'create post', new_post_path
+  .pull-right
+    = link_to 'create post', new_post_path, class: 'btn'
 = render @posts
 = paginate @posts, theme: 'twitter-bootstrap'

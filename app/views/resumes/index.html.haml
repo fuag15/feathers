@@ -9,13 +9,13 @@
     = address.city
     %br
   - if current_user.present? and current_user.admin?
-    = link_to 'manage addresses', addresses_path
+    = link_to 'manage addresses', addresses_path, class: 'btn btn-small'
 - @resume_categories.each do |resume_category|
   #ResumeHeader
     #{resume_category.name}
   - resume_category.resume_entries.each do |resume_entry|
     = resume_entry.name
     - if current_user.present? and current_user.admin?
-      = link_to 'edit', edit_resume_category_resume_entry_path(resume_category, resume_entry)
+      = link_to 'edit', edit_resume_category_resume_entry_path(resume_category, resume_entry), class: 'btn btn-small'
     %br
   %br

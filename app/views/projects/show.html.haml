@@ -1,13 +1,15 @@
 - content_for :browser do
   \/dev/boone/projects/#{@project.name}
 - content_for :title do
-  = markdown @project.name
+  = @project.name
   = render partial: 'shared/authentication'
 - if current_user.present? and current_user.admin?
-  = link_to 'edit project', edit_project_category_project_path(@project.project_category, @project)
-  = button_to 'destroy project', project_path(@project), method: :destroy
-  = link_to 'manage packages', project_packages_path(@project)
-  = link_to 'manage pictures', project_pictures_path(@project)
+  .btn-group.pull-right
+    = link_to 'edit project', edit_project_category_project_path(@project.project_category, @project), class: 'btn btn-primary'
+    = link_to 'manage packages', project_packages_path(@project), class: 'btn'
+    = link_to 'manage pictures', project_pictures_path(@project), class: 'btn'
+  = button_to 'destroy project', project_path(@project), method: :destroy, class: 'btn'
+  .clear
 #projectDetailImage
   - if @project.pictures.present?
     = link_to @project.pictures.first.image.url(:bestfit), class: 'lightbox', rel: "project_#{@project.id}" do
@@ -22,7 +24,7 @@
 %br
 %br
 #employerTag
-  Team Members: #{markdown @project.team}
+  Team Members: #{@project.team}
 #clear
 - @project.packages.each do |package|
   = link_to package.version, package.file.url

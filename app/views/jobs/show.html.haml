@@ -1,12 +1,14 @@
 - content_for :browser do
   \/dev/boone/clients/#{@job.name}
 - content_for :title do
-  = markdown @job.name
+  = @job.name
   = render partial: 'shared/authentication'
 - if current_user.present? and current_user.admin?
-  = link_to 'edit job', edit_job_category_job_path(@job.job_category, @job)
-  = button_to 'destroy job', job_path(@job), method: :destroy
-  = link_to 'manage pictures', job_pictures_path(@job)
+  .btn-group.pull-right
+    = link_to 'edit job', edit_job_category_job_path(@job.job_category, @job), class: 'btn'
+    = link_to 'manage pictures', job_pictures_path(@job), class: 'btn'
+  = button_to 'destroy job', job_path(@job), method: :destroy, class: 'btn btn-danger'
+  .clear
 #projectDetailImage
   - if @job.pictures.present?
     = link_to @job.pictures.first.image.url(:bestfit), class: 'lightbox', rel: "job_#{@job.id}" do
@@ -21,5 +23,5 @@
 %br
 %br
 #employerTag
-  Employer: #{markdown @job.employer}
+  Employer: #{@job.employer}
 #clear

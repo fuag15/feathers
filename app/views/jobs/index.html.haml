@@ -7,7 +7,9 @@
 %br
 %br
 - if current_user.present? and current_user.admin?
-  = link_to 'manage jobs', job_categories_path
+  .pull-right
+    = link_to 'manage jobs', job_categories_path, class: 'btn'
+  .clear
 - @job_categories.each do |job_category|
   #categorySeperator
     = job_category.name
