@@ -1,6 +1,6 @@
 # Revitalization of portfolio site
 
-my portfolio site
+Slowly re-organizing and refactoring portfolio site to bring it out of 2007. This is an on-going project done in downtime or when I nag at me enough :)
 
 ## Detailed Docs
 
@@ -44,14 +44,9 @@ You should be able to view the site on `localhost:3000`, or [here][local-host]
 
 ## Roadmap
 
-- translate views from ember prototype
-- doc / doc coverage
-- tests / coverage / optimization
-- add markdown parsing
-- add pagination
-- modernize contact page
-- modernize css / js
-- host and transfer data
+- document existing
+- test and re-factor
+- improve / re-design / expand over time
 
 [local-host]: http://localhost:3000 "Local default server port"
 [postgresql]: http://postgresql.org "Postgresql Official Site"
