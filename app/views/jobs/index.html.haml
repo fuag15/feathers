@@ -20,7 +20,7 @@
         %center
           #projectImage
             - if job.pictures.first.present?
-              = image_tag job.pictures.first.image.url(:galley)
+              = image_tag job.pictures.first.image.url(:gallery)
         %br
         %br
         = job.blurb

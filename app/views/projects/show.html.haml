@@ -7,6 +7,7 @@
   = link_to 'edit project', edit_project_category_project_path(@project.project_category, @project)
   = button_to 'destroy project', project_path(@project), method: :destroy
   = link_to 'manage packages', project_packages_path(@project)
+  = link_to 'manage pictures', project_pictures_path(@project)
 #projectDetailImage
   - if @project.pictures.present?
     = link_to @project.pictures.first.image.url(:bestfit) do

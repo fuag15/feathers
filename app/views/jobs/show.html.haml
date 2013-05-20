@@ -6,6 +6,7 @@
 - if current_user.present? and current_user.admin?
   = link_to 'edit job', edit_job_category_job_path(@job.job_category, @job)
   = button_to 'destroy job', job_path(@job), method: :destroy
+  = link_to 'manage pictures', job_pictures_path(@job)
 #projectDetailImage
   - if @job.pictures.present?
     = link_to @job.pictures.first.image.url(:bestfit) do

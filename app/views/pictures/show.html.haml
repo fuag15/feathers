@@ -1,9 +1,11 @@
-%h2
+- content_for :title do
   Displaying Picture
 %p
-  = @picture.file.url
+  = @picture.image.url
+%p
+  = @picture.name
 %p
   .btn-group.pull-left
-    = link_to 'back', pictures_path, class: 'btn'
-    = link_to 'edit', edit_picture_path(@picture), class: 'btn btn-primary'
-= button_to 'destroy', @picture, method: :delete, class: 'btn btn-danger pull-right'
+    = link_to 'back', owner_aware_pictures_path(@picture.owner), class: 'btn'
+    = link_to 'edit', owner_aware_edit_picture_path(@picture.owner, @picture), class: 'btn btn-primary'
+= button_to 'destroy', [@picture.owner, @picture], method: :delete, class: 'btn btn-danger pull-right'
