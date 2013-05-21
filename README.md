@@ -44,7 +44,6 @@ You should be able to view the site on `localhost:3000`, or [here][local-host]
 
 ## Roadmap
 
-- document existing
 - clean up dom/sass/javascript/views/all
 - test all and re-factor high priority areas
 - improve / re-design / expand over time
