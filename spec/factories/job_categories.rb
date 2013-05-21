@@ -1,8 +1,16 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :job_category do
-    name "MyString"
-    rank 1
+    name
+    rank 0
+
+    factory :job_category_with_jobs do
+      ignore do
+        job_count 5
+      end
+
+      after_create do |job_category, evaluator|
+        create_list(:job, evaluator.job_count, job_category: job_category)
+      end
+    end
   end
 end

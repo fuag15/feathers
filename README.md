@@ -44,8 +44,9 @@ You should be able to view the site on `localhost:3000`, or [here][local-host]
 
 ## Roadmap
 
-- test all
-- clean up dom/sass/javascript/views
+- spec
+- static analysis clean-up
+- refactor clean-up
 - improve / re-design / expand over time
 
 [local-host]: http://localhost:3000 "Local default server port"

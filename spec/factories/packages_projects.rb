@@ -1,8 +1,6 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :packages_project do
-    package nil
-    project nil
+    association :package, factory: :package
+    association :project, factory: :project
   end
 end
