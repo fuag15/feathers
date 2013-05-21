@@ -178,6 +178,9 @@
 
   <div id="description" class="description">
     
+<p>This controller manages the restfull actions for our <a
+href="Address.html">Address</a> model, please see that for more info</p>
+
   </div><!-- description -->
 
   
@@ -214,7 +217,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/addresses_controller.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/controllers/addresses_controller.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Address Created&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">save</span>
   <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@address</span>
@@ -245,7 +248,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/addresses_controller.rb, line 18</span>
+            <pre><span class="ruby-comment"># File app/controllers/addresses_controller.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Address Deleted&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@address</span>
@@ -276,7 +279,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/addresses_controller.rb, line 12</span>
+            <pre><span class="ruby-comment"># File app/controllers/addresses_controller.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Address Updated&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">update_attributes!</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:address</span>]
   <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@address</span>

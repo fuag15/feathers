@@ -70,6 +70,14 @@
   <ul class="link-list">
   
   
+    <li><span class="include">Sprockets::Helpers::RailsHelper</span>
+  
+  
+  
+    <li><span class="include">Sprockets::Helpers::IsolatedHelper</span>
+  
+  
+  
     <li><span class="include">CarrierWave::RMagick</span>
   
   
@@ -81,6 +89,8 @@
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
+    
+    <li><a href="#method-i-default_url">#default_url</a>
     
     <li><a href="#method-i-extension_white_list">#extension_white_list</a>
     
@@ -188,6 +198,9 @@
 
   <div id="description" class="description">
     
+<p>Uploader to handle images associated with <a href="Post.html">Post</a> <a
+href="Project.html">Project</a> and <a href="Job.html">Job</a></p>
+
   </div><!-- description -->
 
   
@@ -208,6 +221,38 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-default_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">default_url</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provide a default URL as a default if there hasn&#39;t been a file
+uploaded:</p>
+          
+
+          
+          <div class="method-source-code" id="default_url-source">
+            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">default_url</span>
+  <span class="ruby-comment"># For Rails 3.1+ asset pipeline compatibility:</span>
+  <span class="ruby-identifier">asset_path</span>(<span class="ruby-string">&quot;fallback/&quot;</span> <span class="ruby-operator">+</span> [<span class="ruby-identifier">version_name</span>, <span class="ruby-string">&quot;default.png&quot;</span>].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;_&#39;</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- default_url-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- default_url-method -->
+
+    
       <div id="method-i-extension_white_list" class="method-detail ">
         
         <div class="method-heading">
@@ -219,12 +264,12 @@
 
         <div class="method-description">
           
-          
+          <p>allowed extension types</p>
           
 
           
           <div class="method-source-code" id="extension_white_list-source">
-            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 35</span>
+            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">extension_white_list</span>
   <span class="ruby-node">%w(jpg jpeg gif png)</span>
 <span class="ruby-keyword">end</span></pre>
@@ -249,12 +294,12 @@
 
         <div class="method-description">
           
-          
+          <p>default storage dir for uploaded files</p>
           
 
           
           <div class="method-source-code" id="store_dir-source">
-            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 7</span>
+            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">store_dir</span>
   <span class="ruby-node">&quot;uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}&quot;</span>
 <span class="ruby-keyword">end</span></pre>

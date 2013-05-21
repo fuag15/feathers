@@ -18,7 +18,7 @@
           #pdfLink
             .btn-group
               = link_to 'back', root_path, class: 'btn btn-small'
-              - if current_user.present? and current_user.admin?
+              - if current_user.try :admin?
                 = link_to 'edit', resume_categories_path, class: 'btn btn-small btn-warning'
           #clearMe
           %br

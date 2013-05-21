@@ -6,7 +6,7 @@
 = image_tag 'DavisDeathStar.jpg'
 %br
 %br
-- if current_user.present? and current_user.admin?
+- if current_user.try :admin?
   .pull-right
     = link_to 'create post', new_post_path, class: 'btn'
 = render @posts

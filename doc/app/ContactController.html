@@ -176,6 +176,8 @@
 
   <div id="description" class="description">
     
+<p>Deals with contact emails, specificly <a href="Contact.html">Contact</a></p>
+
   </div><!-- description -->
 
   
@@ -212,7 +214,7 @@
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/contact_controller.rb, line 5</span>
+            <pre><span class="ruby-comment"># File app/controllers/contact_controller.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
@@ -242,7 +244,7 @@ ContactMailer#contact</p>
 
           
           <div class="method-source-code" id="submit-source">
-            <pre><span class="ruby-comment"># File app/controllers/contact_controller.rb, line 10</span>
+            <pre><span class="ruby-comment"># File app/controllers/contact_controller.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">submit</span>
   <span class="ruby-identifier">local_params</span> = <span class="ruby-identifier">params</span>
   <span class="ruby-constant">Contact</span>.<span class="ruby-identifier">contact</span>(<span class="ruby-identifier">local_params</span>[<span class="ruby-value">:from</span>], <span class="ruby-identifier">local_params</span>[<span class="ruby-value">:text</span>]).<span class="ruby-identifier">deliver</span>

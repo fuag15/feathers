@@ -1,5 +1,8 @@
+# Hosts pictures on many models for display
+# see Post Project and Job
 class Picture < ActiveRecord::Base
   attr_accessible :image, :name
+  # see PictureUploader for more info
   mount_uploader :image, PictureUploader
 
   has_many :pictures_posts

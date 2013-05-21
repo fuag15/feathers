@@ -1,5 +1,8 @@
+# Deal with ProjectCategory related routes
 class ProjectCategoriesController < ApplicationController
+  # check that User is authorized in Ability
   load_and_authorize_resource
+  # serve up html
   respond_to :html
 
   # simple create method on true sends a good notice

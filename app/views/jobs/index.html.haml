@@ -6,7 +6,7 @@
 = image_tag 'DavisDeathStar.jpg'
 %br
 %br
-- if current_user.present? and current_user.admin?
+- if current_user.try :admin?
   .pull-right
     = link_to 'manage jobs', job_categories_path, class: 'btn'
   .clear
@@ -21,7 +21,7 @@
         %br
         %center
           #projectImage
-            - if job.pictures.first.present?
+            - if job.pictures.present?
               = image_tag job.pictures.first.image.url(:gallery)
         %br
         %br

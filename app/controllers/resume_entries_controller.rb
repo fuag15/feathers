@@ -1,6 +1,10 @@
+# Deals with ResumeEntry related routes
 class ResumeEntriesController < ApplicationController
+  # ensure User is allowed by Ability and load up the models
   load_and_authorize_resource
+  # serve up html
   respond_to :html
+  # load the parent category for relevant routes
   before_filter :load_category, only: [:new, :create, :edit]
 
   # simple create method on true sends a good notice
@@ -22,6 +26,7 @@ class ResumeEntriesController < ApplicationController
   end
 
   private
+    # loads the parent category on child routes
     def load_category
       @resume_category = ResumeCategory.find params[:resume_category_id]
     end

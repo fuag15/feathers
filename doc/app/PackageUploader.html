@@ -63,12 +63,30 @@
   
 </nav>
 
-    
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">Sprockets::Helpers::RailsHelper</span>
+  
+  
+  
+    <li><span class="include">Sprockets::Helpers::IsolatedHelper</span>
+  
+  
+  </ul>
+</nav>
+
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
+    
+    <li><a href="#method-i-extension_white_list">#extension_white_list</a>
     
     <li><a href="#method-i-store_dir">#store_dir</a>
     
@@ -174,6 +192,8 @@
 
   <div id="description" class="description">
     
+<p>holds packages which are zip files of projects not available on github</p>
+
   </div><!-- description -->
 
   
@@ -194,6 +214,36 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-extension_white_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">extension_white_list</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A white list of extensions which are allowed to be uploaded.</p>
+          
+
+          
+          <div class="method-source-code" id="extension_white_list-source">
+            <pre><span class="ruby-comment"># File app/uploaders/package_uploader.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">extension_white_list</span>
+  <span class="ruby-node">%w(zip)</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- extension_white_list-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- extension_white_list-method -->
+
+    
       <div id="method-i-store_dir" class="method-detail ">
         
         <div class="method-heading">
@@ -211,7 +261,7 @@ sensible default for uploaders that are meant to be mounted:</p>
 
           
           <div class="method-source-code" id="store_dir-source">
-            <pre><span class="ruby-comment"># File app/uploaders/package_uploader.rb, line 18</span>
+            <pre><span class="ruby-comment"># File app/uploaders/package_uploader.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">store_dir</span>
   <span class="ruby-node">&quot;uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}&quot;</span>
 <span class="ruby-keyword">end</span></pre>

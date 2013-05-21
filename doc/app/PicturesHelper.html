@@ -172,6 +172,10 @@
 
   <div id="description" class="description">
     
+<p>Helper to get parents of <a href="Picture.html">Picture</a> routes these
+will be either <a href="Post.html">Post</a> <a
+href="Project.html">Project</a> or <a href="Job.html">Job</a></p>
+
   </div><!-- description -->
 
   
@@ -208,7 +212,7 @@
 
           
           <div class="method-source-code" id="owner_aware_edit_picture_path-source">
-            <pre><span class="ruby-comment"># File app/helpers/pictures_helper.rb, line 4</span>
+            <pre><span class="ruby-comment"># File app/helpers/pictures_helper.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">owner_aware_edit_picture_path</span> <span class="ruby-identifier">owner</span>, <span class="ruby-identifier">picture</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Post&#39;</span>
     <span class="ruby-identifier">edit_post_picture_path</span> <span class="ruby-identifier">owner</span>, <span class="ruby-identifier">picture</span>
@@ -244,7 +248,7 @@
 
           
           <div class="method-source-code" id="owner_aware_new_picture_path-source">
-            <pre><span class="ruby-comment"># File app/helpers/pictures_helper.rb, line 28</span>
+            <pre><span class="ruby-comment"># File app/helpers/pictures_helper.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">owner_aware_new_picture_path</span> <span class="ruby-identifier">owner</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Post&#39;</span>
     <span class="ruby-identifier">new_post_picture_path</span> <span class="ruby-identifier">owner</span>
@@ -280,7 +284,7 @@
 
           
           <div class="method-source-code" id="owner_aware_pictures_path-source">
-            <pre><span class="ruby-comment"># File app/helpers/pictures_helper.rb, line 16</span>
+            <pre><span class="ruby-comment"># File app/helpers/pictures_helper.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">owner_aware_pictures_path</span> <span class="ruby-identifier">owner</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Post&#39;</span>
     <span class="ruby-identifier">post_pictures_path</span> <span class="ruby-identifier">owner</span>

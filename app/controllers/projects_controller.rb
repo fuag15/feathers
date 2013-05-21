@@ -1,7 +1,12 @@
+# Deals with Project related routes
 class ProjectsController < ApplicationController
+  # ensure that User is allowed by Ability
   load_and_authorize_resource
+  # serve up html
   respond_to :html
+  # load the parent routes project categories for index display
   before_filter :load_categories, only: [:index]
+  # load the parent reouts project
   before_filter :load_category, only: [:new, :create, :edit]
 
   # simple create method on true sends a good notice
@@ -23,10 +28,12 @@ class ProjectsController < ApplicationController
   end
 
   private
+    # helper to load parent routes category for nested projects
     def load_category
       @project_category = ProjectCategory.find params[:project_category_id]
     end
 
+    # helper to load all parents for index
     def load_categories
       @project_categories = ProjectCategory.all
     end

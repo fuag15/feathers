@@ -1,4 +1,6 @@
+# Deals with contact emails, specificly Contact
 class ContactController < ApplicationController
+  # do not check ability for this controllers routes
   skip_authorization_check
 
   # dummy def just loads form

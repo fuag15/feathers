@@ -1,5 +1,8 @@
+# Deals with ResumeCategory related routes
 class ResumeCategoriesController < ApplicationController
+  # ensure that User is alowed by Ability and load up the resource
   load_and_authorize_resource
+  # serve up html
   respond_to :html
 
   # simple create method on true sends a good notice

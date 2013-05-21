@@ -174,6 +174,10 @@
 
   <div id="description" class="description">
     
+<p>Serves up Resume routes, for now there is no model atteched but it is
+planned to have resume&#39;s tailored to each type of job and have them
+formatted apropriately in the future</p>
+
   </div><!-- description -->
 
   
@@ -205,12 +209,12 @@
 
         <div class="method-description">
           
-          
+          <p>simple index route to server the old resume layout</p>
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/resumes_controller.rb, line 4</span>
+            <pre><span class="ruby-comment"># File app/controllers/resumes_controller.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-ivar">@addresses</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">all</span>
   <span class="ruby-ivar">@resume_categories</span> = <span class="ruby-constant">ResumeCategory</span>.<span class="ruby-identifier">all</span>

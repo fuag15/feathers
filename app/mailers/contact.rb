@@ -3,6 +3,7 @@
 # has only one mail
 # contact::  Simple contact mail
 class Contact < ActionMailer::Base
+  # Default from route for this mailer
   default from: "contact@steelpigeondesign.com"
 
   # default sends from contact@midgardproductions.com but auto replies to the sender

@@ -1,3 +1,5 @@
+# Helper to get parents of Picture routes
+# these will be either Post Project or Job
 module PicturesHelper
   # return the right edit path
   # since we are multi using this model
