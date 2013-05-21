@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>module ApplicationHelper - Midgard Productions RDoc</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/helpers/application_helper.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-bootstrap_class_for">#bootstrap_class_for</a>
+    
+    <li><a href="#method-i-markdown">#markdown</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./Address.html">Address</a>
+  
+    <li><a href="./AddressesController.html">AddressesController</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Contact.html">Contact</a>
+  
+    <li><a href="./ContactController.html">ContactController</a>
+  
+    <li><a href="./HTMLWithVideos.html">HTMLWithVideos</a>
+  
+    <li><a href="./Job.html">Job</a>
+  
+    <li><a href="./JobCategoriesController.html">JobCategoriesController</a>
+  
+    <li><a href="./JobCategory.html">JobCategory</a>
+  
+    <li><a href="./JobsController.html">JobsController</a>
+  
+    <li><a href="./JobsPicture.html">JobsPicture</a>
+  
+    <li><a href="./Package.html">Package</a>
+  
+    <li><a href="./PackageUploader.html">PackageUploader</a>
+  
+    <li><a href="./PackagesController.html">PackagesController</a>
+  
+    <li><a href="./PackagesProject.html">PackagesProject</a>
+  
+    <li><a href="./Picture.html">Picture</a>
+  
+    <li><a href="./PictureUploader.html">PictureUploader</a>
+  
+    <li><a href="./PicturesController.html">PicturesController</a>
+  
+    <li><a href="./PicturesHelper.html">PicturesHelper</a>
+  
+    <li><a href="./PicturesPost.html">PicturesPost</a>
+  
+    <li><a href="./PicturesProject.html">PicturesProject</a>
+  
+    <li><a href="./Post.html">Post</a>
+  
+    <li><a href="./PostsController.html">PostsController</a>
+  
+    <li><a href="./Project.html">Project</a>
+  
+    <li><a href="./ProjectCategoriesController.html">ProjectCategoriesController</a>
+  
+    <li><a href="./ProjectCategory.html">ProjectCategory</a>
+  
+    <li><a href="./ProjectsController.html">ProjectsController</a>
+  
+    <li><a href="./ResumeCategoriesController.html">ResumeCategoriesController</a>
+  
+    <li><a href="./ResumeCategory.html">ResumeCategory</a>
+  
+    <li><a href="./ResumeEntriesController.html">ResumeEntriesController</a>
+  
+    <li><a href="./ResumeEntry.html">ResumeEntry</a>
+  
+    <li><a href="./ResumesController.html">ResumesController</a>
+  
+    <li><a href="./User.html">User</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module ApplicationHelper</h1>
+
+  <div id="description" class="description">
+    
+<p>class for heling all views in the application helps determine what route is
+active as well as what class is appropriate in bootstrap for a rails flash</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-bootstrap_class_for" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">bootstrap_class_for</span><span
+            class="method-args">(flash_type)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>helper class to return the right bootstrap display class for rails flash
+types</p>
+          
+
+          
+          <div class="method-source-code" id="bootstrap_class_for-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">bootstrap_class_for</span> <span class="ruby-identifier">flash_type</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">flash_type</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:alert</span>
+      <span class="ruby-string">&#39;alert-block&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:notice</span>
+      <span class="ruby-string">&#39;alert-info&#39;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-node">&quot;alert-#{flash_type}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- bootstrap_class_for-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- bootstrap_class_for-method -->
+
+    
+      <div id="method-i-markdown" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">markdown</span><span
+            class="method-args">(text)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set up a helper to render red carpet markdown for some posting items uses
+redcarpet2</p>
+          
+
+          
+          <div class="method-source-code" id="markdown-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">markdown</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-identifier">markdown</span> = <span class="ruby-constant">Redcarpet</span><span class="ruby-operator">::</span><span class="ruby-constant">Markdown</span>.<span class="ruby-identifier">new</span> <span class="ruby-constant">HTMLWithVideos</span>, <span class="ruby-identifier">autolink</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>, <span class="ruby-identifier">space_after_headers</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>, <span class="ruby-identifier">no_intra_emphasis</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>, <span class="ruby-identifier">superscript</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">markdown</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">text</span>).<span class="ruby-identifier">html_safe</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- markdown-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- markdown-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

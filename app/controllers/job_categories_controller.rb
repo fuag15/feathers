@@ -1,5 +1,8 @@
+# Deals with JobCategory related restfull routes
 class JobCategoriesController < ApplicationController
+  # load initial controller variables if authorized by Ability
   load_and_authorize_resource
+  # serve up html routes
   respond_to :html
 
   # simple create method on true sends a good notice

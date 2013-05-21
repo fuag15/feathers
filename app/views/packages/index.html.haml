@@ -14,7 +14,6 @@
           = link_to package.file.url, package
         %td
           = package.version
-%p
-  .btn-group.pull-left
-    = link_to 'create package', new_project_package_path(@project), class: 'btn btn-primary'
-    = link_to 'back', @project, class: 'btn'
+.btn-group.pull-left
+  = link_to 'create package', new_project_package_path(@project), class: 'btn btn-primary'
+  = link_to 'back', @project, class: 'btn'

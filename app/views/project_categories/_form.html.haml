@@ -1,7 +1,5 @@
 = form_for project_category do |f|
   = render partial: 'shared/form_error', collection: project_category.errors.full_messages
-  %p
-    = f.text_field :name, placeholder: 'name'
-  %p
-    = f.text_field :rank, placeholder: 'rank'
+  = f.text_field :name, placeholder: 'name'
+  = f.text_field :rank, placeholder: 'rank'
   = f.submit class: 'btn btn-primary'

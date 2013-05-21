@@ -1,4 +1,7 @@
+# holds personal projects has many Picture and Package
+# belongs to a Category
 class Project < ActiveRecord::Base
+  # default order by rank
   default_scope order 'rank asc'
   belongs_to :project_category
   attr_accessible :blurb, :detail, :name, :rank, :team

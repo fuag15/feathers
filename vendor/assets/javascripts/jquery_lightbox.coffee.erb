@@ -371,8 +371,8 @@ Based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lig
   $.fn.lightbox.defaults =
     triggerEvent: "click"
     allSet: false
-    fileLoadingImage: "/assets/jquery_lightbox/loading.gif"
-    fileBottomNavCloseImage: "/assets/jquery_lightbox/closelabel.gif"
+    fileLoadingImage: "<%= asset_path('jquery_lightbox/loading.gif') %>"
+    fileBottomNavCloseImage: "<%= asset_path('jquery_lightbox/closelabel.gif') %>"
     overlayOpacity: 0.6
     borderSize: 10
     imageArray: new Array

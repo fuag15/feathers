@@ -1,5 +1,8 @@
+# Deals with Post related routes
 class PostsController < ApplicationController
+  # ensure User is allowed by Ability and load initial controller vars
   load_and_authorize_resource
+  # serve up html
   respond_to :html
 
   # pagination

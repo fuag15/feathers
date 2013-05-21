@@ -14,7 +14,6 @@
           = link_to picture.image.url, [picture.owner, picture]
         %td
           = picture.name
-%p
-  .btn-group.pull-left
-    = link_to 'create picture', owner_aware_new_picture_path(@owner), class: 'btn btn-primary'
-    = link_to 'back', @owner, class: 'btn'
+.btn-group.pull-left
+  = link_to 'create picture', owner_aware_new_picture_path(@owner), class: 'btn btn-primary'
+  = link_to 'back', @owner, class: 'btn'

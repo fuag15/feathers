@@ -1,7 +1,12 @@
+# Deal with restfull routes for Job
 class JobsController < ApplicationController
+  # ensure the User is allowed by Ability
   load_and_authorize_resource
+  # serve up html
   respond_to :html
+  # load the parent category on endex
   before_filter :load_categories, only: [:index]
+  # load the parent category on routes that need it for forms
   before_filter :load_category, only: [:new, :create, :edit]
 
   # simple create method on true sends a good notice
@@ -23,10 +28,12 @@ class JobsController < ApplicationController
   end
 
   private
+    # load the supplied catgory for appropriate routes
     def load_category
       @job_category = JobCategory.find params[:job_category_id]
     end
 
+    # loads all categories for the index route
     def load_categories
       @job_categories = JobCategory.all
     end

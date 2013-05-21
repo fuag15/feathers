@@ -1,6 +1,10 @@
+# Deal wiht Picture related routes
 class PicturesController < ApplicationController
+  # ensure User is allowed by Ability
   load_and_authorize_resource
+  # serve up html
   respond_to :html
+  # load the owner of the picture smartly based on routes
   before_filter :load_owner, except: [:destroy, :show, :edit, :update]
 
   # narrow our loaded images down

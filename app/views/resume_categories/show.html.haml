@@ -15,8 +15,7 @@
         %td
           = resume_entry.rank
 = link_to 'create resume entry', new_resume_category_resume_entry_path(@resume_category), class: 'btn btn-primary'
-%p
-  .btn-group.pull-left
-    = link_to 'back', resume_categories_path, class: 'btn'
-    = link_to 'edit', edit_resume_category_path(@resume_category), class: 'btn btn-primary'
+.btn-group.pull-left
+  = link_to 'back', resume_categories_path, class: 'btn'
+  = link_to 'edit', edit_resume_category_path(@resume_category), class: 'btn btn-primary'
 = button_to 'destroy', @resume_category, method: :delete, class: 'btn btn-danger pull-right'
