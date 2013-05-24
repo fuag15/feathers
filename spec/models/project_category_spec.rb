@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe ProjectCategory do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'deletes any projects associated with it' do
+    @project = FactoryGirl.create :project
+    expect{
+      @project.project_category.destroy
+    }.to change(Project,:count).by -1
+  end
 end

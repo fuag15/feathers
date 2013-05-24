@@ -3,7 +3,7 @@ FactoryGirl.define do
     name
     employer
     rank 0
-    asociation :job_category, factory: :job_category
+    association :job_category, factory: :job_category
 
     blurb do
       Forgery(:lorem_ipsum).words 10
