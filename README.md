@@ -45,6 +45,7 @@ You should be able to view the site on `localhost:3000`, or [here][local-host]
 ## Roadmap
 
 - spec
+- coverage
 - static analysis clean-up
 - refactor clean-up
 - improve / re-design / expand over time
