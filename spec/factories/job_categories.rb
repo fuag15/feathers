@@ -8,8 +8,8 @@ FactoryGirl.define do
         job_count 5
       end
 
-      after_create do |job_category, evaluator|
-        create_list(:job, evaluator.job_count, job_category: job_category)
+      after :create do |job_category, evaluator|
+        FactoryGirl.create_list(:job, evaluator.job_count, job_category: job_category)
       end
     end
   end

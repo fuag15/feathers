@@ -15,8 +15,8 @@ FactoryGirl.define do
         picture_count 5
       end
 
-      after_build do |post, evaluator|
-        post.pictures << create_list(:picture, evaluator.picture_count)
+      after :build do |post, evaluator|
+        post.pictures << FactoryGirl.create_list(:picture, evaluator.picture_count)
       end
     end
   end

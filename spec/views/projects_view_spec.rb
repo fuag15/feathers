@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe 'projects/index' do
   before do
-    projects = FactoryGirl.create_list :project, 2
-    assign :projects, projects
+    project_categories = FactoryGirl.create_list :project_category, 2
+    assign :project_categories, project_categories
     render
   end
 
-  it 'displays the image location' do
+  it 'displays the index template' do
     expect(view).to render_template('index')
   end
 end

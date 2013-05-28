@@ -7,8 +7,8 @@ FactoryGirl.define do
     end
 
     factory :package_with_project do
-      after_create do |package|
-        project = create(:project)
+      after :create do |package|
+        project = FactoryGirl.create(:project)
         project.packages << package
       end
     end

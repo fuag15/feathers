@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe 'packages/index' do
   before do
-    packages = FactoryGirl.create_list :package, 2
-    assign :packages, packages
+    project = FactoryGirl.create :project_with_pictures_and_packages
+    assign :project, project
+    assign :packages, project.packages
     render
   end
 

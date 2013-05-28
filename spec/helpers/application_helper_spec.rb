@@ -18,7 +18,7 @@ describe ApplicationHelper do
   describe '#markdown' do
     it 'should convert text' do
       text = Forgery(:lorem_ipsum).words 10
-      expect( helper.markdown(text)).to eq text.html_safe
+      expect( helper.markdown(text)).to eq "<p>#{text}</p>\n".html_safe
     end
   end
 end

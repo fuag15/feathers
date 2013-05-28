@@ -32,9 +32,9 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
-  
-  # we use devise, need their test helpers to log in in controller specs
-  config.include Devise::TestHelpers, type: :controller
+
+  # we use devise, need their test helpers to log in in controller specs and view specs
+  config.include Devise::TestHelpers
 
   # include user helpers for controllers in controllers
   config.include ControllerUserHelper, type: :controller

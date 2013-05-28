@@ -18,9 +18,9 @@ FactoryGirl.define do
         package_count 5
       end
 
-      after_build do |project, evaluator|
-        project.pictures << create_list(:picture, evaluator.picture_count)
-        project.packages << create_list(:ackage, evaluator.package_count)
+      after :build do |project, evaluator|
+        project.pictures << FactoryGirl.create_list(:picture, evaluator.picture_count)
+        project.packages << FactoryGirl.create_list(:package, evaluator.package_count)
       end
     end
   end

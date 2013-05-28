@@ -19,11 +19,11 @@ FactoryGirl.define do
     "team#{n}"
   end
 
-  secuence :street do |n|
+  sequence :street do |n|
     "street#{n}"
   end
 
-  secuence :city do |n|
+  sequence :city do |n|
     "city#{n}"
   end
 

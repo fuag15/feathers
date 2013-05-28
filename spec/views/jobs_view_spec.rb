@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe 'jobs/index' do
   before do
-    jobs = FactoryGirl.create_list :job, 2
-    assign :jobs, jobs
+    job_categories = FactoryGirl.create_list :job_category, 2
+    assign :job_categories, job_categories
     render
   end
 

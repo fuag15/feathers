@@ -7,22 +7,22 @@ FactoryGirl.define do
     end
 
     factory :picture_with_post do
-      after_create do |picture|
-        post = create(:post)
+      after :create do |picture|
+        post = FactoryGirl.create(:post)
         post.pictures << picture
       end
     end
 
     factory :picture_with_project do
-      after_create do |picture|
-        project = create(:project)
+      after :create do |picture|
+        project = FactoryGirl.create(:project)
         project.pictures << picture
       end
     end
 
     factory :picture_with_job do
-      after_create do |picture|
-        job = create(:job)
+      after :create do |picture|
+        job = FactoryGirl.create(:job)
         job.pictures << picture
       end
     end

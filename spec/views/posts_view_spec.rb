@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'posts/index' do
   before do
     posts = FactoryGirl.create_list :post, 2
-    assign :posts, posts
+    assign :posts, Kaminari.paginate_array(posts).page(1)
     render
   end
 
@@ -31,7 +31,7 @@ describe 'posts/new' do
     render
   end
 
-  it 'displays the image location' do
+  it 'renders _form partial for the post' do
     expect(view).to render_template( partial: '_form')
   end
 end
