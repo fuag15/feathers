@@ -6,5 +6,5 @@ class JobCategory < ActiveRecord::Base
   attr_accessible :name, :rank
 
   # has many Job
-  has_many :jobs
+  has_many :jobs, dependent: :destroy
 end

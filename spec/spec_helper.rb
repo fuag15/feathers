@@ -34,7 +34,8 @@ RSpec.configure do |config|
   config.order = 'random'
 
   # we use devise, need their test helpers to log in in controller specs and view specs
-  config.include Devise::TestHelpers
+  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :view
 
   # include user helpers for controllers in controllers
   config.include ControllerUserHelper, type: :controller

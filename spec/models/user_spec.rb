@@ -26,8 +26,8 @@ describe User do
         expect(@user).to have_ability(:manage, for: FactoryGirl.create(:picture))
       end
 
-      it 'should be able to manage adresses' do
-        expect(@user).to have_ability(:manage, for: FactoryGirl.create(:adress))
+      it 'should be able to manage addresses' do
+        expect(@user).to have_ability(:manage, for: FactoryGirl.create(:address))
       end
 
       it 'should be able to manage jobs' do
@@ -72,8 +72,8 @@ describe User do
         expect(@user).not_to have_ability(:manage, for: FactoryGirl.create(:picture))
       end
 
-      it 'should not be able to manage adresses' do
-        expect(@user).not_to have_ability(:manage, for: FactoryGirl.create(:adress))
+      it 'should not be able to manage addresses' do
+        expect(@user).not_to have_ability(:manage, for: FactoryGirl.create(:address))
       end
 
       it 'should not be able to manage jobs' do

@@ -3,6 +3,7 @@ FactoryGirl.define do
     name
     team
     rank 0
+    association :project_category, factory: :project_category
 
     blurb do
       Forgery(:lorem_ipsum).words 10

@@ -5,6 +5,6 @@ class Post < ActiveRecord::Base
   # see PictureUploader
   mount_uploader :picture, PictureUploader
 
-  has_many :pictures_posts
-  has_many :pictures, through: :pictures_posts
+  has_many :pictures_posts, dependent: :destroy
+  has_many :pictures, through: :pictures_posts, dependent: :destroy
 end
