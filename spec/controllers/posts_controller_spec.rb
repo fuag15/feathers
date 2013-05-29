@@ -102,7 +102,7 @@ describe PostsController do
       it 'doesnt update the post' do
         post :update, id: @post, post: @new_attr
         @post.reload
-        @post.name.should_not eq @new_attr[:name]
+        @post.title.should_not eq @new_attr[:title]
       end
     end
 
@@ -114,7 +114,7 @@ describe PostsController do
       it 'should update the post' do
         post :update, id: @post, post: @new_attr
         @post.reload
-        @post.name.should eq @new_attr[:name]
+        @post.title.should eq @new_attr[:title]
       end
     end
   end

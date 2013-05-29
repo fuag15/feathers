@@ -5,6 +5,8 @@
 class Contact < ActionMailer::Base
   # Default from route for this mailer
   default from: "contact@steelpigeondesign.com"
+  # Default to route for this mailer
+  default to: "mike@steelpigeondesign.com"
 
   # default sends from contact@midgardproductions.com but auto replies to the sender
   # from::  should be the sender

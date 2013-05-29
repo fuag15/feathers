@@ -46,9 +46,12 @@ You should be able to view the site on `localhost:3000`, or [here][local-host]
 
 - spec
 - coverage
-- static analysis checks
-- refactor terrible places
-- improve / re-design / expand over time
+- static analysis
+- optimize tests
+- optimize development
+- performance analysis
+- initial re-factor
+- improve / re-design / profile / expand over time
 
 [local-host]: http://localhost:3000 "Local default server port"
 [postgresql]: http://postgresql.org "Postgresql Official Site"

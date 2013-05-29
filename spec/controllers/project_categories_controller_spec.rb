@@ -50,7 +50,7 @@ describe ProjectCategoriesController do
     context 'when not signed in' do
       it 'doesnt create an project_category' do
         expect{
-          project_category :create, project_category: FactoryGirl.attributes_for(:project_category)
+          post :create, project_category: FactoryGirl.attributes_for(:project_category)
         }.to change(ProjectCategory,:count).by 0
       end
     end
@@ -59,7 +59,7 @@ describe ProjectCategoriesController do
       it 'creates project_category' do
         auth_admin
         expect{
-          project_category :create, project_category: FactoryGirl.attributes_for(:project_category)
+          post :create, project_category: FactoryGirl.attributes_for(:project_category)
         }.to change(ProjectCategory,:count).by 1
       end
     end
@@ -69,7 +69,7 @@ describe ProjectCategoriesController do
     context 'when not signed in' do
       it 'doesnt create an project_category' do
         expect{
-          project_category :create, project_category: FactoryGirl.attributes_for(:project_category)
+          post :create, project_category: FactoryGirl.attributes_for(:project_category)
         }.to change(ProjectCategory,:count).by 0
       end
     end
@@ -100,7 +100,7 @@ describe ProjectCategoriesController do
 
     context 'when not signed in' do
       it 'doesnt update the project_category' do
-        project_category :update, id: @project_category, project_category: @new_attr
+        post :update, id: @project_category, project_category: @new_attr
         @project_category.reload
         @project_category.name.should_not eq @new_attr[:name]
       end
@@ -112,7 +112,7 @@ describe ProjectCategoriesController do
       end
 
       it 'should update the project_category' do
-        project_category :update, id: @project_category, project_category: @new_attr
+        post :update, id: @project_category, project_category: @new_attr
         @project_category.reload
         @project_category.name.should eq @new_attr[:name]
       end

@@ -2,20 +2,24 @@ require 'spec_helper'
 
 describe PackagesController do
   describe 'GET index' do
+    before do
+      @project = FactoryGirl.create :project
+    end
+
     it 'responds successfully with an HTTP 200 status code' do
-      get :index
+      get :index, project_id: @project
       expect(response).to be_success
       expect(response.code).to eq '200'
     end
 
     it 'renders the index template' do
-      get :index
+      get :index, project_id: @project
       expect(response).to render_template 'index'
     end
 
     it 'loads all of the packages into @packages' do
-      packages = FactoryGirl.create_list :package, 2
-      get :index
+      packages = FactoryGirl.create_list :package_with_project, 2
+      get :index, project_id: packages.first.projects.first
       expect(assigns :packages).to match_array packages
     end
   end
@@ -24,33 +28,41 @@ describe PackagesController do
     context 'when signed in as admin' do
       before do
         auth_admin
+        @project = FactoryGirl.create :project
       end
 
       it 'responds successfully with an HTTP 200 status code' do
-        get :new
+        get :new, project_id: @project
         expect(response).to be_success
         expect(response.code).to eq '200'
       end
 
       it 'renders the new template' do
-        get :new
+        get :new, project_id: @project
         expect(response).to render_template 'new'
       end
     end
 
     context 'when not signed in' do
+      before do
+        @project = FactoryGirl.create :project
+      end
       it 'redirects to root' do
-        get :new
+        get :new, project_id: @project
         expect(response).to redirect_to root_path
       end
     end
   end
 
   describe 'POST create' do
+    before do
+      @project = FactoryGirl.create :project
+    end
+
     context 'when not signed in' do
       it 'doesnt create an package' do
         expect{
-          package :create, package: FactoryGirl.attributes_for(:package)
+          post :create, package: FactoryGirl.attributes_for(:package), project_id: @project
         }.to change(Package,:count).by 0
       end
     end
@@ -59,17 +71,21 @@ describe PackagesController do
       it 'creates package' do
         auth_admin
         expect{
-          package :create, package: FactoryGirl.attributes_for(:package)
+          post :create, package: FactoryGirl.attributes_for(:package), project_id: @project
         }.to change(Package,:count).by 1
       end
     end
   end
 
   describe 'GET edit' do
+    before do
+      @project = FactoryGirl.create :project
+    end
+
     context 'when not signed in' do
       it 'doesnt create an package' do
         expect{
-          package :create, package: FactoryGirl.attributes_for(:package)
+          post :create, package: FactoryGirl.attributes_for(:package), project_id: @project
         }.to change(Package,:count).by 0
       end
     end
@@ -77,8 +93,8 @@ describe PackagesController do
     context 'when signed in as admin' do
       before do
         auth_admin
-        @package = FactoryGirl.create :package
-        get :edit, id: @package
+        @package = FactoryGirl.create :package_with_project
+        get :edit, id: @package, project_id: @package.projects.first
       end
 
       it 'responds successfully with an HTTP 200 status code' do
@@ -100,9 +116,9 @@ describe PackagesController do
 
     context 'when not signed in' do
       it 'doesnt update the package' do
-        package :update, id: @package, package: @new_attr
+        post :update, id: @package, package: @new_attr
         @package.reload
-        @package.name.should_not eq @new_attr[:name]
+        @package.version.should_not eq @new_attr[:version]
       end
     end
 
@@ -112,9 +128,9 @@ describe PackagesController do
       end
 
       it 'should update the package' do
-        package :update, id: @package, package: @new_attr
+        post :update, id: @package, package: @new_attr
         @package.reload
-        @package.name.should eq @new_attr[:name]
+        @package.version.should eq @new_attr[:version]
       end
     end
   end
@@ -137,7 +153,7 @@ describe PackagesController do
 
   describe 'DELETE destroy' do
     before do
-      @package = FactoryGirl.create :package
+      @package = FactoryGirl.create :package_with_project
     end
 
     context 'when no user logged in' do
@@ -155,7 +171,7 @@ describe PackagesController do
 
       it 'should delete the package' do
         expect{
-          delete :destroy, id: @package
+          delete :destroy, id: @package, project_id: @package.projects.first
         }.to change(Package, :count).by -1
       end
     end

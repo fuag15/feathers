@@ -24,33 +24,42 @@ describe ProjectsController do
     context 'when signed in as admin' do
       before do
         auth_admin
+        @project_category = FactoryGirl.create :project_category
       end
 
       it 'responds successfully with an HTTP 200 status code' do
-        get :new
+        get :new, project_category_id: @project_category.id
         expect(response).to be_success
         expect(response.code).to eq '200'
       end
 
       it 'renders the new template' do
-        get :new
+        get :new, project_category_id: @project_category.id
         expect(response).to render_template 'new'
       end
     end
 
     context 'when not signed in' do
+      before do
+        @project_category = FactoryGirl.create :project_category
+      end
+
       it 'redirects to root' do
-        get :new
+        get :new, project_category_id: @project_category.id
         expect(response).to redirect_to root_path
       end
     end
   end
 
   describe 'POST create' do
+    before do
+      @project_category = FactoryGirl.create :project_category
+    end
+
     context 'when not signed in' do
       it 'doesnt create an project' do
         expect{
-          project :create, project: FactoryGirl.attributes_for(:project)
+          post :create, project: FactoryGirl.attributes_for(:project), project_category_id: @project_category
         }.to change(Project,:count).by 0
       end
     end
@@ -59,17 +68,21 @@ describe ProjectsController do
       it 'creates project' do
         auth_admin
         expect{
-          project :create, project: FactoryGirl.attributes_for(:project)
+          post :create, project: FactoryGirl.attributes_for(:project), project_category_id: @project_category
         }.to change(Project,:count).by 1
       end
     end
   end
 
   describe 'GET edit' do
+    before do
+      @project_category = FactoryGirl.create :project_category
+    end
+
     context 'when not signed in' do
       it 'doesnt create an project' do
         expect{
-          project :create, project: FactoryGirl.attributes_for(:project)
+          post :create, project: FactoryGirl.attributes_for(:project), project_category_id: @project_category
         }.to change(Project,:count).by 0
       end
     end
@@ -78,7 +91,7 @@ describe ProjectsController do
       before do
         auth_admin
         @project = FactoryGirl.create :project
-        get :edit, id: @project
+        get :edit, id: @project, project_category_id: @project.project_category
       end
 
       it 'responds successfully with an HTTP 200 status code' do
@@ -100,7 +113,7 @@ describe ProjectsController do
 
     context 'when not signed in' do
       it 'doesnt update the project' do
-        project :update, id: @project, project: @new_attr
+        post :update, id: @project, project: @new_attr
         @project.reload
         @project.name.should_not eq @new_attr[:name]
       end
@@ -112,7 +125,7 @@ describe ProjectsController do
       end
 
       it 'should update the project' do
-        project :update, id: @project, project: @new_attr
+        post :update, id: @project, project: @new_attr
         @project.reload
         @project.name.should eq @new_attr[:name]
       end

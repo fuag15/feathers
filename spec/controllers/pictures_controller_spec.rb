@@ -8,21 +8,21 @@ describe PicturesController do
 
     describe 'GET index' do
       it 'responds successfully with an HTTP 200 status code' do
-        get :index, post_id: @picture.post
+        get :index, post_id: @picture.posts.first
         expect(response).to be_success
         expect(response.code).to eq '200'
       end
 
       it 'renders the index template' do
-        get :index, post_id: @picture.post
+        get :index, post_id: @picture.posts.first
         expect(response).to render_template 'index'
       end
 
       it 'loads all of the pictures into @pictures' do
-        picture1 = FactoryGirl.create :picture_with_post
-        picture2 = FactoryGirl.create :picture_with_post
-        get :index, post_id: @picture.post
-        expect(assigns :pictures).to match_array [@picture, picture1, picture2]
+        pictures = FactoryGirl.create_list :picture, 2
+        @picture.posts.first.pictures << pictures
+        get :index, post_id: @picture.posts.first
+        expect(assigns :pictures).to match_array @picture.posts.first.pictures
       end
     end
 
@@ -33,20 +33,20 @@ describe PicturesController do
         end
 
         it 'responds successfully with an HTTP 200 status code' do
-          get :new, post_id: @picture.post
+          get :new, post_id: @picture.posts.first
           expect(response).to be_success
           expect(response.code).to eq '200'
         end
 
         it 'renders the new template' do
-          get :new, post_id: @picture.post
+          get :new, post_id: @picture.posts.first
           expect(response).to render_template 'new'
         end
       end
 
       context 'when not signed in' do
         it 'redirects to root' do
-          get :new, post_id: @picture.post
+          get :new, post_id: @picture.posts.first
           expect(response).to redirect_to root_path
         end
       end
@@ -56,7 +56,7 @@ describe PicturesController do
       context 'when not signed in' do
         it 'doesnt create an picture' do
           expect{
-            post :create, post_id: @picture.post, picture: FactoryGirl.attributes_for(:picture)
+            post :create, post_id: @picture.posts.first, picture: FactoryGirl.attributes_for(:picture)
           }.to change(Picture,:count).by 0
         end
       end
@@ -68,13 +68,13 @@ describe PicturesController do
 
         it 'creates post' do
           expect{
-            post :create, post_id: @picture.post, picture: FactoryGirl.attributes_for(:picture)
+            post :create, post_id: @picture.posts.first, picture: FactoryGirl.attributes_for(:picture)
           }.to change(Picture,:count).by 1
         end
 
         it 'creates an post that has the right owner' do
-          post :create, post_id: @picture.post, picture: FactoryGirl.attributes_for(:picture)
-          expect(Picture.last.post).to eq @picture.post
+          post :create, post_id: @picture.posts.first, picture: FactoryGirl.attributes_for(:picture)
+          expect(Picture.last.posts.first).to eq @picture.posts.first
         end
       end
     end
@@ -83,7 +83,7 @@ describe PicturesController do
       context 'when not signed in' do
         it 'doesnt create an post' do
           expect{
-            post :create, post_id: @picture.post, picture: FactoryGirl.attributes_for(:picture)
+            post :create, post_id: @picture.posts.first, picture: FactoryGirl.attributes_for(:picture)
           }.to change(Picture,:count).by 0
         end
       end
@@ -91,7 +91,7 @@ describe PicturesController do
       context 'when signed in as admin' do
         before do
           auth_admin
-          get :edit, post_id: @picture.post, id: @picture
+          get :edit, post_id: @picture.posts.first, id: @picture
         end
 
         it 'responds successfully with an HTTP 200 status code' do
@@ -112,7 +112,7 @@ describe PicturesController do
 
       context 'when not signed in' do
         it 'doesnt update the picture' do
-          post :update, post_id: @picture.post, id: @picture, picture: @new_attr
+          post :update, post_id: @picture.posts.first, id: @picture, picture: @new_attr
           @picture.reload
           @picture.name.should_not eq @new_attr[:name]
         end
@@ -124,7 +124,7 @@ describe PicturesController do
         end
 
         it 'should update the picture' do
-          post :update, post_id: @picture.post, id: @picture, picture: @new_attr
+          post :update, post_id: @picture.posts.first, id: @picture, picture: @new_attr
           @picture.reload
           @picture.name.should eq @new_attr[:name]
         end
@@ -133,7 +133,7 @@ describe PicturesController do
 
     describe 'GET show' do
       before do
-        get :show, post_id: @picture.post, id: @picture
+        get :show, post_id: @picture.posts.first, id: @picture
       end
 
       it 'responds successfully with an HTTP 200 status code' do
@@ -150,7 +150,7 @@ describe PicturesController do
       context 'when no user logged in' do
         it 'doesnt delete the picture' do
           expect{
-            delete :destroy, post_id: @picture.post, id: @picture
+            delete :destroy, post_id: @picture.posts.first, id: @picture
           }.not_to change(Picture, :count)
         end
       end
@@ -162,7 +162,7 @@ describe PicturesController do
 
         it 'should delete the picture' do
           expect{
-            delete :destroy, post_id: @picture.post, id: @picture
+            delete :destroy, post_id: @picture.posts.first, id: @picture
           }.to change(Picture, :count).by -1
         end
       end
@@ -176,21 +176,21 @@ describe PicturesController do
 
     describe 'GET index' do
       it 'responds successfully with an HTTP 200 status code' do
-        get :index, job_id: @picture.job
+        get :index, job_id: @picture.jobs.first
         expect(response).to be_success
         expect(response.code).to eq '200'
       end
 
       it 'renders the index template' do
-        get :index, job_id: @picture.job
+        get :index, job_id: @picture.jobs.first
         expect(response).to render_template 'index'
       end
 
       it 'loads all of the pictures into @pictures' do
-        picture1 = FactoryGirl.create :picture_with_job
-        picture2 = FactoryGirl.create :picture_with_job
-        get :index, job_id: @picture.job
-        expect(assigns :pictures).to match_array [@picture, picture1, picture2]
+        pictures = FactoryGirl.create_list :picture, 2
+        @picture.jobs.first.pictures << pictures
+        get :index, job_id: @picture.jobs.first
+        expect(assigns :pictures).to match_array @picture.jobs.first.pictures
       end
     end
 
@@ -201,20 +201,20 @@ describe PicturesController do
         end
 
         it 'responds successfully with an HTTP 200 status code' do
-          get :new, job_id: @picture.job
+          get :new, job_id: @picture.jobs.first
           expect(response).to be_success
           expect(response.code).to eq '200'
         end
 
         it 'renders the new template' do
-          get :new, job_id: @picture.job
+          get :new, job_id: @picture.jobs.first
           expect(response).to render_template 'new'
         end
       end
 
       context 'when not signed in' do
         it 'redirects to root' do
-          get :new, job_id: @picture.job
+          get :new, job_id: @picture.jobs.first
           expect(response).to redirect_to root_path
         end
       end
@@ -224,7 +224,7 @@ describe PicturesController do
       context 'when not signed in' do
         it 'doesnt create an picture' do
           expect{
-            job :create, job_id: @picture.job, picture: FactoryGirl.attributes_for(:picture)
+            post :create, job_id: @picture.jobs.first, picture: FactoryGirl.attributes_for(:picture)
           }.to change(Picture,:count).by 0
         end
       end
@@ -236,13 +236,13 @@ describe PicturesController do
 
         it 'creates job' do
           expect{
-            job :create, job_id: @picture.job, picture: FactoryGirl.attributes_for(:picture)
+            post :create, job_id: @picture.jobs.first, picture: FactoryGirl.attributes_for(:picture)
           }.to change(Picture,:count).by 1
         end
 
         it 'creates an job that has the right owner' do
-          job :create, job_id: @picture.job, picture: FactoryGirl.attributes_for(:picture)
-          expect(Picture.last.job).to eq @picture.job
+          post :create, job_id: @picture.jobs.first, picture: FactoryGirl.attributes_for(:picture)
+          expect(Picture.last.jobs.first).to eq @picture.jobs.first
         end
       end
     end
@@ -251,7 +251,7 @@ describe PicturesController do
       context 'when not signed in' do
         it 'doesnt create an job' do
           expect{
-            job :create, job_id: @picture.job, picture: FactoryGirl.attributes_for(:picture)
+            post :create, job_id: @picture.jobs.first, picture: FactoryGirl.attributes_for(:picture)
           }.to change(Picture,:count).by 0
         end
       end
@@ -259,7 +259,7 @@ describe PicturesController do
       context 'when signed in as admin' do
         before do
           auth_admin
-          get :edit, job_id: @picture.job, id: @picture
+          get :edit, job_id: @picture.jobs.first, id: @picture
         end
 
         it 'responds successfully with an HTTP 200 status code' do
@@ -280,7 +280,7 @@ describe PicturesController do
 
       context 'when not signed in' do
         it 'doesnt update the picture' do
-          job :update, job_id: @picture.job, id: @picture, picture: @new_attr
+          post :update, job_id: @picture.jobs.first, id: @picture, picture: @new_attr
           @picture.reload
           @picture.name.should_not eq @new_attr[:name]
         end
@@ -292,7 +292,7 @@ describe PicturesController do
         end
 
         it 'should update the picture' do
-          job :update, job_id: @picture.job, id: @picture, picture: @new_attr
+          post :update, job_id: @picture.jobs.first, id: @picture, picture: @new_attr
           @picture.reload
           @picture.name.should eq @new_attr[:name]
         end
@@ -301,7 +301,7 @@ describe PicturesController do
 
     describe 'GET show' do
       before do
-        get :show, job_id: @picture.job, id: @picture
+        get :show, job_id: @picture.jobs.first, id: @picture
       end
 
       it 'responds successfully with an HTTP 200 status code' do
@@ -318,7 +318,7 @@ describe PicturesController do
       context 'when no user logged in' do
         it 'doesnt delete the picture' do
           expect{
-            delete :destroy, job_id: @picture.job, id: @picture
+            delete :destroy, job_id: @picture.jobs.first, id: @picture
           }.not_to change(Picture, :count)
         end
       end
@@ -330,7 +330,7 @@ describe PicturesController do
 
         it 'should delete the picture' do
           expect{
-            delete :destroy, job_id: @picture.job, id: @picture
+            delete :destroy, job_id: @picture.jobs.first, id: @picture
           }.to change(Picture, :count).by -1
         end
       end
@@ -344,21 +344,21 @@ describe PicturesController do
 
     describe 'GET index' do
       it 'responds successfully with an HTTP 200 status code' do
-        get :index, project_id: @picture.project
+        get :index, project_id: @picture.projects.first
         expect(response).to be_success
         expect(response.code).to eq '200'
       end
 
       it 'renders the index template' do
-        get :index, project_id: @picture.project
+        get :index, project_id: @picture.projects.first
         expect(response).to render_template 'index'
       end
 
       it 'loads all of the pictures into @pictures' do
-        picture1 = FactoryGirl.create :picture_with_project
-        picture2 = FactoryGirl.create :picture_with_project
-        get :index, project_id: @picture.project
-        expect(assigns :pictures).to match_array [@picture, picture1, picture2]
+        pictures = FactoryGirl.create_list :picture, 2
+        @picture.projects.first.pictures << pictures
+        get :index, project_id: @picture.projects.first
+        expect(assigns :pictures).to match_array @picture.projects.first.pictures
       end
     end
 
@@ -369,20 +369,20 @@ describe PicturesController do
         end
 
         it 'responds successfully with an HTTP 200 status code' do
-          get :new, project_id: @picture.project
+          get :new, project_id: @picture.projects.first
           expect(response).to be_success
           expect(response.code).to eq '200'
         end
 
         it 'renders the new template' do
-          get :new, project_id: @picture.project
+          get :new, project_id: @picture.projects.first
           expect(response).to render_template 'new'
         end
       end
 
       context 'when not signed in' do
         it 'redirects to root' do
-          get :new, project_id: @picture.project
+          get :new, project_id: @picture.projects.first
           expect(response).to redirect_to root_path
         end
       end
@@ -392,7 +392,7 @@ describe PicturesController do
       context 'when not signed in' do
         it 'doesnt create an picture' do
           expect{
-            project :create, project_id: @picture.project, picture: FactoryGirl.attributes_for(:picture)
+            post :create, project_id: @picture.projects.first, picture: FactoryGirl.attributes_for(:picture)
           }.to change(Picture,:count).by 0
         end
       end
@@ -404,13 +404,13 @@ describe PicturesController do
 
         it 'creates project' do
           expect{
-            project :create, project_id: @picture.project, picture: FactoryGirl.attributes_for(:picture)
+            post :create, project_id: @picture.projects.first, picture: FactoryGirl.attributes_for(:picture)
           }.to change(Picture,:count).by 1
         end
 
         it 'creates an project that has the right owner' do
-          project :create, project_id: @picture.project, picture: FactoryGirl.attributes_for(:picture)
-          expect(Picture.last.project).to eq @picture.project
+          post :create, project_id: @picture.projects.first, picture: FactoryGirl.attributes_for(:picture)
+          expect(Picture.last.projects.first).to eq @picture.projects.first
         end
       end
     end
@@ -419,7 +419,7 @@ describe PicturesController do
       context 'when not signed in' do
         it 'doesnt create an project' do
           expect{
-            project :create, project_id: @picture.project, picture: FactoryGirl.attributes_for(:picture)
+            post :create, project_id: @picture.projects.first, picture: FactoryGirl.attributes_for(:picture)
           }.to change(Picture,:count).by 0
         end
       end
@@ -427,7 +427,7 @@ describe PicturesController do
       context 'when signed in as admin' do
         before do
           auth_admin
-          get :edit, project_id: @picture.project, id: @picture
+          get :edit, project_id: @picture.projects.first, id: @picture
         end
 
         it 'responds successfully with an HTTP 200 status code' do
@@ -448,7 +448,7 @@ describe PicturesController do
 
       context 'when not signed in' do
         it 'doesnt update the picture' do
-          project :update, project_id: @picture.project, id: @picture, picture: @new_attr
+          post :update, project_id: @picture.projects.first, id: @picture, picture: @new_attr
           @picture.reload
           @picture.name.should_not eq @new_attr[:name]
         end
@@ -460,7 +460,7 @@ describe PicturesController do
         end
 
         it 'should update the picture' do
-          project :update, project_id: @picture.project, id: @picture, picture: @new_attr
+          post :update, project_id: @picture.projects.first, id: @picture, picture: @new_attr
           @picture.reload
           @picture.name.should eq @new_attr[:name]
         end
@@ -469,7 +469,7 @@ describe PicturesController do
 
     describe 'GET show' do
       before do
-        get :show, project_id: @picture.project, id: @picture
+        get :show, project_id: @picture.projects.first, id: @picture
       end
 
       it 'responds successfully with an HTTP 200 status code' do
@@ -486,7 +486,7 @@ describe PicturesController do
       context 'when no user logged in' do
         it 'doesnt delete the picture' do
           expect{
-            delete :destroy, project_id: @picture.project, id: @picture
+            delete :destroy, project_id: @picture.projects.first, id: @picture
           }.not_to change(Picture, :count)
         end
       end
@@ -498,7 +498,7 @@ describe PicturesController do
 
         it 'should delete the picture' do
           expect{
-            delete :destroy, project_id: @picture.project, id: @picture
+            delete :destroy, project_id: @picture.projects.first, id: @picture
           }.to change(Picture, :count).by -1
         end
       end

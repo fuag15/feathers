@@ -50,7 +50,7 @@ describe AddressesController do
     context 'when not signed in' do
       it 'doesnt create an address' do
         expect{
-          address :create, address: FactoryGirl.attributes_for(:address)
+          post :create, address: FactoryGirl.attributes_for(:address)
         }.to change(Address,:count).by 0
       end
     end
@@ -59,7 +59,7 @@ describe AddressesController do
       it 'creates address' do
         auth_admin
         expect{
-          address :create, address: FactoryGirl.attributes_for(:address)
+          post :create, address: FactoryGirl.attributes_for(:address)
         }.to change(Address,:count).by 1
       end
     end
@@ -69,7 +69,7 @@ describe AddressesController do
     context 'when not signed in' do
       it 'doesnt create an address' do
         expect{
-          address :create, address: FactoryGirl.attributes_for(:address)
+          post :create, address: FactoryGirl.attributes_for(:address)
         }.to change(Address,:count).by 0
       end
     end
@@ -100,7 +100,7 @@ describe AddressesController do
 
     context 'when not signed in' do
       it 'doesnt update the address' do
-        address :update, id: @address, address: @new_attr
+        post :update, id: @address, address: @new_attr
         @address.reload
         @address.name.should_not eq @new_attr[:name]
       end
@@ -112,7 +112,7 @@ describe AddressesController do
       end
 
       it 'should update the address' do
-        address :update, id: @address, address: @new_attr
+        post :update, id: @address, address: @new_attr
         @address.reload
         @address.name.should eq @new_attr[:name]
       end

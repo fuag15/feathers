@@ -22,7 +22,7 @@ class PackagesController < ApplicationController
   # almost default destroy, on success sends a good message
   def destroy
     flash[:notice] = 'Package Deleted' if @package.destroy
-    redirect_to project_path(@package.projects.first)
+    respond_with @package.projects.first, @package
   end
 
   private

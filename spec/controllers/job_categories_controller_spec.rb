@@ -50,7 +50,7 @@ describe JobCategoriesController do
     context 'when not signed in' do
       it 'doesnt create an job_category' do
         expect{
-          job_category :create, job_category: FactoryGirl.attributes_for(:job_category)
+          post :create, job_category: FactoryGirl.attributes_for(:job_category)
         }.to change(JobCategory,:count).by 0
       end
     end
@@ -59,7 +59,7 @@ describe JobCategoriesController do
       it 'creates job_category' do
         auth_admin
         expect{
-          job_category :create, job_category: FactoryGirl.attributes_for(:job_category)
+          post :create, job_category: FactoryGirl.attributes_for(:job_category)
         }.to change(JobCategory,:count).by 1
       end
     end
@@ -69,7 +69,7 @@ describe JobCategoriesController do
     context 'when not signed in' do
       it 'doesnt create an job_category' do
         expect{
-          job_category :create, job_category: FactoryGirl.attributes_for(:job_category)
+          post :create, job_category: FactoryGirl.attributes_for(:job_category)
         }.to change(JobCategory,:count).by 0
       end
     end
@@ -100,7 +100,7 @@ describe JobCategoriesController do
 
     context 'when not signed in' do
       it 'doesnt update the job_category' do
-        job_category :update, id: @job_category, job_category: @new_attr
+        post :update, id: @job_category, job_category: @new_attr
         @job_category.reload
         @job_category.name.should_not eq @new_attr[:name]
       end
@@ -112,7 +112,7 @@ describe JobCategoriesController do
       end
 
       it 'should update the job_category' do
-        job_category :update, id: @job_category, job_category: @new_attr
+        post :update, id: @job_category, job_category: @new_attr
         @job_category.reload
         @job_category.name.should eq @new_attr[:name]
       end

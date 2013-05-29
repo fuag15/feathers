@@ -50,7 +50,7 @@ describe ResumeCategoriesController do
     context 'when not signed in' do
       it 'doesnt create an resume_category' do
         expect{
-          resume_category :create, resume_category: FactoryGirl.attributes_for(:resume_category)
+          post :create, resume_category: FactoryGirl.attributes_for(:resume_category)
         }.to change(ResumeCategory,:count).by 0
       end
     end
@@ -59,7 +59,7 @@ describe ResumeCategoriesController do
       it 'creates resume_category' do
         auth_admin
         expect{
-          resume_category :create, resume_category: FactoryGirl.attributes_for(:resume_category)
+          post :create, resume_category: FactoryGirl.attributes_for(:resume_category)
         }.to change(ResumeCategory,:count).by 1
       end
     end
@@ -69,7 +69,7 @@ describe ResumeCategoriesController do
     context 'when not signed in' do
       it 'doesnt create an resume_category' do
         expect{
-          resume_category :create, resume_category: FactoryGirl.attributes_for(:resume_category)
+          post :create, resume_category: FactoryGirl.attributes_for(:resume_category)
         }.to change(ResumeCategory,:count).by 0
       end
     end
@@ -100,7 +100,7 @@ describe ResumeCategoriesController do
 
     context 'when not signed in' do
       it 'doesnt update the resume_category' do
-        resume_category :update, id: @resume_category, resume_category: @new_attr
+        post :update, id: @resume_category, resume_category: @new_attr
         @resume_category.reload
         @resume_category.name.should_not eq @new_attr[:name]
       end
@@ -112,7 +112,7 @@ describe ResumeCategoriesController do
       end
 
       it 'should update the resume_category' do
-        resume_category :update, id: @resume_category, resume_category: @new_attr
+        post :update, id: @resume_category, resume_category: @new_attr
         @resume_category.reload
         @resume_category.name.should eq @new_attr[:name]
       end
