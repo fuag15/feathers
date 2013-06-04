@@ -1,12 +1,16 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :job do
-    name "MyString"
-    blurb "MyText"
-    job_category nil
-    detail "MyText"
-    employer "MyString"
-    rank 1
+    name
+    employer
+    rank 0
+    association :job_category, factory: :job_category
+
+    blurb do
+      Forgery(:lorem_ipsum).words 10
+    end
+
+    detail do
+      Forgery(:lorem_ipsum).words 20
+    end
   end
 end

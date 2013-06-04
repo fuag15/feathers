@@ -8,7 +8,7 @@
     = link_to 'edit project', edit_project_category_project_path(@project.project_category, @project), class: 'btn btn-primary'
     = link_to 'manage packages', project_packages_path(@project), class: 'btn'
     = link_to 'manage pictures', project_pictures_path(@project), class: 'btn'
-  = button_to 'destroy project', @project, method: :destroy, class: 'btn'
+  = button_to 'destroy project', [@project.project_category, @project], method: :delete, class: 'btn'
   .clear
 #projectDetailImage
   - if @project.pictures.present?

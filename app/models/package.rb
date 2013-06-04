@@ -5,6 +5,6 @@ class Package < ActiveRecord::Base
   mount_uploader :file, PackageUploader
 
   # a join table PackagesProject
-  has_many :packages_projects
+  has_many :packages_projects, dependent: :destroy
   has_many :projects, through: :packages_projects
 end

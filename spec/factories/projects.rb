@@ -1,13 +1,28 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :project do
-    name "MyString"
-    blurb "MyText"
-    version "MyString"
-    detail "MyText"
-    team "MyString"
-    rank 1
-    project_category nil
+    name
+    team
+    rank 0
+    association :project_category, factory: :project_category
+
+    blurb do
+      Forgery(:lorem_ipsum).words 10
+    end
+
+    detail do
+      Forgery(:lorem_ipsum).words 20
+    end
+
+    factory :project_with_pictures_and_packages do
+      ignore do
+        picture_count 5
+        package_count 5
+      end
+
+      after :build do |project, evaluator|
+        project.pictures << FactoryGirl.create_list(:picture, evaluator.picture_count)
+        project.packages << FactoryGirl.create_list(:package, evaluator.package_count)
+      end
+    end
   end
 end

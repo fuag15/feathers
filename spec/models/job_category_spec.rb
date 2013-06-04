@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe JobCategory do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'deletes any jobs associated with it' do
+    @job = FactoryGirl.create :job
+    expect{
+      @job.job_category.destroy
+    }.to change(Job,:count).by -1
+  end
 end

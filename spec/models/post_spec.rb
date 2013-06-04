@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Post do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'deletes any pictures associated with it' do
+    @picture = FactoryGirl.create :picture_with_post
+    expect{
+      @picture.posts.first.destroy
+    }.to change(Picture,:count).by -1
+  end
 end

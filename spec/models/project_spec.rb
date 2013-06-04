@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Project do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'deletes any pictures associated with it' do
+    @picture = FactoryGirl.create :picture_with_project
+    expect{
+      @picture.projects.first.destroy
+    }.to change(Picture,:count).by -1
+  end
 end

@@ -12,19 +12,19 @@ class JobsController < ApplicationController
   # simple create method on true sends a good notice
   def create
     flash[:notice] = 'Job Created' if @job_category.jobs.create params[:job]
-    respond_with @job
+    respond_with @job.job_category, @job
   end
 
   # simple update method on success sends a good method
   def update
     flash[:notice] = 'Job Updated' if @job.update_attributes! params[:job]
-    respond_with @job
+    respond_with @job.job_category, @job
   end
 
   # almost default destroy, on success sends a good message
   def destroy
     flash[:notice] = 'Job Deleted' if @job.destroy
-    respond_with @job
+    respond_with @job.job_category
   end
 
   private

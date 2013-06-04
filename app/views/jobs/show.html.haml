@@ -6,8 +6,9 @@
 - if current_user.try :admin?
   .btn-group.pull-right
     = link_to 'edit job', edit_job_category_job_path(@job.job_category, @job), class: 'btn'
+    = link_to 'back', job_category_path(@job.job_category), class: 'btn'
     = link_to 'manage pictures', job_pictures_path(@job), class: 'btn'
-  = button_to 'destroy job', @job, method: :destroy, class: 'btn btn-danger'
+  = button_to 'destroy job', [@job.job_category, @job], method: :delete, class: 'btn btn-danger'
   .clear
 #projectDetailImage
   - if @job.pictures.present?

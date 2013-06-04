@@ -44,9 +44,13 @@ You should be able to view the site on `localhost:3000`, or [here][local-host]
 
 ## Roadmap
 
-- test all
-- clean up dom/sass/javascript/views
-- improve / re-design / expand over time
+- static analysis
+- optimize tests
+- optimize development
+- performance analysis
+- initial re-factor and form clean up
+- improve / re-design / profile / expand over time
+- update to rails 4 when released
 
 [local-host]: http://localhost:3000 "Local default server port"
 [postgresql]: http://postgresql.org "Postgresql Official Site"

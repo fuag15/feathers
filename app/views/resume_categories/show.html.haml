@@ -11,7 +11,7 @@
     - @resume_category.resume_entries.each do |resume_entry|
       %tr
         %td
-          = link_to resume_entry.name, resume_entry
+          = link_to resume_entry.name, [@resume_category, resume_entry]
         %td
           = resume_entry.rank
 = link_to 'create resume entry', new_resume_category_resume_entry_path(@resume_category), class: 'btn btn-primary'

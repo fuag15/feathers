@@ -5,9 +5,9 @@ class Picture < ActiveRecord::Base
   # see PictureUploader for more info
   mount_uploader :image, PictureUploader
 
-  has_many :pictures_posts
-  has_many :pictures_projects
-  has_many :jobs_pictures
+  has_many :pictures_posts, dependent: :destroy
+  has_many :pictures_projects, dependent: :destroy
+  has_many :jobs_pictures, dependent: :destroy
 
   has_many :posts, through: :pictures_posts
   has_many :projects, through: :pictures_projects

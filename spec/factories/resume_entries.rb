@@ -1,9 +1,7 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :resume_entry do
-    name "MyString"
-    rank 1
-    resume_category nil
+    name
+    rank 0
+    association :resume_category, factory: :resume_category
   end
 end

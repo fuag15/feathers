@@ -5,9 +5,10 @@
         Last Edited:
         %br
         %b
-          = Post.first.try(:updated_at).to_time.strftime("%B %d, %Y")
-          %br
-          = Post.first.try(:updated_at).to_time.strftime("%H:%M:%S")
+          - if Post.first.try(:updated_at)
+            = Post.first.updated_at.to_time.strftime("%B %d, %Y")
+            %br
+            = Post.first.updated_at.to_time.strftime("%H:%M:%S")
   #TimeStampBot
   = link_to jobs_path do
     #PicBoxTop
