@@ -6,10 +6,6 @@ feature 'list addresses' do
     visit addresses_path
   end
 
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
-  end
-
   scenario 'displays an address name' do
     expect(page).to have_content @address.name
   end
@@ -42,23 +38,20 @@ feature 'create addresses' do
     visit new_address_path
   end
 
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
-  end
-
   scenario 'should not redirect me when visited' do
     expect(current_path).to eq new_address_path
   end
 
   context 'when I create an address' do
     background do
+      fill_in 'address_city', with: Forgery(:lorem_ipsum).word
       fill_in 'address_name', with: Forgery(:lorem_ipsum).word
-      fill_in 'address_content', with: Forgery(:lorem_ipsum).paragraph
-      click_button 'Create Article'
+      fill_in 'address_street', with: Forgery(:lorem_ipsum).word
+      click_button 'Create Address'
     end
 
     scenario 'I should see a success message' do
-      expect(page).to have_content 'Article Created'
+      expect(page).to have_content 'Address Created'
     end
   end
 end
@@ -70,23 +63,20 @@ feature 'edit addresses' do
     visit edit_address_path @address
   end
 
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
-  end
-
   scenario 'should not redirect me when visited' do
     expect(current_path).to eq edit_address_path @address
   end
 
   context 'when I edit the address' do
     background do
+      fill_in 'address_city', with: Forgery(:lorem_ipsum).word
       fill_in 'address_name', with: Forgery(:lorem_ipsum).word
-      fill_in 'address_content', with: Forgery(:lorem_ipsum).paragraph
-      click_button 'Update Article'
+      fill_in 'address_street', with: Forgery(:lorem_ipsum).word
+      click_button 'Update Address'
     end
 
     scenario 'I should see a success message' do
-      expect(page).to have_content 'Article Successfully update'
+      expect(page).to have_content 'Address Updated'
     end
 
     scenario 'I should be on the address path' do
@@ -105,7 +95,7 @@ feature 'show an address' do
   scenario 'should allow me to delete the address' do
     click_button 'destroy'
     expect(current_path).to eq addresses_path
-    expect(page).to have_content 'Article Successfully Deleted'
+    expect(page).to have_content 'Address Deleted'
   end
 
   context 'I click edit' do
@@ -119,13 +109,6 @@ feature 'show an address' do
 
     scenario 'I should not see any errors' do
       expect(page).not_to have_selector '.alert'
-    end
-  end
-
-  context 'I click images' do
-    scenario 'I should be on the images path' do
-      click_link 'images'
-      expect(current_path).to eq address_images_path @address
     end
   end
 

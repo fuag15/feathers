@@ -11,7 +11,7 @@
     - @resume_entries.each do |resume_entry|
       %tr
         %td
-          = link_to resume_entry.name, resume_entry
+          = link_to resume_entry.name, [resume_entry.resume_category, resume_entry]
         %td
           = resume_entry.rank
 .btn-group.pull-left

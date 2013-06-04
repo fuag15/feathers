@@ -3,11 +3,7 @@ require 'spec_helper'
 feature 'list jobs' do
   background do
     @job = FactoryGirl.create :job
-    visit job_category_jobs_path(@job.job_category)
-  end
-
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
+    visit job_category_path(@job.job_category)
   end
 
   scenario 'displays an job name' do
@@ -22,7 +18,7 @@ feature 'list jobs' do
   context 'when I click new job' do
     background do
       auth_admin
-      visit job_category_jobs_path(@job.job_category)
+      visit job_category_path(@job.job_category)
       click_link 'create job'
     end
 
@@ -39,26 +35,23 @@ end
 feature 'create jobs' do
   background do
     auth_admin
-    visit new_job_category_job_path(@job.job_category)
-  end
-
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
+    @job_category = FactoryGirl.create :job_category
+    visit new_job_category_job_path(@job_category)
   end
 
   scenario 'should not redirect me when visited' do
-    expect(current_path).to eq new_job_category_job_path(@job.job_category)
+    expect(current_path).to eq new_job_category_job_path(@job_category)
   end
 
   context 'when I create an job' do
     background do
       fill_in 'job_name', with: Forgery(:lorem_ipsum).word
-      fill_in 'job_content', with: Forgery(:lorem_ipsum).paragraph
-      click_button 'Create Article'
+      fill_in 'job_blurb', with: Forgery(:lorem_ipsum).paragraph
+      click_button 'Create Job'
     end
 
     scenario 'I should see a success message' do
-      expect(page).to have_content 'Article Created'
+      expect(page).to have_content 'Job Created'
     end
   end
 end
@@ -70,10 +63,6 @@ feature 'edit jobs' do
     visit edit_job_category_job_path(@job.job_category, @job)
   end
 
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
-  end
-
   scenario 'should not redirect me when visited' do
     expect(current_path).to eq edit_job_category_job_path(@job.job_category, @job)
   end
@@ -81,12 +70,12 @@ feature 'edit jobs' do
   context 'when I edit the job' do
     background do
       fill_in 'job_name', with: Forgery(:lorem_ipsum).word
-      fill_in 'job_content', with: Forgery(:lorem_ipsum).paragraph
-      click_button 'Update Article'
+      fill_in 'job_blurb', with: Forgery(:lorem_ipsum).paragraph
+      click_button 'Update Job'
     end
 
     scenario 'I should see a success message' do
-      expect(page).to have_content 'Article Successfully update'
+      expect(page).to have_content 'Job Updated'
     end
 
     scenario 'I should be on the job path' do
@@ -104,8 +93,8 @@ feature 'show an job' do
 
   scenario 'should allow me to delete the job' do
     click_button 'destroy'
-    expect(current_path).to eq job_category_jobs_path(@job.job_category)
-    expect(page).to have_content 'Article Successfully Deleted'
+    expect(current_path).to eq job_category_path(@job.job_category)
+    expect(page).to have_content 'Job Deleted'
   end
 
   context 'I click edit' do
@@ -122,15 +111,15 @@ feature 'show an job' do
     end
   end
 
-  context 'I click images' do
-    scenario 'I should be on the images path' do
-      click_link 'images'
-      expect(current_path).to eq job_images_path @job
+  context 'I click pictures' do
+    scenario 'I should be on the pictures path' do
+      click_link 'pictures'
+      expect(current_path).to eq job_pictures_path @job
     end
   end
 
   scenario 'when I go back I should be on the jobs page' do
     click_link 'back'
-    expect(current_path).to eq job_category_jobs_path(@job.job_category)
+    expect(current_path).to eq job_category_path(@job.job_category)
   end
 end

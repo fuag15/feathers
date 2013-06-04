@@ -8,7 +8,7 @@ feature 'display resume' do
   end
 
   scenario 'displays an address' do
-    expect(page).to have_content @resume_entry.city
+    expect(page).to have_content @address.city
   end
 
   scenario 'displays an resume_entry name' do
@@ -16,6 +16,6 @@ feature 'display resume' do
   end
 
   scenario 'displays an resume_category name' do
-    expect(page).to have_content @resume_category.name
+    expect(page).to have_content @resume_entry.resume_category.name
   end
 end

@@ -6,10 +6,6 @@ feature 'list resume_entries' do
     visit resume_category_resume_entries_path(@resume_entry.resume_category)
   end
 
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
-  end
-
   scenario 'displays an resume_entry name' do
     expect(page).to have_content @resume_entry.name
   end
@@ -22,8 +18,8 @@ feature 'list resume_entries' do
   context 'when I click new resume_entry' do
     background do
       auth_admin
-      visit resume_category_resume_entries_path(@resume_entry.resume_category)
-      click_link 'create resume_entry'
+      visit resume_category_path(@resume_entry.resume_category)
+      click_link 'create resume entry'
     end
 
     scenario 'the page should not have any error messages' do
@@ -39,26 +35,22 @@ end
 feature 'create resume_entries' do
   background do
     auth_admin
-    visit new_resume_category_resume_entry_path(@resume_entry.resume_category)
-  end
-
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
+    @resume_category = FactoryGirl.create :resume_category
+    visit new_resume_category_resume_entry_path(@resume_category)
   end
 
   scenario 'should not redirect me when visited' do
-    expect(current_path).to eq new_resume_category_resume_entry_path(@resume_entry.resume_category)
+    expect(current_path).to eq new_resume_category_resume_entry_path(@resume_category)
   end
 
   context 'when I create an resume_entry' do
     background do
       fill_in 'resume_entry_name', with: Forgery(:lorem_ipsum).word
-      fill_in 'resume_entry_content', with: Forgery(:lorem_ipsum).paragraph
-      click_button 'Create Article'
+      click_button 'Create Resume entry'
     end
 
     scenario 'I should see a success message' do
-      expect(page).to have_content 'Article Created'
+      expect(page).to have_content 'Resume Entry Created'
     end
   end
 end
@@ -70,10 +62,6 @@ feature 'edit resume_entries' do
     visit edit_resume_category_resume_entry_path(@resume_entry.resume_category, @resume_entry)
   end
 
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
-  end
-
   scenario 'should not redirect me when visited' do
     expect(current_path).to eq edit_resume_category_resume_entry_path(@resume_entry.resume_category, @resume_entry)
   end
@@ -81,16 +69,15 @@ feature 'edit resume_entries' do
   context 'when I edit the resume_entry' do
     background do
       fill_in 'resume_entry_name', with: Forgery(:lorem_ipsum).word
-      fill_in 'resume_entry_content', with: Forgery(:lorem_ipsum).paragraph
-      click_button 'Update Article'
+      click_button 'Update Resume entry'
     end
 
     scenario 'I should see a success message' do
-      expect(page).to have_content 'Article Successfully update'
+      expect(page).to have_content 'Resume Entry Updated'
     end
 
     scenario 'I should be on the resume_entry path' do
-      expect(current_path).to eq resume_category_resume_entry_path(@resume_entry.resume_category, @resume_entry)
+      expect(current_path).to eq resume_entry_path(@resume_entry)
     end
   end
 end
@@ -105,7 +92,7 @@ feature 'show an resume_entry' do
   scenario 'should allow me to delete the resume_entry' do
     click_button 'destroy'
     expect(current_path).to eq resume_category_resume_entries_path(@resume_entry.resume_category)
-    expect(page).to have_content 'Article Successfully Deleted'
+    expect(page).to have_content 'Resume Entry Deleted'
   end
 
   context 'I click edit' do
@@ -119,13 +106,6 @@ feature 'show an resume_entry' do
 
     scenario 'I should not see any errors' do
       expect(page).not_to have_selector '.alert'
-    end
-  end
-
-  context 'I click images' do
-    scenario 'I should be on the images path' do
-      click_link 'images'
-      expect(current_path).to eq resume_entry_images_path @resume_entry
     end
   end
 

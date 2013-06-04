@@ -3,7 +3,7 @@ FactoryGirl.define do
     name
     rank 0
 
-    factory :resume_category_with_resume_entry do
+    factory :resume_category_with_resume_entries do
       ignore do
         resume_entry_count 5
       end

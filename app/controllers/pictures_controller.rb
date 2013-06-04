@@ -20,14 +20,15 @@ class PicturesController < ApplicationController
 
   # update and return to a smart path based on our parent
   def update
-    flash[:notice] = 'Picture updated' if @picture.update_attributes! params[:picture]
+    flash[:notice] = 'Picture Updated' if @picture.update_attributes! params[:picture]
     respond_with @picture.owner, @picture
   end
 
   # destroy and return to our parents picture index path
   def destroy
+    owner = @picture.owner
     flash[:notice] = 'Picture Deleted' if @picture.destroy
-    respond_with @picture.owner, @picture
+    respond_with owner, @picture
   end
 
   protected

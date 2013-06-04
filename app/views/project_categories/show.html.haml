@@ -11,7 +11,7 @@
     - @project_category.projects.each do |project|
       %tr
         %td
-          = link_to project.name, project
+          = link_to project.name, [@project_category, project]
         %td
           = project.rank
 = link_to 'create project', new_project_category_project_path(@project_category), class: 'btn btn-primary'

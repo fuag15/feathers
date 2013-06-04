@@ -3,11 +3,7 @@ require 'spec_helper'
 feature 'list projects' do
   background do
     @project = FactoryGirl.create :project
-    visit project_category_projects_path(@project.project_category)
-  end
-
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
+    visit project_category_path @project.project_category
   end
 
   scenario 'displays an project name' do
@@ -22,7 +18,7 @@ feature 'list projects' do
   context 'when I click new project' do
     background do
       auth_admin
-      visit project_category_projects_path(@project.project_category)
+      visit project_category_path(@project.project_category)
       click_link 'create project'
     end
 
@@ -39,11 +35,8 @@ end
 feature 'create projects' do
   background do
     auth_admin
+    @project = FactoryGirl.create :project
     visit new_project_category_project_path(@project.project_category)
-  end
-
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
   end
 
   scenario 'should not redirect me when visited' do
@@ -53,12 +46,12 @@ feature 'create projects' do
   context 'when I create an project' do
     background do
       fill_in 'project_name', with: Forgery(:lorem_ipsum).word
-      fill_in 'project_content', with: Forgery(:lorem_ipsum).paragraph
-      click_button 'Create Article'
+      fill_in 'project_blurb', with: Forgery(:lorem_ipsum).paragraph
+      click_button 'Create Project'
     end
 
     scenario 'I should see a success message' do
-      expect(page).to have_content 'Article Created'
+      expect(page).to have_content 'Project Created'
     end
   end
 end
@@ -70,10 +63,6 @@ feature 'edit projects' do
     visit edit_project_category_project_path(@project.project_category, @project)
   end
 
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
-  end
-
   scenario 'should not redirect me when visited' do
     expect(current_path).to eq edit_project_category_project_path(@project.project_category, @project)
   end
@@ -81,12 +70,12 @@ feature 'edit projects' do
   context 'when I edit the project' do
     background do
       fill_in 'project_name', with: Forgery(:lorem_ipsum).word
-      fill_in 'project_content', with: Forgery(:lorem_ipsum).paragraph
-      click_button 'Update Article'
+      fill_in 'project_blurb', with: Forgery(:lorem_ipsum).paragraph
+      click_button 'Update Project'
     end
 
     scenario 'I should see a success message' do
-      expect(page).to have_content 'Article Successfully update'
+      expect(page).to have_content 'Project Updated'
     end
 
     scenario 'I should be on the project path' do
@@ -104,8 +93,8 @@ feature 'show an project' do
 
   scenario 'should allow me to delete the project' do
     click_button 'destroy'
-    expect(current_path).to eq project_category_projects_path(@project.project_category)
-    expect(page).to have_content 'Article Successfully Deleted'
+    expect(current_path).to eq project_category_path(@project.project_category)
+    expect(page).to have_content 'Project Deleted'
   end
 
   context 'I click edit' do
@@ -122,15 +111,10 @@ feature 'show an project' do
     end
   end
 
-  context 'I click images' do
-    scenario 'I should be on the images path' do
-      click_link 'images'
-      expect(current_path).to eq project_images_path @project
+  context 'I click pictures' do
+    scenario 'I should be on the pictures path' do
+      click_link 'pictures'
+      expect(current_path).to eq project_pictures_path @project
     end
-  end
-
-  scenario 'when I go back I should be on the projects page' do
-    click_link 'back'
-    expect(current_path).to eq project_category_projects_path(@project.project_category)
   end
 end

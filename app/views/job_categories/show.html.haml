@@ -11,7 +11,7 @@
     - @job_category.jobs.each do |job|
       %tr
         %td
-          = link_to job.name, job
+          = link_to job.name, [@job_category, job]
         %td
           = job.rank
 = link_to 'create job', new_job_category_job_path(@job_category), class: 'btn btn-primary'

@@ -2,26 +2,18 @@ require 'spec_helper'
 
 feature 'list posts' do
   background do
+    auth_admin
     @post = FactoryGirl.create :post
     visit posts_path
   end
 
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
-  end
-
-  scenario 'displays an post name' do
-    expect(page).to have_content @post.name
-  end
-
   scenario 'when I click an post I should be on that show path' do
-    click_link @post.name
+    click_link 'show'
     expect(current_path).to eq post_path @post
   end
 
   context 'when I click new post' do
     background do
-      auth_admin
       visit posts_path
       click_link 'create post'
     end
@@ -42,23 +34,19 @@ feature 'create posts' do
     visit new_post_path
   end
 
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
-  end
-
   scenario 'should not redirect me when visited' do
     expect(current_path).to eq new_post_path
   end
 
   context 'when I create an post' do
     background do
-      fill_in 'post_name', with: Forgery(:lorem_ipsum).word
+      fill_in 'post_title', with: Forgery(:lorem_ipsum).word
       fill_in 'post_content', with: Forgery(:lorem_ipsum).paragraph
-      click_button 'Create Article'
+      click_button 'Create Post'
     end
 
     scenario 'I should see a success message' do
-      expect(page).to have_content 'Article Created'
+      expect(page).to have_content 'Post Created'
     end
   end
 end
@@ -70,23 +58,19 @@ feature 'edit posts' do
     visit edit_post_path @post
   end
 
-  scenario 'sets nav of blog to be active' do
-    expect(page).to have_selector 'ul.nav .active', text: 'Blog'
-  end
-
   scenario 'should not redirect me when visited' do
     expect(current_path).to eq edit_post_path @post
   end
 
   context 'when I edit the post' do
     background do
-      fill_in 'post_name', with: Forgery(:lorem_ipsum).word
+      fill_in 'post_title', with: Forgery(:lorem_ipsum).word
       fill_in 'post_content', with: Forgery(:lorem_ipsum).paragraph
-      click_button 'Update Article'
+      click_button 'Update Post'
     end
 
     scenario 'I should see a success message' do
-      expect(page).to have_content 'Article Successfully update'
+      expect(page).to have_content 'Post Updated'
     end
 
     scenario 'I should be on the post path' do
@@ -105,7 +89,7 @@ feature 'show an post' do
   scenario 'should allow me to delete the post' do
     click_button 'destroy'
     expect(current_path).to eq posts_path
-    expect(page).to have_content 'Article Successfully Deleted'
+    expect(page).to have_content 'Post Deleted'
   end
 
   context 'I click edit' do
@@ -122,15 +106,15 @@ feature 'show an post' do
     end
   end
 
-  context 'I click images' do
-    scenario 'I should be on the images path' do
-      click_link 'images'
-      expect(current_path).to eq post_images_path @post
+  context 'I click pictures' do
+    scenario 'I should be on the pictures path' do
+      click_link 'pictures'
+      expect(current_path).to eq post_pictures_path @post
     end
   end
 
   scenario 'when I go back I should be on the posts page' do
     click_link 'back'
-    expect(current_path).to eq posts_path
+    expect(current_path).to eq root_path
   end
 end

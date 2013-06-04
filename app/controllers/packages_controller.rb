@@ -9,20 +9,21 @@ class PackagesController < ApplicationController
 
   # simple create method on true sends a good notice
   def create
-    flash[:notice] = 'Package Created' if @project.packages.create params[:package]
-    respond_with @package
+    flash[:notice] = 'Package Created' if @project.packages << @package
+    respond_with @project, @package
   end
 
   # simple update method on success sends a good method
   def update
     flash[:notice] = 'Package Updated' if @package.update_attributes! params[:package]
-    respond_with @package
+    respond_with @project, @package
   end
 
   # almost default destroy, on success sends a good message
   def destroy
+    project = @package.projects.first
     flash[:notice] = 'Package Deleted' if @package.destroy
-    respond_with @package.projects.first, @package
+    respond_with project, @package
   end
 
   private
