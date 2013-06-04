@@ -18,7 +18,8 @@ end if ENV['COVERAGE']
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
+# this is disabled to fix zeus compatability iesues
+# require 'rspec/autorun'
 require 'capybara/rspec' # feature tests
 require 'headless' # webkit headless feature tests
 
@@ -32,6 +33,16 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+
+  # stop default garbage collection
+  config.before :all do
+    DeferredGarbageCollection.start
+  end
+
+  # should we clean up?
+  config.after :all do
+    DeferredGarbageCollection.reconsider
+  end
 
   # we use devise, need their test helpers to log in in controller specs and view specs
   config.include Devise::TestHelpers, type: :controller
