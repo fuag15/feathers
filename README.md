@@ -44,8 +44,6 @@ You should be able to view the site on `localhost:3000`, or [here][local-host]
 
 ## Roadmap
 
-- spec
-- coverage
 - static analysis
 - optimize tests
 - optimize development
