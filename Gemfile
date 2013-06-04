@@ -43,4 +43,9 @@ group :test, :development do
   gem 'launchy', '~> 2.2.0' # auto launch web page for capybara tests
   gem 'database_cleaner', '~> 0.9.1' # clean out databases between tests
   gem 'headless', '~> 1.0.1' # headless webkit driver runs on hidden xvfb device
+  gem 'ruby-fsevent', '~> 0.2.1' # detect fs event changes for gaurd
+  gem 'guard-rspec', '~> 3.0.1' # watch for file system changes and run relevant tests
+  gem 'parallel_tests', '~> 0.13.3' # run rspec tests in parallel
+  gem 'zeus-parallel_tests', '~> 0.2.4' # run parallel tests off of zeus env
+  gem 'zeus', '~> 0.13.3' # preload the rails envs for testing
 end

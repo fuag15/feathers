@@ -16,6 +16,8 @@ Bringing my portfolio site more up-to-date. No redesign.
 - rake spec:coverage
 - rake analyzer:all
 - rake spec:view
+- zeus
+- gaurd # paralel might be usefull depending on situation
 
 ==== Coverage Report
 
