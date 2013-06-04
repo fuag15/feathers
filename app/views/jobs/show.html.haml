@@ -10,19 +10,19 @@
     = link_to 'manage pictures', job_pictures_path(@job), class: 'btn'
   = button_to 'destroy job', [@job.job_category, @job], method: :delete, class: 'btn btn-danger'
   .clear
-#projectDetailImage
+.projectDetailImage
   - if @job.pictures.present?
     = link_to @job.pictures.first.try(:image).url(:bestfit), class: 'lightbox', rel: "job_#{@job.id}" do
       = image_tag @job.pictures.first.try(:image).url(:bestfit)
-#projectDetailSubImageHolder
+.projectDetailSubImageHolder
   - @job.pictures.each do |picture|
-    #projectDetailSubImage
+    .projectDetailSubImage
       = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "job_#{@job.id}" do
         = image_tag picture.image.url(:small)
-  #clear
+  .clear
 = markdown @job.detail
 %br
 %br
-#employerTag
+.employerTag
   Employer: #{@job.employer}
-#clear
+.clear

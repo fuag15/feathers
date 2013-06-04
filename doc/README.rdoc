@@ -16,8 +16,15 @@ Bringing my portfolio site more up-to-date. No redesign.
 - rake spec:coverage
 - rake analyzer:all
 - rake spec:view
-- zeus
-- gaurd # paralel might be usefull depending on situation
+
+=== Super Testing
+
+- rake parallel:create # create db's
+- rake parallel:prepare # run migrations
+- zeus start # start zeus host
+- guard # start gaurd to watch files
+
+enjoy :)
 
 ==== Coverage Report
 

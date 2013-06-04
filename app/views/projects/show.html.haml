@@ -10,22 +10,22 @@
     = link_to 'manage pictures', project_pictures_path(@project), class: 'btn'
   = button_to 'destroy project', [@project.project_category, @project], method: :delete, class: 'btn'
   .clear
-#projectDetailImage
+.projectDetailImage
   - if @project.pictures.present?
     = link_to @project.pictures.first.try(:image).url(:bestfit), class: 'lightbox', rel: "project_#{@project.id}" do
       = image_tag @project.pictures.first.try(:image).url(:bestfit)
-#projectDetailSubImageHolder
+.projectDetailSubImageHolder
   - @project.pictures.each do |picture|
-    #projectDetailSubImage
+    .projectDetailSubImage
       = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "project_#{@project.id}" do
         = image_tag picture.image.url(:small)
-  #clear
+  .clear
 = markdown @project.detail
 %br
 %br
-#employerTag
+.employerTag
   Team Members: #{@project.team}
-#clear
+.clear
 - @project.packages.each do |package|
   = link_to package.version, package.file.url
   %br

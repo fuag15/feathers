@@ -2,8 +2,7 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-# parallel: true is an option that might be worth looking into
-guard :rspec, all_on_start: false, all_after_pass: false, zeus: true, bundler: false do
+guard :rspec, parallel: true, all_on_start: false, all_after_pass: false, zeus: true, bundler: false do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }

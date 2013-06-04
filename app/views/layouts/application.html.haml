@@ -9,25 +9,25 @@
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
   %body
-    #Center{ align: "center" }
-      #Holder
-        #topMainBorder
-        #dropShadowHolder
-          #leftMainBorder
-          #BackGround
-            #Text
+    .Center{ align: "center" }
+      .Holder
+        .topMainBorder
+        .dropShadowHolder
+          .leftMainBorder
+          .BackGround
+            .Text
               = render 'layouts/flash_messages'
               %center
-                #mainTitle
+                .mainTitle
                   = yield :title
               %br
               %br
               = yield
-          #rightMainBorder
-          #clear
-        #botMainBorder
+          .rightMainBorder
+          .clear
+        .botMainBorder
       = render partial: "layouts/navigation"
-      #clear
+      .clear
       .Sig
         %i
           C #{Time.now.year.to_s} Michael Boone

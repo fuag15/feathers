@@ -5,7 +5,7 @@ class HTMLWithVideos < Redcarpet::Render::HTML
     if Picture.where(name: text).present?
       "<a href='#{Picture.where(name: text).first.image.url}' class='lightbox'><img src='#{Picture.where(name: text).first.image.url}' /></a>"
     else
-      nil
+      text
     end
   end
 end

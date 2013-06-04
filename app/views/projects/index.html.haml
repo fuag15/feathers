@@ -11,19 +11,19 @@
     = link_to 'manage projects', project_categories_path, class: 'btn'
   .clear
 - @project_categories.each do |project_category|
-  #categorySeperator
+  .categorySeperator
     = project_category.name
   - project_category.projects.each do |project|
     .project
       = link_to project_path(project) do
-        #subTitle
+        .subTitle
           = project.name
         %br
         %center
-          #projectImage
+          .projectImage
             - if project.pictures.present?
               = image_tag project.pictures.first.image.url(:gallery)
         %br
         %br
         = markdown project.blurb
-  #clear
+  .clear

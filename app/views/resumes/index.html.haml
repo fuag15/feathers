@@ -11,7 +11,7 @@
   - if current_user.try :admin?
     = link_to 'manage addresses', addresses_path, class: 'btn btn-small'
 - @resume_categories.each do |resume_category|
-  #ResumeHeader
+  .ResumeHeader
     #{resume_category.name}
   - resume_category.resume_entries.each do |resume_entry|
     = resume_entry.name
