@@ -218,8 +218,8 @@
           <div class="method-source-code" id="create-source">
             <pre><span class="ruby-comment"># File app/controllers/resume_entries_controller.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
-  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Resume Category Created&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@resume_category</span>.<span class="ruby-identifier">resume_entries</span>.<span class="ruby-identifier">create</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:resume_entry</span>]
-  <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@resume_entry</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Resume Entry Created&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@resume_category</span>.<span class="ruby-identifier">resume_entries</span>.<span class="ruby-identifier">create</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:resume_entry</span>]
+  <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@resume_category</span>, <span class="ruby-ivar">@resume_entry</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- create-source -->
           
@@ -249,8 +249,8 @@
           <div class="method-source-code" id="destroy-source">
             <pre><span class="ruby-comment"># File app/controllers/resume_entries_controller.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
-  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Resume Category Deleted&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@resume_entry</span>.<span class="ruby-identifier">destroy</span>
-  <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@resume_entry</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Resume Entry Deleted&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@resume_entry</span>.<span class="ruby-identifier">destroy</span>
+  <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@resume_entry</span>.<span class="ruby-identifier">resume_category</span>, <span class="ruby-ivar">@resume_entry</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- destroy-source -->
           
@@ -280,8 +280,8 @@
           <div class="method-source-code" id="update-source">
             <pre><span class="ruby-comment"># File app/controllers/resume_entries_controller.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
-  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Resume Category Updated&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@resume_entry</span>.<span class="ruby-identifier">update_attributes!</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:resume_entry</span>]
-  <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@resume_entry</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Resume Entry Updated&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@resume_entry</span>.<span class="ruby-identifier">update_attributes!</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:resume_entry</span>]
+  <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@resume_category</span>, <span class="ruby-ivar">@resume_entry</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- update-source -->
           
