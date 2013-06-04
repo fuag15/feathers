@@ -263,7 +263,7 @@ sensible default for uploaders that are meant to be mounted:</p>
           <div class="method-source-code" id="store_dir-source">
             <pre><span class="ruby-comment"># File app/uploaders/package_uploader.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">store_dir</span>
-  <span class="ruby-node">&quot;uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}&quot;</span>
+  <span class="ruby-node">&quot;uploads/#{@model.class.to_s.underscore}/#{mounted_as}/#{@model.id}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- store_dir-source -->
           
