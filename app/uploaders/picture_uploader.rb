@@ -4,7 +4,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
   # rmagick for image manipulation
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
   # store in files
   storage :file
 
