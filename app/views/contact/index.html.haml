@@ -16,6 +16,6 @@ Whether you're looking to do some research, something on the side, talk, or empl
     %p
       = email_field_tag :from, nil, placeholder: 'email@domain.com'
     %p
-      = text_area_tag :text, nil, placeholder: 'message ...'
+      = text_area_tag :text, nil, placeholder: 'message ...', rows: 15, class: 'input-xxlarge'
     = submit_tag 'Submit', class: 'btn btn-primary'
 .social.pull-right
