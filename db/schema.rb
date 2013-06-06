@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130520020211) do
+ActiveRecord::Schema.define(:version => 20130606061624) do
 
   create_table "addresses", :force => true do |t|
-    t.string   "name"
     t.string   "street"
     t.string   "city"
+    t.string   "phone"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(:version => 20130520020211) do
   end
 
   create_table "resume_entries", :force => true do |t|
-    t.string   "name"
+    t.text     "name"
     t.integer  "rank",               :default => 0
     t.integer  "resume_category_id"
     t.datetime "created_at",                        :null => false

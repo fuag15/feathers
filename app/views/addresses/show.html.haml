@@ -1,8 +1,12 @@
 - content_for :title do
   Showing Address
-= @address.name
-= @address.street
-= @address.city
+%center
+  %p
+    = @address.street
+  %p
+    = @address.city
+  %p
+    = @address.phone
 .btn-group.pull-left
   = link_to 'back', addresses_path, class: 'btn'
   = link_to 'edit', edit_address_path(@address), class: 'btn btn-primary'

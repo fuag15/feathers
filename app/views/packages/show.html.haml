@@ -1,7 +1,10 @@
 - content_for :title do
   Showing Package
-= @package.version
-= @package.file.url
+%center
+  %p
+    = @package.version
+  %p
+    = @package.file.url
 .btn-group.pull-left
   = link_to 'back', project_packages_path(@package.projects.first), class: 'btn'
   = link_to 'edit', edit_project_package_path(@package.projects.first, @package), class: 'btn btn-primary'

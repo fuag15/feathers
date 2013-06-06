@@ -2,11 +2,11 @@
   \/dev/boone/resume
 - content_for :address do
   - @addresses.each do |address|
-    = address.name
-    %br
     = address.street
     %br
     = address.city
+    %br
+    = address.phone
     %br
   - if current_user.try :admin?
     = link_to 'manage addresses', addresses_path, class: 'btn btn-small'

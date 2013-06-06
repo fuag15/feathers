@@ -6,12 +6,12 @@ feature 'list addresses' do
     visit addresses_path
   end
 
-  scenario 'displays an address name' do
-    expect(page).to have_content @address.name
+  scenario 'displays an address street' do
+    expect(page).to have_content @address.street
   end
 
   scenario 'when I click an address I should be on that show path' do
-    click_link @address.name
+    click_link @address.street
     expect(current_path).to eq address_path @address
   end
 
@@ -44,9 +44,9 @@ feature 'create addresses' do
 
   context 'when I create an address' do
     background do
-      fill_in 'address_city', with: Forgery(:lorem_ipsum).word
-      fill_in 'address_name', with: Forgery(:lorem_ipsum).word
+      fill_in 'address_phone', with: Forgery(:lorem_ipsum).word
       fill_in 'address_street', with: Forgery(:lorem_ipsum).word
+      fill_in 'address_city', with: Forgery(:lorem_ipsum).word
       click_button 'Create Address'
     end
 
@@ -69,9 +69,9 @@ feature 'edit addresses' do
 
   context 'when I edit the address' do
     background do
-      fill_in 'address_city', with: Forgery(:lorem_ipsum).word
-      fill_in 'address_name', with: Forgery(:lorem_ipsum).word
+      fill_in 'address_phone', with: Forgery(:lorem_ipsum).word
       fill_in 'address_street', with: Forgery(:lorem_ipsum).word
+      fill_in 'address_city', with: Forgery(:lorem_ipsum).word
       click_button 'Update Address'
     end
 
