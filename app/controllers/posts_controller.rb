@@ -8,7 +8,6 @@ class PostsController < ApplicationController
   # pagination
   def index
     @posts = Post.page params[:page]
-    respond_with @post
   end
 
   # simple create method on true sends a good notice

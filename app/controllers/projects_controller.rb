@@ -4,10 +4,13 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource
   # serve up html
   respond_to :html
-  # load the parent routes project categories for index display
-  before_filter :load_categories, only: [:index]
   # load the parent reouts project
   before_filter :load_category, only: [:new, :create, :edit]
+
+  # paginate our categories
+  def index
+    @project_categories = ProjectCategory.page params[:page]
+  end
 
   # simple create method on true sends a good notice
   def create
@@ -31,10 +34,5 @@ class ProjectsController < ApplicationController
     # helper to load parent routes category for nested projects
     def load_category
       @project_category = ProjectCategory.find params[:project_category_id]
-    end
-
-    # helper to load all parents for index
-    def load_categories
-      @project_categories = ProjectCategory.all
     end
 end

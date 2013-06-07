@@ -24,3 +24,4 @@
                 = image_tag job.pictures.first.image.url :gallery
         %p= markdown job.blurb
   .clear
+%center= paginate @job_categories

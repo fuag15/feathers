@@ -25,3 +25,4 @@
                 = image_tag project.pictures.first.image.url :gallery
         %p= markdown project.blurb
   .clear
+%center= paginate @project_categories
