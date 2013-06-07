@@ -13,6 +13,6 @@ class Contact < ActionMailer::Base
   # text:: body of the email
   def contact from, text
     @text = text
-    mail(reply_to: from, subject: "Contact from #{from}")
+    mail reply_to: from, subject: "Contact from #{from}"
   end
 end
