@@ -14,6 +14,6 @@ class PackageUploader < CarrierWave::Uploader::Base
 
   # A white list of extensions which are allowed to be uploaded.
   def extension_white_list
-    %w(zip)
+    %w(zip pdf blend u int upk gz tar tar.gz)
   end
 end
