@@ -8,13 +8,9 @@
   %tbody
     - ["# Header", "## Header", "### Header", "#### Header", "##### Header", "###### Header", "---", "_emphasis_", "*italic*", "`kinda quote`", "- list", "1. ordered list", "> blockquote", "    text preceeded by 4 spaces", "[more info](http://daringfireball.net/projects/markdown/basics)"].each do |text|
       %tr
-        %td
-          = text
-        %td
-          = markdown text
+        %td= text
+        %td= markdown text
     - if Picture.first
       %tr
-        %td
-          = "__#{Picture.first.name}__"
-        %td
-          = markdown "__#{Picture.first.name}__"
+        %td= "__#{Picture.first.name}__"
+        %td= markdown "__#{Picture.first.name}__"

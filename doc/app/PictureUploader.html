@@ -78,7 +78,7 @@
   
   
   
-    <li><span class="include">CarrierWave::RMagick</span>
+    <li><span class="include">CarrierWave::MiniMagick</span>
   
   
   </ul>
@@ -141,6 +141,8 @@
   
     <li><a href="./JobsController.html">JobsController</a>
   
+    <li><a href="./JobsPackage.html">JobsPackage</a>
+  
     <li><a href="./JobsPicture.html">JobsPicture</a>
   
     <li><a href="./Package.html">Package</a>
@@ -148,6 +150,8 @@
     <li><a href="./PackageUploader.html">PackageUploader</a>
   
     <li><a href="./PackagesController.html">PackagesController</a>
+  
+    <li><a href="./PackagesHelper.html">PackagesHelper</a>
   
     <li><a href="./PackagesProject.html">PackagesProject</a>
   
@@ -240,8 +244,7 @@ uploaded:</p>
           <div class="method-source-code" id="default_url-source">
             <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">default_url</span>
-  <span class="ruby-comment"># For Rails 3.1+ asset pipeline compatibility:</span>
-  <span class="ruby-identifier">asset_path</span>(<span class="ruby-string">&quot;fallback/&quot;</span> <span class="ruby-operator">+</span> [<span class="ruby-identifier">version_name</span>, <span class="ruby-string">&quot;default.png&quot;</span>].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;_&#39;</span>))
+  <span class="ruby-identifier">asset_path</span> <span class="ruby-string">&quot;waterdrop.png&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- default_url-source -->
           
@@ -269,7 +272,7 @@ uploaded:</p>
 
           
           <div class="method-source-code" id="extension_white_list-source">
-            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 48</span>
+            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">extension_white_list</span>
   <span class="ruby-node">%w(jpg jpeg gif png)</span>
 <span class="ruby-keyword">end</span></pre>

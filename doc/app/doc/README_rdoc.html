@@ -83,6 +83,8 @@
   
     <li><a href="../JobsController.html">JobsController</a>
   
+    <li><a href="../JobsPackage.html">JobsPackage</a>
+  
     <li><a href="../JobsPicture.html">JobsPicture</a>
   
     <li><a href="../Package.html">Package</a>
@@ -90,6 +92,8 @@
     <li><a href="../PackageUploader.html">PackageUploader</a>
   
     <li><a href="../PackagesController.html">PackagesController</a>
+  
+    <li><a href="../PackagesHelper.html">PackagesHelper</a>
   
     <li><a href="../PackagesProject.html">PackagesProject</a>
   
@@ -163,11 +167,20 @@
 <p>rake analyzer:all</p>
 </li><li>
 <p>rake spec:view</p>
-</li><li>
-<p>zeus</p>
-</li><li>
-<p>gaurd # paralel might be usefull depending on situation</p>
 </li></ul>
+
+<h3 id="label-Super+Testing">Super Testing</h3>
+<ul><li>
+<p>rake parallel:create # create db&#39;s</p>
+</li><li>
+<p>rake parallel:prepare # run migrations</p>
+</li><li>
+<p>zeus start # start zeus host</p>
+</li><li>
+<p>guard # start gaurd to watch files</p>
+</li></ul>
+
+<p>enjoy :)</p>
 
 <h4 id="label-Coverage+Report">Coverage Report</h4>
 <ul><li>

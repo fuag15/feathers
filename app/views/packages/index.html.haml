@@ -1,5 +1,5 @@
 - content_for :title do
-  #{@project.name} Package List
+  #{@owner.name} Package List
 %table.table.table-striped
   %thead
     %tr
@@ -10,10 +10,8 @@
   %tbody
     - @packages.each do |package|
       %tr
-        %td
-          = link_to package.file.url, [package.projects.first, package]
-        %td
-          = package.version
+        %td= link_to package.file.url, [package.owner, package]
+        %td= package.version
 .btn-group.pull-left
-  = link_to 'create package', new_project_package_path(@project), class: 'btn btn-primary'
-  = link_to 'back', @project, class: 'btn'
+  = link_to 'create package', owner_aware_new_package_path(@owner), class: 'btn btn-primary'
+  = link_to 'back', @owner, class: 'btn'

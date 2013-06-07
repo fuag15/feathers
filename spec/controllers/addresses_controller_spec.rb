@@ -102,7 +102,7 @@ describe AddressesController do
       it 'doesnt update the address' do
         post :update, id: @address, address: @new_attr
         @address.reload
-        @address.name.should_not eq @new_attr[:name]
+        @address.phone.should_not eq @new_attr[:phone]
       end
     end
 
@@ -114,7 +114,7 @@ describe AddressesController do
       it 'should update the address' do
         post :update, id: @address, address: @new_attr
         @address.reload
-        @address.name.should eq @new_attr[:name]
+        @address.phone.should eq @new_attr[:phone]
       end
     end
   end

@@ -12,5 +12,12 @@ FactoryGirl.define do
         project.packages << package
       end
     end
+
+    factory :package_with_job do
+      after :create do |package|
+        job = FactoryGirl.create(:job)
+        job.packages << package
+      end
+    end
   end
 end

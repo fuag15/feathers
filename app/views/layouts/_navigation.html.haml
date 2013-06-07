@@ -2,13 +2,16 @@
   .TimeStamp
     = link_to root_path do
       %center
-        Last Edited:
-        %br
-        %b
-          - if Post.first.try(:updated_at)
-            = Post.first.updated_at.to_time.strftime("%B %d, %Y")
-            %br
-            = Post.first.updated_at.to_time.strftime("%H:%M:%S")
+        %ul
+          %li
+            Last Edited:
+          - if Post.first.try :updated_at
+            %li
+              %b
+                = Post.first.updated_at.to_time.strftime "%B %d, %Y"
+            %li
+              %b
+                = Post.first.updated_at.to_time.strftime "%H:%M:%S"
   .TimeStampBot
   = link_to jobs_path do
     .PicBoxTop

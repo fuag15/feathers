@@ -10,10 +10,8 @@
   %tbody
     - @project_categories.each do |project_category|
       %tr
-        %td
-          = link_to project_category.name, project_category
-        %td
-          = project_category.rank
+        %td= link_to project_category.name, project_category
+        %td= project_category.rank
 .btn-group.pull-left
   = link_to 'create project category', new_project_category_path, class: 'btn btn-primary'
   = link_to 'back', projects_path, class: 'btn'

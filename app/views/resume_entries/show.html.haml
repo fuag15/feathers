@@ -1,7 +1,8 @@
 - content_for :title do
   Showing Resume Entry
-= @resume_entry.name
-= @resume_entry.rank
+%center
+  %p= @resume_entry.name
+  %p= @resume_entry.rank
 .btn-group.pull-left
   = link_to 'back', resume_category_resume_entries_path(@resume_entry.resume_category), class: 'btn'
   = link_to 'edit', edit_resume_category_resume_entry_path(@resume_entry.resume_category, @resume_entry), class: 'btn btn-primary'

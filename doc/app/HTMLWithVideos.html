@@ -117,6 +117,8 @@
   
     <li><a href="./JobsController.html">JobsController</a>
   
+    <li><a href="./JobsPackage.html">JobsPackage</a>
+  
     <li><a href="./JobsPicture.html">JobsPicture</a>
   
     <li><a href="./Package.html">Package</a>
@@ -124,6 +126,8 @@
     <li><a href="./PackageUploader.html">PackageUploader</a>
   
     <li><a href="./PackagesController.html">PackagesController</a>
+  
+    <li><a href="./PackagesHelper.html">PackagesHelper</a>
   
     <li><a href="./PackagesProject.html">PackagesProject</a>
   
@@ -218,7 +222,7 @@ exists</p>
   <span class="ruby-keyword">if</span> <span class="ruby-constant">Picture</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">text</span>).<span class="ruby-identifier">present?</span>
     <span class="ruby-node">&quot;&lt;a href=&#39;#{Picture.where(name: text).first.image.url}&#39; class=&#39;lightbox&#39;&gt;&lt;img src=&#39;#{Picture.where(name: text).first.image.url}&#39; /&gt;&lt;/a&gt;&quot;</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">text</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- double_emphasis-source -->

@@ -1,9 +1,7 @@
-= form_for resume_category do |f|
-  = render partial: 'shared/form_error', collection: resume_category.errors.full_messages
-  %p
-    = f.text_field :name, placeholder: 'name'
-  %p
-    = f.text_field :rank, placeholder: 'rank'
-  %p
-    = f.submit class: 'btn btn-primary pull-right'
-  .clear
+%center
+  = form_for resume_category do |f|
+    = render partial: 'shared/form_error', collection: resume_category.errors.full_messages
+    %p= f.text_field :name, placeholder: 'name'
+    %p= f.text_field :rank, placeholder: 'rank'
+    %p= f.submit class: 'btn btn-primary pull-right'
+    .clear

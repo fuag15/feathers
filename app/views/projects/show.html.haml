@@ -3,13 +3,15 @@
 - content_for :title do
   = @project.name
   = render partial: 'shared/authentication'
-- if current_user.try :admin?
-  .btn-group.pull-right
-    = link_to 'edit project', edit_project_category_project_path(@project.project_category, @project), class: 'btn btn-primary'
-    = link_to 'manage packages', project_packages_path(@project), class: 'btn'
-    = link_to 'manage pictures', project_pictures_path(@project), class: 'btn'
-  = button_to 'destroy project', [@project.project_category, @project], method: :delete, class: 'btn'
-  .clear
+%p
+  - if current_user.try :admin?
+    .btn-group.pull-right
+      = link_to 'back', project_category_path(@project.project_category), class: 'btn'
+      = link_to 'edit project', edit_project_category_project_path(@project.project_category, @project), class: 'btn btn-primary'
+      = link_to 'manage packages', project_packages_path(@project), class: 'btn btn-warning'
+      = link_to 'manage pictures', project_pictures_path(@project), class: 'btn btn-warning'
+    = button_to 'destroy project', [@project.project_category, @project], method: :delete, class: 'btn btn-danger'
+    .clear
 .projectDetailImage
   - if @project.pictures.present?
     = link_to @project.pictures.first.try(:image).url(:bestfit), class: 'lightbox', rel: "project_#{@project.id}" do
@@ -20,12 +22,11 @@
       = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "project_#{@project.id}" do
         = image_tag picture.image.url(:small)
   .clear
-= markdown @project.detail
-%br
-%br
-.employerTag
-  Team Members: #{@project.team}
-.clear
-- @project.packages.each do |package|
-  = link_to package.version, package.file.url
-  %br
+%p= markdown @project.detail
+%p
+  .employerTag
+    Team Members: #{@project.team}
+  .clear
+%ul
+  - @project.packages.each do |package|
+    %li= link_to package.version, package.file.url

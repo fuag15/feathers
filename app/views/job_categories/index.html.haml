@@ -10,10 +10,8 @@
   %tbody
     - @job_categories.each do |job_category|
       %tr
-        %td
-          = link_to job_category.name, job_category
-        %td
-          = job_category.rank
+        %td= link_to job_category.name, job_category
+        %td= job_category.rank
 .btn-group.pull-left
   = link_to 'create job category', new_job_category_path, class: 'btn btn-primary'
   = link_to 'back', jobs_path, class: 'btn'
