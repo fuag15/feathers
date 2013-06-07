@@ -30,10 +30,6 @@ To set up a local env clone and cd into cloned directory then:
 
 You should be able to view the site on `localhost:3000`, or [here][local-host]
 
-## Current Hosts
-
-- N/A
-
 ## Dev Guidlines
 
 - Use git flow
