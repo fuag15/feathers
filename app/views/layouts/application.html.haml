@@ -16,9 +16,11 @@
           .BackGround
             .Text
               = render 'layouts/flash_messages'
-              %center
-                .mainTitle
-                  = yield :title
+              %p
+                %center
+                  .mainTitle
+                    = yield :title
+              %br
               %p= yield
           .rightMainBorder
           .clear

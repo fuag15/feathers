@@ -9,4 +9,4 @@
     = link_to 'create post', new_post_path, class: 'btn pull-right'
     .clear
 = render @posts
-= paginate @posts, theme: 'twitter-bootstrap'
+%center= paginate @posts, theme: 'twitter-bootstrap'

@@ -7,6 +7,11 @@ class PackagesController < ApplicationController
   # load the parent project on routes that need it for display
   before_filter :load_owner, except: [:destroy, :show, :edit, :update]
 
+  # narrow our loaded images down
+  def index
+    @packages = @owner.packages
+  end
+
   # simple create method on true sends a good notice
   def create
     flash[:notice] = 'Package Created' if @owner.packages << @package
