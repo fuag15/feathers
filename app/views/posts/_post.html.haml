@@ -1,19 +1,18 @@
-%br
-%br
-.EntryHolder
-  .EntryLine
-    .EntryHeader
-      = post.created_at.to_time.strftime("%B %d, %Y")
+%p
+  .EntryHolder
+    .EntryLine
+      .EntryHeader
+        = post.created_at.to_time.strftime "%B %d, %Y"
 .blogImage
   = link_to post.picture.url(:large), class: 'lightbox', rel: "post_#{post.id}" do
-    = image_tag post.picture.url(:small)
+    = image_tag post.picture.url :small
 = markdown post.content
 .clear
 - post.pictures.each do |picture|
   .blogExtraImage
     = link_to picture.image.url(:large), class: 'lightbox', rel: "post_#{post.id}" do
-      = image_tag picture.image.url(:thumb)
+      = image_tag picture.image.url :thumb
 .clear
 - if current_user.try :admin?
-  .pull-right
-    = link_to 'show', post_path(post), class: 'btn'
+  %p= link_to 'show', post_path(post), class: 'btn pull-right'
+  .clear

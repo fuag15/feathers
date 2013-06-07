@@ -1,15 +1,14 @@
 !!!
 %html
   %head
-    %title
-      = yield :browser
+    %title= yield :browser
     = render partial: 'layouts/meta'
-    = stylesheet_link_tag "application", media: "all"
-    = javascript_include_tag "application"
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
   %body
-    .Center{ align: "center" }
+    .Center{ align: 'center' }
       .Holder
         .topMainBorder
         .dropShadowHolder
@@ -20,13 +19,11 @@
               %center
                 .mainTitle
                   = yield :title
-              %br
-              %br
-              = yield
+              %p= yield
           .rightMainBorder
           .clear
         .botMainBorder
-      = render partial: "layouts/navigation"
+      = render partial: 'layouts/navigation'
       .clear
       .Sig
         %i

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606061624) do
+ActiveRecord::Schema.define(:version => 20130606233254) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(:version => 20130606061624) do
   end
 
   add_index "jobs", ["job_category_id"], :name => "index_jobs_on_job_category_id"
+
+  create_table "jobs_packages", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "package_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "jobs_packages", ["job_id"], :name => "index_jobs_packages_on_job_id"
+  add_index "jobs_packages", ["package_id"], :name => "index_jobs_packages_on_package_id"
 
   create_table "jobs_pictures", :force => true do |t|
     t.integer  "job_id"

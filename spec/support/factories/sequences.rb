@@ -3,6 +3,10 @@ FactoryGirl.define do
     "name#{n}"
   end
 
+  sequence :phone do |n|
+    "phone#{n}"
+  end
+
   sequence :title do |n|
     "title#{n}"
   end

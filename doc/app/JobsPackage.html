@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class PictureUploader - Midgard Productions RDoc</title>
+<title>class JobsPackage - Midgard Productions RDoc</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/uploaders/picture_uploader.rb
+    <li>app/models/jobs_package.rb
   </ul>
 </nav>
 
@@ -59,46 +59,12 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link">CarrierWave::Uploader::Base
+  <p class="link">ActiveRecord::Base
   
 </nav>
 
-    <!-- Included Modules -->
-<nav id="includes-section" class="section">
-  <h3 class="section-header">Included Modules</h3>
-
-  <ul class="link-list">
-  
-  
-    <li><span class="include">Sprockets::Helpers::RailsHelper</span>
-  
-  
-  
-    <li><span class="include">Sprockets::Helpers::IsolatedHelper</span>
-  
-  
-  
-    <li><span class="include">CarrierWave::MiniMagick</span>
-  
-  
-  </ul>
-</nav>
-
-    <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
-
-  <ul class="link-list">
     
-    <li><a href="#method-i-default_url">#default_url</a>
     
-    <li><a href="#method-i-extension_white_list">#extension_white_list</a>
-    
-    <li><a href="#method-i-store_dir">#store_dir</a>
-    
-  </ul>
-</nav>
-
   </div>
 
   <div id="project-metadata">
@@ -198,12 +164,12 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class PictureUploader</h1>
+  <h1 class="class">class JobsPackage</h1>
 
   <div id="description" class="description">
     
-<p>Uploader to handle images associated with <a href="Post.html">Post</a> <a
-href="Project.html">Project</a> and <a href="Job.html">Job</a></p>
+<p>A join model for <a href="Job.html">Job</a> and <a
+href="Package.html">Package</a></p>
 
   </div><!-- description -->
 
@@ -221,104 +187,6 @@ href="Project.html">Project</a> and <a href="Job.html">Job</a></p>
 
     <!-- Methods -->
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-default_url" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">default_url</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Provide a default URL as a default if there hasn&#39;t been a file
-uploaded:</p>
-          
-
-          
-          <div class="method-source-code" id="default_url-source">
-            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">default_url</span>
-  <span class="ruby-comment"># For Rails 3.1+ asset pipeline compatibility:</span>
-  <span class="ruby-identifier">asset_path</span>(<span class="ruby-string">&quot;fallback/&quot;</span> <span class="ruby-operator">+</span> [<span class="ruby-identifier">version_name</span>, <span class="ruby-string">&quot;default.png&quot;</span>].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;_&#39;</span>))
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- default_url-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- default_url-method -->
-
-    
-      <div id="method-i-extension_white_list" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">extension_white_list</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>allowed extension types</p>
-          
-
-          
-          <div class="method-source-code" id="extension_white_list-source">
-            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 48</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">extension_white_list</span>
-  <span class="ruby-node">%w(jpg jpeg gif png)</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- extension_white_list-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- extension_white_list-method -->
-
-    
-      <div id="method-i-store_dir" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">store_dir</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>default storage dir for uploaded files</p>
-          
-
-          
-          <div class="method-source-code" id="store_dir-source">
-            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 12</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">store_dir</span>
-  <span class="ruby-node">&quot;uploads/#{@model.class.to_s.underscore}/#{mounted_as}/#{@model.id}&quot;</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- store_dir-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- store_dir-method -->
-
-    
-    </section><!-- public-instance-method-details -->
-  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->

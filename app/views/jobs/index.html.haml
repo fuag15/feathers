@@ -4,26 +4,23 @@
   Clients
   = render partial: 'shared/authentication'
 = image_tag 'DavisDeathStar.jpg'
-%br
-%br
-- if current_user.try :admin?
-  .pull-right
-    = link_to 'manage jobs', job_categories_path, class: 'btn'
-  .clear
+%p
+  - if current_user.try :admin?
+    = link_to 'manage jobs', job_categories_path, class: 'btn pull-right'
+    .clear
 - @job_categories.each do |job_category|
   .categorySeperator
     = job_category.name
   - job_category.jobs.each do |job|
     .project
       = link_to job_path job do
-        .subTitle
-          = job.name
-        %br
-        %center
-          .projectImage
-            - if job.pictures.present?
-              = image_tag job.pictures.first.image.url(:gallery)
-        %br
-        %br
-        = markdown job.blurb
+        %p
+          .subTitle
+            = job.name
+        %p
+          %center
+            .projectImage
+              - if job.pictures.present?
+                = image_tag job.pictures.first.image.url :gallery
+        %p= markdown job.blurb
   .clear

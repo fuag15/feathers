@@ -15,8 +15,8 @@ Feathers::Application.routes.draw do
     resources :pictures
   end
 
-  # projects have packages
-  resources :projects do
+  # projects and jobs have packages
+  resources :projects, :jobs do
     resources :packages
   end
 

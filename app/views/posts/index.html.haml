@@ -4,10 +4,9 @@
   Slash dev Slash Boone
   = render partial: 'shared/authentication'
 = image_tag 'DavisDeathStar.jpg'
-%br
-%br
-- if current_user.try :admin?
-  .pull-right
-    = link_to 'create post', new_post_path, class: 'btn'
+%p
+  - if current_user.try :admin?
+    = link_to 'create post', new_post_path, class: 'btn pull-right'
+    .clear
 = render @posts
 = paginate @posts, theme: 'twitter-bootstrap'

@@ -1,10 +1,7 @@
 %center
   = form_for [owner, picture] do |f|
     = render partial: 'shared/form_error', collection: picture.errors.full_messages
-    %p
-      = f.text_field :name, placeholder: 'name'
-    %p
-      = f.file_field :image
-    %p
-      = f.submit class: 'btn btn-primary pull-right'
+    %p= f.text_field :name, placeholder: 'name'
+    %p= f.file_field :image
+    %p= f.submit class: 'btn btn-primary pull-right'
     .clear

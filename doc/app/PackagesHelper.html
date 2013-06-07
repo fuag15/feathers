@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class PictureUploader - Midgard Productions RDoc</title>
+<title>module PackagesHelper - Midgard Productions RDoc</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
 
 
-<body id="top" class="class">
+<body id="top" class="module">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/uploaders/picture_uploader.rb
+    <li>app/helpers/packages_helper.rb
   </ul>
 </nav>
 
@@ -56,45 +56,19 @@
 
   <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
-  
-  <p class="link">CarrierWave::Uploader::Base
-  
-</nav>
-
-    <!-- Included Modules -->
-<nav id="includes-section" class="section">
-  <h3 class="section-header">Included Modules</h3>
-
-  <ul class="link-list">
-  
-  
-    <li><span class="include">Sprockets::Helpers::RailsHelper</span>
-  
-  
-  
-    <li><span class="include">Sprockets::Helpers::IsolatedHelper</span>
-  
-  
-  
-    <li><span class="include">CarrierWave::MiniMagick</span>
-  
-  
-  </ul>
-</nav>
-
+    
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-i-default_url">#default_url</a>
+    <li><a href="#method-i-owner_aware_edit_package_path">#owner_aware_edit_package_path</a>
     
-    <li><a href="#method-i-extension_white_list">#extension_white_list</a>
+    <li><a href="#method-i-owner_aware_new_package_path">#owner_aware_new_package_path</a>
     
-    <li><a href="#method-i-store_dir">#store_dir</a>
+    <li><a href="#method-i-owner_aware_packages_path">#owner_aware_packages_path</a>
     
   </ul>
 </nav>
@@ -198,12 +172,13 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class PictureUploader</h1>
+  <h1 class="module">module PackagesHelper</h1>
 
   <div id="description" class="description">
     
-<p>Uploader to handle images associated with <a href="Post.html">Post</a> <a
-href="Project.html">Project</a> and <a href="Job.html">Job</a></p>
+<p>Helper to get parents of <a href="Package.html">Package</a> routes these
+will be either <a href="Post.html">Post</a> <a
+href="Project.html">Project</a> or <a href="Job.html">Job</a></p>
 
   </div><!-- description -->
 
@@ -225,96 +200,106 @@ href="Project.html">Project</a> and <a href="Job.html">Job</a></p>
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-default_url" class="method-detail ">
+      <div id="method-i-owner_aware_edit_package_path" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">default_url</span><span
-            class="method-args">()</span>
+          <span class="method-name">owner_aware_edit_package_path</span><span
+            class="method-args">(owner, package)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          <p>Provide a default URL as a default if there hasn&#39;t been a file
-uploaded:</p>
+          <p>return the right edit path since we are multi using this model</p>
           
 
           
-          <div class="method-source-code" id="default_url-source">
-            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">default_url</span>
-  <span class="ruby-comment"># For Rails 3.1+ asset pipeline compatibility:</span>
-  <span class="ruby-identifier">asset_path</span>(<span class="ruby-string">&quot;fallback/&quot;</span> <span class="ruby-operator">+</span> [<span class="ruby-identifier">version_name</span>, <span class="ruby-string">&quot;default.png&quot;</span>].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;_&#39;</span>))
+          <div class="method-source-code" id="owner_aware_edit_package_path-source">
+            <pre><span class="ruby-comment"># File app/helpers/packages_helper.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">owner_aware_edit_package_path</span> <span class="ruby-identifier">owner</span>, <span class="ruby-identifier">package</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Project</span>
+    <span class="ruby-identifier">edit_project_package_path</span> <span class="ruby-identifier">owner</span>, <span class="ruby-identifier">package</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">edit_job_package_path</span> <span class="ruby-identifier">owner</span>, <span class="ruby-identifier">package</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- default_url-source -->
+          </div><!-- owner_aware_edit_package_path-source -->
           
         </div>
 
         
 
         
-      </div><!-- default_url-method -->
+      </div><!-- owner_aware_edit_package_path-method -->
 
     
-      <div id="method-i-extension_white_list" class="method-detail ">
+      <div id="method-i-owner_aware_new_package_path" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">extension_white_list</span><span
-            class="method-args">()</span>
+          <span class="method-name">owner_aware_new_package_path</span><span
+            class="method-args">(owner)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          <p>allowed extension types</p>
+          <p>return the right new path needed since this is a shared model</p>
           
 
           
-          <div class="method-source-code" id="extension_white_list-source">
-            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 48</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">extension_white_list</span>
-  <span class="ruby-node">%w(jpg jpeg gif png)</span>
+          <div class="method-source-code" id="owner_aware_new_package_path-source">
+            <pre><span class="ruby-comment"># File app/helpers/packages_helper.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">owner_aware_new_package_path</span> <span class="ruby-identifier">owner</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Project</span>
+    <span class="ruby-identifier">new_project_package_path</span> <span class="ruby-identifier">owner</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">new_job_package_path</span> <span class="ruby-identifier">owner</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- extension_white_list-source -->
+          </div><!-- owner_aware_new_package_path-source -->
           
         </div>
 
         
 
         
-      </div><!-- extension_white_list-method -->
+      </div><!-- owner_aware_new_package_path-method -->
 
     
-      <div id="method-i-store_dir" class="method-detail ">
+      <div id="method-i-owner_aware_packages_path" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">store_dir</span><span
-            class="method-args">()</span>
+          <span class="method-name">owner_aware_packages_path</span><span
+            class="method-args">(owner)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          <p>default storage dir for uploaded files</p>
+          <p>return the right index path since we are sharing this model</p>
           
 
           
-          <div class="method-source-code" id="store_dir-source">
-            <pre><span class="ruby-comment"># File app/uploaders/picture_uploader.rb, line 12</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">store_dir</span>
-  <span class="ruby-node">&quot;uploads/#{@model.class.to_s.underscore}/#{mounted_as}/#{@model.id}&quot;</span>
+          <div class="method-source-code" id="owner_aware_packages_path-source">
+            <pre><span class="ruby-comment"># File app/helpers/packages_helper.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">owner_aware_packages_path</span> <span class="ruby-identifier">owner</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Project</span>
+    <span class="ruby-identifier">project_packages_path</span> <span class="ruby-identifier">owner</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">job_packages_path</span> <span class="ruby-identifier">owner</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- store_dir-source -->
+          </div><!-- owner_aware_packages_path-source -->
           
         </div>
 
         
 
         
-      </div><!-- store_dir-method -->
+      </div><!-- owner_aware_packages_path-method -->
 
     
     </section><!-- public-instance-method-details -->

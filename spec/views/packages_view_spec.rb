@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'packages/index' do
   before do
     project = FactoryGirl.create :project_with_pictures_and_packages
-    assign :project, project
+    assign :owner, project
     assign :packages, project.packages
     render
   end
@@ -15,7 +15,7 @@ end
 
 describe 'packages/edit' do
   before do
-    package = FactoryGirl.create :package
+    package = FactoryGirl.create :package_with_project
     assign :package, package
     render
   end
@@ -27,7 +27,7 @@ end
 
 describe 'packages/new' do
   before do
-    package = FactoryGirl.create :package
+    package = FactoryGirl.create :package_with_project
     assign :package, package
     render
   end

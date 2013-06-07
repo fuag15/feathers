@@ -1,16 +1,10 @@
 %center
   = form_for [project_category, project] do |f|
     = render partial: 'shared/form_error', collection: project.errors.full_messages
-    %p
-      = f.text_field :name, placeholder: 'name'
-    %p
-      = f.text_field :rank, placeholder: 'rank'
-    %p
-      = f.text_field :team, placeholder: 'team'
-    %p
-      = f.text_area :blurb, placeholder: 'blurb', class: 'input-xxlarge'
-    %p
-      = f.text_area :detail, placeholder: 'detail', class: 'input-xxlarge'
-    %p
-      = f.submit class: 'btn btn-primary pull-right'
+    %p= f.text_field :name, placeholder: 'name'
+    %p= f.text_field :rank, placeholder: 'rank'
+    %p= f.text_field :team, placeholder: 'team'
+    %p= f.text_area :blurb, placeholder: 'blurb', class: 'input-xxlarge'
+    %p= f.text_area :detail, placeholder: 'detail', class: 'input-xxlarge'
+    %p= f.submit class: 'btn btn-primary pull-right'
     .clear

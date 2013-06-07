@@ -10,6 +10,9 @@ class Job < ActiveRecord::Base
   belongs_to :job_category
   # it has many JobsPicture, essentially a join table
   has_many :jobs_pictures, dependent: :destroy
+  has_many :jobs_packages, dependent: :destroy
+
   # a through relations ship to Picture
+  has_many :packages, through: :jobs_packages, dependent: :destroy
   has_many :pictures, through: :jobs_pictures, dependent: :destroy
 end
