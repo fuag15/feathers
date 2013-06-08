@@ -2,26 +2,20 @@
 %html
   %head
     = render partial: 'layouts/meta'
-    = stylesheet_link_tag 'resume', media: 'screen'
-    = stylesheet_link_tag 'resume_print', media: 'print'
+    = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
     %title= yield :browser
   %body
-    .Center
-      .Water
-      .Holder
-        .Title
-          %p
-            .Name Michael D. Boone
-            .pdfLink
-              .btn-group
-                = link_to 'back', root_path, class: 'btn btn-small'
-                - if current_user.try :admin?
-                  = link_to 'edit', resume_categories_path, class: 'btn btn-small btn-warning'
-            .clearMe
-          .Address
-            = yield :address
-        .Text
-          = yield
+    .resume-container
+      .water.pull-left= image_tag 'waterdrop.png'
+      .resume-header.clearfix
+        .btn-group.pull-right
+          = link_to 'back', root_path, class: 'btn btn-small'
+          - if current_user.try :admin?
+            = link_to 'edit', resume_categories_path, class: 'btn btn-small btn-warning'
+        %strong.resume-name
+          Michael D. Boone
+        = yield :address
+      = yield

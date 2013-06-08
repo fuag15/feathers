@@ -6,15 +6,5 @@
 = image_tag 'DavisDeathStar.jpg'
 - if current_user.try :admin?
   %p= link_to 'manage jobs', job_categories_path, class: 'btn pull-right clearfix'
-- @job_categories.each do |job_category|
-  .category-seperator= job_category.name
-  .category-holder.clearfix
-    - job_category.jobs.each do |job|
-      .category-item
-        = link_to job_path job do
-          %p.sub-title= job.name
-          %p.image-mini.center-text
-            - if job.pictures.present?
-              = image_tag job.pictures.first.image.url :gallery
-          %p= markdown job.blurb
+= render partial: 'shared/category', collection: @job_categories
 .text-center= paginate @job_categories, theme: 'twitter-bootstrap'

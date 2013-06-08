@@ -41,8 +41,7 @@ You should be able to view the site on `localhost:3000`, or [here][local-host]
 ## Roadmap
 
 - improve / re-design / profile / expand over time
-  - clean up sass (still legacy from 2006)
-  - clean up haml (still legacy from 2006)
+  - move update resumes for targeted resumes in new format
   - update to rails 4 when released
   - use rails 4 perf_test gem after update for performance testing
 

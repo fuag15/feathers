@@ -1,0 +1,14 @@
+.main-image-output
+  - if item.pictures.present?
+    = link_to item.pictures.first.try(:image).url(:bestfit), class: 'lightbox', rel: "item_#{item.id}" do
+      = image_tag item.pictures.first.try(:image).url :bestfit
+.images-holder.clearfix
+  - item.pictures.each do |picture|
+    .image-mini
+      = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "item_#{item.id}" do
+        = image_tag picture.image.url :small
+%p= markdown item.detail
+%p.pull-right.clearfix= related_people item
+%ul
+  - item.packages.each do |package|
+    %li= link_to package.version, package.file.url

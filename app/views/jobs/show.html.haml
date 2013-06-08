@@ -11,17 +11,4 @@
       = link_to 'manage packages', job_packages_path(@job), class: 'btn btn-warning'
       = link_to 'manage pictures', job_pictures_path(@job), class: 'btn btn-warning'
     = button_to 'destroy job', [@job.job_category, @job], method: :delete, class: 'btn btn-danger'
-.main-image-output
-  - if @job.pictures.present?
-    = link_to @job.pictures.first.try(:image).url(:bestfit), class: 'lightbox', rel: "job_#{@job.id}" do
-      = image_tag @job.pictures.first.try(:image).url :bestfit
-.images-holder.clearfix
-  - @job.pictures.each do |picture|
-    .image-mini
-      = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "job_#{@job.id}" do
-        = image_tag picture.image.url :small
-%p= markdown @job.detail
-%p.pull-right.clearfix Employer: #{@job.employer}
-%ul
-  - @job.packages.each do |package|
-    %li= link_to package.version, package.file.url
+= render partial: 'shared/category_item_display', locals: { item: @job }

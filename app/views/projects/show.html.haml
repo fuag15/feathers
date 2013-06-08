@@ -11,17 +11,4 @@
       = link_to 'manage packages', project_packages_path(@project), class: 'btn btn-warning'
       = link_to 'manage pictures', project_pictures_path(@project), class: 'btn btn-warning'
     = button_to 'destroy project', [@project.project_category, @project], method: :delete, class: 'btn btn-danger'
-.main-image-output
-  - if @project.pictures.present?
-    = link_to @project.pictures.first.try(:image).url(:bestfit), class: 'lightbox', rel: "project_#{@project.id}" do
-      = image_tag @project.pictures.first.try(:image).url :bestfit
-.images-holder.clearfix
-  - @project.pictures.each do |picture|
-    .image-mini
-      = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "project_#{@project.id}" do
-        = image_tag picture.image.url :small
-%p= markdown @project.detail
-%p.pull-right.clearfix Team Members: #{@project.team}
-%ul
-  - @project.packages.each do |package|
-    %li= link_to package.version, package.file.url
+= render partial: 'shared/category_item_display', locals: { item: @project }
