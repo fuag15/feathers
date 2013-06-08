@@ -1,11 +1,8 @@
 .row-fluid
-  .span10
-    = render 'shared/markdown_examples'
+  .span10= render 'shared/markdown_examples'
   .span2
     .well
-      %h4.muted
-        Related Images
+      %h4.muted Related Images
       = render 'shared/picture_list', pictures: owner.pictures
-      %h4.muted
-        Other Images
+      %h4.muted Other Images
       = render 'shared/picture_list', pictures: Picture.all - owner.pictures

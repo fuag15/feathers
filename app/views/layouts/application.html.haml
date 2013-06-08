@@ -1,32 +1,19 @@
 !!!
 %html
   %head
-    %title= yield :browser
     = render partial: 'layouts/meta'
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
+    %title= yield :browser
   %body
-    .Center{ align: 'center' }
-      .Holder
-        .topMainBorder
-        .dropShadowHolder
-          .leftMainBorder
-          .BackGround
-            .Text
-              = render 'layouts/flash_messages'
-              %p
-                %center
-                  .mainTitle
-                    = yield :title
-              %br
-              %p= yield
-          .rightMainBorder
-          .clear
-        .botMainBorder
-      = render partial: 'layouts/navigation'
-      .clear
-      .Sig
-        %i
-          C #{Time.now.year.to_s} Michael Boone
+    .container
+      .output-group.clearfix
+        .output-container
+          .output
+            = render 'layouts/flash_messages'
+            %p.main-title.text-center= yield :title
+            %p= yield
+        = render partial: 'layouts/navigation'
+      %em.signature C #{Time.now.year.to_s} Michael Boone

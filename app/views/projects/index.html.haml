@@ -4,25 +4,17 @@
   Projects
   = render partial: 'shared/authentication'
 = image_tag 'DavisDeathStar.jpg'
-%p
-  - if current_user.try :admin?
-    .pull-right
-      = link_to 'manage projects', project_categories_path, class: 'btn'
-    .clear
+- if current_user.try :admin?
+  %p= link_to 'manage projects', project_categories_path, class: 'btn pull-right clearfix'
 - @project_categories.each do |project_category|
-  .categorySeperator
-    = project_category.name
-  - project_category.projects.each do |project|
-    .project
-      = link_to project_path(project) do
-        %p
-          .subTitle
-            = project.name
-        %p
-          %center
-            .projectImage
-              - if project.pictures.present?
-                = image_tag project.pictures.first.image.url :gallery
-        %p= markdown project.blurb
-  .clear
-%center= paginate @project_categories
+  .category-seperator= project_category.name
+  .category-holder.clearfix
+    - project_category.projects.each do |project|
+      .category-item
+        = link_to project_path(project) do
+          %p.sub-title= project.name
+          %p.category_image.text-center
+            - if project.pictures.present?
+              = image_tag project.pictures.first.image.url :gallery
+          %p= markdown project.blurb
+.text-center= paginate @project_categories, theme: 'twitter-bootstrap'

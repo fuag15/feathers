@@ -5,14 +5,13 @@
   = render partial: 'shared/authentication'
 %p
   Whether you're looking to do some research, something on the side, talk, or employ me feel free to shoot me an e-mail or call me. Or you can use the contact form below.
-%center
-  %p
-    Phone: 510 325 4682
-    %br
-    E-mail: mike@steelpigeondesign.com
-  %p
-    = form_tag submit_path do
-      %p= email_field_tag :from, nil, placeholder: 'email@domain.com'
-      %p= text_area_tag :text, nil, placeholder: 'message ...', rows: 15, class: 'input-xxlarge'
-      %p= submit_tag 'Submit', class: 'btn btn-primary'
-.social.pull-right
+%p.text-center
+  Phone: 510 325 4682
+  %br
+  E-mail: mike@steelpigeondesign.com
+%p.text-center
+  = form_tag submit_path do
+    %p= email_field_tag :from, nil, placeholder: 'email@domain.com'
+    %p= text_area_tag :text, nil, placeholder: 'message ...', rows: 15, class: 'input-xxlarge'
+    %p= submit_tag 'Submit', class: 'btn btn-primary'
+.social.pull-right.clearfix

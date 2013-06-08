@@ -1,8 +1,6 @@
-%center
-  = form_for post do |f|
-    = render partial: 'shared/form_error', collection: post.errors.full_messages
-    %p= f.text_field :title, placeholder: 'title', class: 'input-xlarge'
-    %p= f.text_area :content, placeholder: 'content', class: 'input-xxlarge'
-    %p= f.file_field :picture
-    %p= f.submit class: 'btn btn-primary pull-right'
-    .clear
+= form_for post, html: { class: 'text-center' } do |f|
+  = render partial: 'shared/form_error', collection: post.errors.full_messages
+  %p= f.text_field :title, placeholder: 'title', class: 'input-xlarge'
+  %p= f.text_area :content, placeholder: 'content', class: 'input-xxlarge'
+  %p= f.file_field :picture
+  %p= f.submit class: 'btn btn-primary pull-right clearfix'

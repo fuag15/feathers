@@ -3,10 +3,8 @@
 %table.table.table-striped
   %thead
     %tr
-      %th
-        name
-      %th
-        rank
+      %th name
+      %th rank
   %tbody
     - @resume_category.resume_entries.each do |resume_entry|
       %tr
@@ -16,4 +14,4 @@
   = link_to 'create resume entry', new_resume_category_resume_entry_path(@resume_category), class: 'btn btn-primary'
   = link_to 'back', resume_categories_path, class: 'btn'
   = link_to 'edit', edit_resume_category_path(@resume_category), class: 'btn btn-primary'
-= button_to 'destroy', @resume_category, method: :delete, class: 'btn btn-danger pull-right'
+= button_to 'destroy', @resume_category, method: :delete, class: 'btn btn-danger pull-right clearfix'

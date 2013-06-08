@@ -1,8 +1,7 @@
 - content_for :title do
   ,,, O_O ,,,
-%center
-  = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
-    %p= f.email_field :email, placeholder: 'email', autofocus: true
-    %p= f.password_field :password, placeholder: 'password'
-    %p= f.submit "Sign in", class: 'btn btn-primary'
-  = render "devise/shared/links"
+= form_for resource, as: resource_name, html: { class: 'text-center' }, url: session_path resource_name do |f|
+  %p= f.email_field :email, placeholder: 'email', autofocus: true
+  %p= f.password_field :password, placeholder: 'password'
+  %p= f.submit "Sign in", class: 'btn btn-primary'
+.text-center= render "devise/shared/links"

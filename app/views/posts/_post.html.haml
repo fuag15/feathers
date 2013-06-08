@@ -1,18 +1,14 @@
-%p
-  .EntryHolder
-    .EntryLine
-      .EntryHeader
-        = post.created_at.to_time.strftime "%B %d, %Y"
-.blogImage
-  = link_to post.picture.url(:large), class: 'lightbox', rel: "post_#{post.id}" do
-    = image_tag post.picture.url :small
-= markdown post.content
-.clear
-- post.pictures.each do |picture|
-  .blogExtraImage
-    = link_to picture.image.url(:large), class: 'lightbox', rel: "post_#{post.id}" do
-      = image_tag picture.image.url :thumb
-.clear
-- if current_user.try :admin?
-  %p= link_to 'show', post_path(post), class: 'btn pull-right'
-  .clear
+.post-output
+  .post-date.text-center= post.created_at.to_time.strftime "%B %d, %Y"
+  %p.post-text-container.clearfix
+    .post-image
+      = link_to post.picture.url(:large), class: 'lightbox', rel: "post_#{post.id}" do
+        = image_tag post.picture.url :small
+    = markdown post.content
+  .post-images.clearfix
+    - post.pictures.each do |picture|
+      .post-image-mini
+        = link_to picture.image.url(:large), class: 'lightbox', rel: "post_#{post.id}" do
+          = image_tag picture.image.url :thumb
+  - if current_user.try :admin?
+    %p= link_to 'show', post_path(post), class: 'btn pull-right clearfix'
