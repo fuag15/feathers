@@ -4,10 +4,10 @@
     = render partial: 'layouts/meta'
     %title= yield :browser
   %body
-    .container
+    .main-container
       .output-group.clearfix
         .output-container
-          .output
+          .main-output
             = render 'layouts/flash_messages'
             %p.main-title.text-center= yield :title
             %p= yield

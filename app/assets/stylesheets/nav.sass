@@ -1,0 +1,26 @@
+@import 'bourbon'
+@import 'shadows'
+@import 'colors'
+
+.navigation-container
+  float: left
+  width: 200px
+  height: 400px
+  a, a:visited, a:hover, a:active
+    text-decoration: none
+    color: black
+    &:hover, &:active
+      color: white
+
+.nav-image
+  @include full-shadow
+  margin-top: 28px
+  float: right
+  border: 1px solid grey
+
+.nav-text
+  font-weight: bold
+  padding: 8px 24px 0px 24px
+  float: right
+  border-left: 1px solid black
+  border-bottom: 1px solid black

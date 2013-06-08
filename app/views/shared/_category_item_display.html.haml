@@ -4,7 +4,7 @@
       = image_tag item.pictures.first.try(:image).url :bestfit
 .images-holder.clearfix
   - item.pictures.each do |picture|
-    .image-mini
+    .image-mini.pull-left
       = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "item_#{item.id}" do
         = image_tag picture.image.url :small
 %p= markdown item.detail
