@@ -6,7 +6,7 @@
   %body
     .resume-container
       .water.pull-left= image_tag 'waterdrop.png'
-      .resume-header.clearfix
+      .resume-header
         .btn-group.pull-right
           = link_to 'back', root_path, class: 'btn btn-small'
           - if current_user.try :admin?

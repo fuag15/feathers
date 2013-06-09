@@ -10,7 +10,7 @@
           .main-output
             = render 'layouts/flash_messages'
             %p.main-title.text-center= yield :title
-            = render partial: 'shared/authentication'
+            = render partial: 'layouts/authentication'
             = yield
         = render partial: 'layouts/navigation'
       %em.signature C #{Time.now.year.to_s} Michael Boone

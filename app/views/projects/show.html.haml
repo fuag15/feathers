@@ -9,5 +9,5 @@
       = link_to 'edit project', edit_project_category_project_path(@project.project_category, @project), class: 'btn btn-primary'
       = link_to 'manage packages', project_packages_path(@project), class: 'btn btn-warning'
       = link_to 'manage pictures', project_pictures_path(@project), class: 'btn btn-warning'
-    = button_to 'destroy project', [@project.project_category, @project], method: :delete, class: 'btn btn-danger'
+    = button_to 'destroy project', [@project.project_category, @project], method: :delete, class: 'btn btn-danger clearfix'
 = render partial: 'shared/category_item_display', locals: { item: @project }

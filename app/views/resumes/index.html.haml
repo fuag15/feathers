@@ -1,8 +1,7 @@
 - content_for :browser do
   \/dev/boone/resume
 - content_for :address do
-  %p
-    = render @addresses
+  = render @addresses
   - if current_user.try :admin?
     = link_to 'manage addresses', addresses_path, class: 'btn btn-small'
 = render @resume_categories

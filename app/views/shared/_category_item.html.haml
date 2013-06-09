@@ -1,7 +1,7 @@
 .category-item
   = link_to category_item do
     %p.category-item-title= category_item.name
-    %p.category-image.center-text
+    %center.category-image
       - if category_item.pictures.present?
         = image_tag category_item.pictures.first.image.url :gallery
-    %p= markdown category_item.blurb
+    = markdown category_item.blurb

@@ -7,8 +7,8 @@
     .image-mini.pull-left
       = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "item_#{item.id}" do
         = image_tag picture.image.url :small
-%p= markdown item.detail
+= markdown item.detail
 %p.pull-right.clearfix= related_people item
-%ul
+%ul.unstyled
   - item.packages.each do |package|
     %li= link_to package.version, package.file.url

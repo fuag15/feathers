@@ -35,12 +35,12 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # image size used for lightbox displays
   version :large do
-    process resize_to_fit: [400, 400]
+    process resize_to_fit: [400, -1]
   end
 
   # image size used for largest deisplay in Project and Job show routes
   version :bestfit do
-    process resize_to_fit: [813, 813]
+    process resize_to_fit: [813, -1]
   end
 
   # allowed extension types

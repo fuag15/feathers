@@ -5,5 +5,5 @@
 .main-banner= image_tag 'davis_death_star.jpg'
 - if current_user.try :admin?
   %p.clearfix= link_to 'manage projects', project_categories_path, class: 'btn pull-right'
-= render partial: 'shared/category', collection: @job_categories
+= render partial: 'shared/category', collection: @project_categories
 .text-center= paginate @project_categories, theme: 'twitter-bootstrap'
