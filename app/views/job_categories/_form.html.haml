@@ -2,4 +2,4 @@
   = render partial: 'shared/form_error', collection: job_category.errors.full_messages
   %p= f.text_field :name, placeholder: 'name'
   %p= f.text_field :rank, placeholder: 'rank'
-  %p= f.submit class: 'btn btn-primary pull-right clearfix'
+  %p.clearfix= f.submit class: 'btn btn-primary pull-right'

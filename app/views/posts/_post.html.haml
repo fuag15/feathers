@@ -11,4 +11,5 @@
         = link_to picture.image.url(:large), class: 'lightbox', rel: "post_#{post.id}" do
           = image_tag picture.image.url :thumb
   - if current_user.try :admin?
-    %p= link_to 'show', post_path(post), class: 'btn pull-right clearfix'
+    %p
+      .clearfix= link_to 'show', post_path(post), class: 'btn pull-right'

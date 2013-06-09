@@ -10,6 +10,6 @@
           .main-output
             = render 'layouts/flash_messages'
             %p.main-title.text-center= yield :title
-            %p= yield
+            = yield
         = render partial: 'layouts/navigation'
       %em.signature C #{Time.now.year.to_s} Michael Boone

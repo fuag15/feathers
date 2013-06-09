@@ -74,6 +74,8 @@
     
     <li><a href="#method-i-destroy">#destroy</a>
     
+    <li><a href="#method-i-index">#index</a>
+    
     <li><a href="#method-i-update">#update</a>
     
   </ul>
@@ -106,6 +108,10 @@
     <li><a href="./ApplicationController.html">ApplicationController</a>
   
     <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./CategoriesHelper.html">CategoriesHelper</a>
+  
+    <li><a href="./CategoryItemsHelper.html">CategoryItemsHelper</a>
   
     <li><a href="./Contact.html">Contact</a>
   
@@ -220,7 +226,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 13</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Project Created&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@project_category</span>.<span class="ruby-identifier">projects</span>.<span class="ruby-identifier">create</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:project</span>]
   <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">project_category</span>, <span class="ruby-ivar">@project</span>
@@ -251,7 +257,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 25</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Project Deleted&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">project_category</span>
@@ -264,6 +270,36 @@
 
         
       </div><!-- destroy-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>paginate our categories</p>
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-ivar">@project_categories</span> = <span class="ruby-constant">ProjectCategory</span>.<span class="ruby-identifier">page</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
 
     
       <div id="method-i-update" class="method-detail ">
@@ -282,7 +318,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 19</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Project Updated&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">update_attributes!</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:project</span>]
   <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">project_category</span>, <span class="ruby-ivar">@project</span>

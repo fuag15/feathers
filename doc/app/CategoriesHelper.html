@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>Midgard Productions RDoc</title>
+<title>module CategoriesHelper - Midgard Productions RDoc</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
 
 
-<body>
+<body id="top" class="module">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -42,6 +42,34 @@
   <ul id="search-results" class="initially-hidden"></ul>
 </nav>
 
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/helpers/categories_helper.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-category_items">#category_items</a>
+    
+  </ul>
+</nav>
+
+  </div>
 
   <div id="project-metadata">
     <nav id="fileindex-section" class="section project-section">
@@ -143,62 +171,74 @@
   </div>
 </nav>
 
-<div id="documentation" class="description">
+<div id="documentation">
+  <h1 class="module">module CategoriesHelper</h1>
+
+  <div id="description" class="description">
+    
+<p>Helper to get children of <a href="Job.html">Job</a> or <a
+href="Project.html">Project</a> Categories these will be either <a
+href="Project.html">Project</a> or <a href="Job.html">Job</a></p>
+
+  </div><!-- description -->
+
   
-<h1 id="label-Portfolio+site+revame">Portfolio site revame</h1>
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
 
-<p>Bringing my portfolio site more up-to-date. No redesign.</p>
+    
 
-<h2 id="label-Dev+Guidlines">Dev Guidlines</h2>
-<ul><li>
-<p>Use git flow</p>
-</li><li>
-<p>Use the issue tracker</p>
-</li><li>
-<p>Comment</p>
-</li><li>
-<p>Test</p>
-</li><li>
-<p>Keep docs up to date!</p>
-</li></ul>
+    
 
-<h3 id="label-Testing">Testing</h3>
-<ul><li>
-<p>rake spec</p>
-</li><li>
-<p>rake spec:coverage</p>
-</li><li>
-<p>rake analyzer:all</p>
-</li><li>
-<p>rake spec:view</p>
-</li></ul>
+    
 
-<h3 id="label-Super+Testing">Super Testing</h3>
-<ul><li>
-<p>rake parallel:create # create db&#39;s</p>
-</li><li>
-<p>rake parallel:prepare # run migrations</p>
-</li><li>
-<p>zeus start # start zeus host</p>
-</li><li>
-<p>guard # start gaurd to watch files</p>
-</li></ul>
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
-<p>enjoy :)</p>
+    
+      <div id="method-i-category_items" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">category_items</span><span
+            class="method-args">(category)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
-<h4 id="label-Coverage+Report">Coverage Report</h4>
-<ul><li>
-<p>see <a href="../../coverage/index.html">coverage</a></p>
-</li></ul>
+        <div class="method-description">
+          
+          <p>return the children used to help dry up views</p>
+          
 
-<h3 id="label-Doccing">Doccing</h3>
-<ul><li>
-<p>rake doc:reapp</p>
-</li><li>
-<p>rake doc:view</p>
-</li></ul>
+          
+          <div class="method-source-code" id="category_items-source">
+            <pre><span class="ruby-comment"># File app/helpers/categories_helper.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">category_items</span> <span class="ruby-identifier">category</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">category</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">ProjectCategory</span>
+    <span class="ruby-identifier">category</span>.<span class="ruby-identifier">projects</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">category</span>.<span class="ruby-identifier">jobs</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- category_items-source -->
+          
+        </div>
 
-</div>
+        
+
+        
+      </div><!-- category_items-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
 
 
 <footer id="validator-badges">

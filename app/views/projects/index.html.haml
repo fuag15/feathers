@@ -3,8 +3,8 @@
 - content_for :title do
   Projects
   = render partial: 'shared/authentication'
-= image_tag 'DavisDeathStar.jpg'
+.main-banner= image_tag 'DavisDeathStar.jpg'
 - if current_user.try :admin?
-  %p= link_to 'manage projects', project_categories_path, class: 'btn pull-right clearfix'
+  %p.clearfix= link_to 'manage projects', project_categories_path, class: 'btn pull-right'
 = render partial: 'shared/category', collection: @job_categories
 .text-center= paginate @project_categories, theme: 'twitter-bootstrap'

@@ -1,8 +1,3 @@
 %p.resume-header #{resume_category.name}
 %ul
-  = render @resume_category.resume_entries
-  - resume_category.resume_entries.each do |resume_entry|
-    %li
-      = resume_entry.name
-      - if current_user.try :admin?
-        = link_to 'edit', edit_resume_category_resume_entry_path(resume_category, resume_entry), class: 'btn btn-small'
+  = render resume_category.resume_entries

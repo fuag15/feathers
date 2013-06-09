@@ -19,9 +19,9 @@ describe PackagesController do
       end
 
       it 'loads all of the packages into @packages' do
-        packages = FactoryGirl.create_list :package_with_project, 2
-        get :index, project_id: packages.first.projects.first
-        expect(assigns :packages).to match_array(packages + [@package])
+        project = FactoryGirl.create :project_with_pictures_and_packages
+        get :index, project_id: project
+        expect(assigns :packages).to match_array project.packages
       end
     end
 
@@ -178,9 +178,9 @@ describe PackagesController do
       end
 
       it 'loads all of the packages into @packages' do
-        packages = FactoryGirl.create_list :package_with_job, 2
-        get :index, job_id: packages.first.jobs.first
-        expect(assigns :packages).to match_array(packages + [@package])
+        job = FactoryGirl.create :job_with_pictures_and_packages
+        get :index, job_id: job
+        expect(assigns :packages).to match_array job.packages
       end
     end
 

@@ -109,6 +109,10 @@
   
     <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
   
+    <li><a href="./CategoriesHelper.html">CategoriesHelper</a>
+  
+    <li><a href="./CategoryItemsHelper.html">CategoryItemsHelper</a>
+  
     <li><a href="./Contact.html">Contact</a>
   
     <li><a href="./ContactController.html">ContactController</a>
@@ -222,7 +226,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 15</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Post Created&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">save</span>
   <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@post</span>
@@ -253,7 +257,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 27</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Post Deleted&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@post</span>
@@ -287,7 +291,6 @@
             <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-ivar">@posts</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">page</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>]
-  <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@post</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
           
@@ -315,7 +318,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 21</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&#39;Post Updated&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">update_attributes!</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:post</span>]
   <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@post</span>
