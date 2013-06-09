@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'project_categories/index' do
   before do
     project_categories = FactoryGirl.create_list :project_category, 2
-    assign :project_categories, project_categories
+    assign :project_categories, Kaminari.paginate_array(project_categories).page(1)
     render
   end
 

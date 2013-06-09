@@ -2,26 +2,8 @@
   \/dev/boone/clients
 - content_for :title do
   Clients
-  = render partial: 'shared/authentication'
-= image_tag 'DavisDeathStar.jpg'
-%p
-  - if current_user.try :admin?
-    = link_to 'manage jobs', job_categories_path, class: 'btn pull-right'
-    .clear
-- @job_categories.each do |job_category|
-  .categorySeperator
-    = job_category.name
-  - job_category.jobs.each do |job|
-    .project
-      = link_to job_path job do
-        %p
-          .subTitle
-            = job.name
-        %p
-          %center
-            .projectImage
-              - if job.pictures.present?
-                = image_tag job.pictures.first.image.url :gallery
-        %p= markdown job.blurb
-  .clear
-%center= paginate @job_categories
+.main-banner= image_tag 'davis_death_star.jpg'
+- if current_user.try :admin?
+  %p.clearfix= link_to 'manage jobs', job_categories_path, class: 'btn pull-right'
+= render partial: 'shared/category', collection: @job_categories
+.text-center= paginate @job_categories, theme: 'twitter-bootstrap'

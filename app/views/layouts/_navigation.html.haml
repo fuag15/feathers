@@ -1,51 +1,14 @@
-.Nav
-  .TimeStamp
-    = link_to root_path do
-      %center
-        %ul
-          %li
-            Last Edited:
-          - if Post.first.try :updated_at
-            %li
-              %b
-                = Post.first.updated_at.to_time.strftime "%B %d, %Y"
-            %li
-              %b
-                = Post.first.updated_at.to_time.strftime "%H:%M:%S"
-  .TimeStampBot
+.navigation-container
+  = render partial: 'layouts/time_stamp'
   = link_to jobs_path do
-    .PicBoxTop
-    .PicBoxLeft
-    .PicBox
-    .PicBoxRight
-    .clear
-    .PicBoxBot
-    .NavHolder
-      Clients
+    = image_tag 'clients_icon.jpg', class: 'nav-image'
+    .nav-text Clients
   = link_to projects_path do
-    .PicBoxTop
-    .PicBoxLeft
-    .PicBoxProj
-    .PicBoxRight
-    .clear
-    .PicBoxBot
-    .NavHolder
-      Projects
+    = image_tag 'projects_icon.jpg', class: 'nav-image'
+    .nav-text Projects
   = link_to resume_path do
-    .PicBoxTop
-    .PicBoxLeft
-    .PicBoxResume
-    .PicBoxRight
-    .clear
-    .PicBoxBot
-    .NavHolder
-      Resume
+    = image_tag 'resume_icon.jpg', class: 'nav-image'
+    .nav-text  Resume
   = link_to contact_path do
-    .PicBoxTop
-    .PicBoxLeft
-    .PicBoxContact
-    .PicBoxRight
-    .clear
-    .PicBoxBot
-    .NavHolder
-      Contact
+    = image_tag 'contact_icon.jpg', class: 'nav-image'
+    .nav-text Contact

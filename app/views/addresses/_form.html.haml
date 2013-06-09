@@ -1,8 +1,6 @@
-%center
-  = form_for address do |f|
-    = render partial: 'shared/form_error', collection: address.errors.full_messages
-    %p= f.text_field :street, placeholder: 'street'
-    %p= f.text_field :city, placeholder: 'city'
-    %p= f.text_field :phone, placeholder: 'phone'
-    %p= f.submit class: 'btn btn-primary pull-right'
-    .clear
+= form_for address, html: { class: 'text-center' } do |f|
+  = render partial: 'shared/form_error', collection: address.errors.full_messages
+  %p= f.text_field :street, placeholder: 'street'
+  %p= f.text_field :city, placeholder: 'city'
+  %p= f.text_field :phone, placeholder: 'phone'
+  %p.clearfix= f.submit class: 'btn btn-primare pull-right'

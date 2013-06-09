@@ -1,6 +1,25 @@
-//= require_self
-//= require bootstrap
-//= require jquery_lightbox
-//= require jquery_jsocial
-//= require straight_translation/base
-//= require straight_translation/resume_base
+@import 'bourbon'
+
+.water
+  margin: -20px 35px 0px -125px
+
+.resume-name
+  font-size: 24px
+
+.resume-header
+  font-size: 16px
+  padding-bottom: 45px
+  @media print
+    padding-bottom: 16px
+
+.resume-container
+  width: 800px
+  margin: 0 auto
+  padding: 75px
+  border: 1px solid grey
+  margin-top: 48px
+  background-color: white
+  @media print
+    a, a:visited
+      color: black
+      text-decoration: none

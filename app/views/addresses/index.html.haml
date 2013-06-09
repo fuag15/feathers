@@ -3,16 +3,13 @@
 %table.table.table-striped
   %thead
     %tr
-      %th
-        street
-      %th
-        city
-      %th
-        phone
+      %th street
+      %th city
+      %th phone
   %tbody
     - @addresses.each do |address|
       %tr
         %td= link_to address.street, address
         %td= address.city
         %td= address.phone
-= link_to 'create address', new_address_path, class: 'btn btn-primary'
+%p= link_to 'create address', new_address_path, class: 'btn btn-primary'

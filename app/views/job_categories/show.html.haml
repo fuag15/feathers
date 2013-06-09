@@ -3,17 +3,16 @@
 %table.table.table-striped
   %thead
     %tr
-      %th
-        name
-      %th
-        rank
+      %th name
+      %th rank
   %tbody
     - @job_category.jobs.each do |job|
       %tr
         %td= link_to job.name, [@job_category, job]
         %td= job.rank
-.btn-group.pull-left
-  = link_to 'create job', new_job_category_job_path(@job_category), class: 'btn btn-primary'
-  = link_to 'back', job_categories_path, class: 'btn'
-  = link_to 'edit', edit_job_category_path(@job_category), class: 'btn btn-primary'
-= button_to 'destroy', @job_category, method: :delete, class: 'btn btn-danger pull-right'
+%p.clearfix
+  .btn-group.pull-left
+    = link_to 'back', job_categories_path, class: 'btn'
+    = link_to 'create job', new_job_category_job_path(@job_category), class: 'btn btn-primary'
+    = link_to 'edit', edit_job_category_path(@job_category), class: 'btn btn-primary'
+  = button_to 'destroy', @job_category, method: :delete, class: 'btn btn-danger pull-right'

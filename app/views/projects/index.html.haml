@@ -2,27 +2,8 @@
   \/dev/boone/projects
 - content_for :title do
   Projects
-  = render partial: 'shared/authentication'
-= image_tag 'DavisDeathStar.jpg'
-%p
-  - if current_user.try :admin?
-    .pull-right
-      = link_to 'manage projects', project_categories_path, class: 'btn'
-    .clear
-- @project_categories.each do |project_category|
-  .categorySeperator
-    = project_category.name
-  - project_category.projects.each do |project|
-    .project
-      = link_to project_path(project) do
-        %p
-          .subTitle
-            = project.name
-        %p
-          %center
-            .projectImage
-              - if project.pictures.present?
-                = image_tag project.pictures.first.image.url :gallery
-        %p= markdown project.blurb
-  .clear
-%center= paginate @project_categories
+.main-banner= image_tag 'davis_death_star.jpg'
+- if current_user.try :admin?
+  %p.clearfix= link_to 'manage projects', project_categories_path, class: 'btn pull-right'
+= render partial: 'shared/category', collection: @job_categories
+.text-center= paginate @project_categories, theme: 'twitter-bootstrap'

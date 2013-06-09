@@ -2,11 +2,8 @@
   \/dev/boone
 - content_for :title do
   Slash dev Slash Boone
-  = render partial: 'shared/authentication'
-= image_tag 'DavisDeathStar.jpg'
-%p
-  - if current_user.try :admin?
-    = link_to 'create post', new_post_path, class: 'btn pull-right'
-    .clear
+.main-banner= image_tag 'davis_death_star.jpg'
+- if current_user.try :admin?
+  %p.clearfix= link_to 'create post', new_post_path, class: 'btn pull-right'
 = render @posts
-%center= paginate @posts, theme: 'twitter-bootstrap'
+.text-center= paginate @posts, theme: 'twitter-bootstrap'

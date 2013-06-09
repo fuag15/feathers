@@ -1,7 +1,5 @@
-%center
-  = form_for project_category do |f|
-    = render partial: 'shared/form_error', collection: project_category.errors.full_messages
-    %p= f.text_field :name, placeholder: 'name'
-    %p= f.text_field :rank, placeholder: 'rank'
-    %p= f.submit class: 'btn btn-primary pull-right'
-    .clear
+= form_for project_category, html: { class: 'text-center' } do |f|
+  = render partial: 'shared/form_error', collection: project_category.errors.full_messages
+  %p= f.text_field :name, placeholder: 'name'
+  %p= f.text_field :rank, placeholder: 'rank'
+  %p.clearfix= f.submit class: 'btn btn-primary pull-right'

@@ -1,7 +1,5 @@
-%center
-  = form_for [resume_category, resume_entry] do |f|
-    = render partial: 'shared/form_error', collection: resume_entry.errors.full_messages
-    %p= f.text_field :name, placeholder: 'name'
-    %p= f.text_field :rank, placeholder: 'rank'
-    %p= f.submit class: 'btn btn-primary pull-right'
-    .clear
+= form_for [resume_category, resume_entry], html: { class: 'text-center' } do |f|
+  = render partial: 'shared/form_error', collection: resume_entry.errors.full_messages
+  %p= f.text_field :name, placeholder: 'name'
+  %p= f.text_field :rank, placeholder: 'rank'
+  %p.clearfix= f.submit class: 'btn btn-primary pull-right'

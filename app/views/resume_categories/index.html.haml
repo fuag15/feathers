@@ -3,15 +3,13 @@
 %table.table.table-striped
   %thead
     %tr
-      %th
-        name
-      %th
-        rank
+      %th name
+      %th rank
   %tbody
     - @resume_categories.each do |resume_category|
       %tr
         %td= link_to resume_category.name, resume_category
         %td= resume_category.rank
-.btn-group.pull-left
+.btn-group.pull-left.clearfix
   = link_to 'create resume category', new_resume_category_path, class: 'btn btn-primary'
   = link_to 'back', resume_path, class: 'btn'

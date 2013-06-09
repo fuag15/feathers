@@ -1,9 +1,10 @@
 - content_for :title do
   Showing Package
-%center
+.text-center
   %p= @package.version
   %p= @package.file.url
-.btn-group.pull-left
-  = link_to 'back', owner_aware_packages_path(@package.owner), class: 'btn'
-  = link_to 'edit', owner_aware_edit_package_path(@package.owner, @package), class: 'btn btn-primary'
-= button_to 'destroy', [@package.owner, @package], method: :delete, class: 'btn btn-danger pull-right'
+%p.clearfix
+  .btn-group.pull-left
+    = link_to 'back', owner_aware_packages_path(@package.owner), class: 'btn'
+    = link_to 'edit', owner_aware_edit_package_path(@package.owner, @package), class: 'btn btn-primary'
+  = button_to 'destroy', [@package.owner, @package], method: :delete, class: 'btn btn-danger pull-right'

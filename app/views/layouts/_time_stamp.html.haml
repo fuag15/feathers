@@ -1,0 +1,8 @@
+.time-stamp
+  = link_to root_path do
+    %ul.text-center
+      %li Last Edited:
+      - if Post.first.try :updated_at
+        %strong
+          %li= Post.first.updated_at.to_time.strftime '%B %d, %Y'
+          %li= Post.first.updated_at.to_time.strftime '%H:%M:%S'

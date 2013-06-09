@@ -1,4 +1,2 @@
 - if current_user.try :admin?
-  %p
-    = button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn pull-right'
-    .clear
+  .clearfix= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn pull-right'

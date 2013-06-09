@@ -1,7 +1,5 @@
-%center
-  = form_for [owner, package] do |f|
-    = render partial: 'shared/form_error', collection: package.errors.full_messages
-    %p= f.file_field :file
-    %p= f.text_field :version, placeholder: 'version'
-    %p= f.submit class: 'btn btn-primary pull-right'
-    .clear
+= form_for [owner, package], html: { class: 'text-center' } do |f|
+  = render partial: 'shared/form_error', collection: package.errors.full_messages
+  %p= f.file_field :file
+  %p= f.text_field :version, placeholder: 'version'
+  %p.clearfix= f.submit class: 'btn btn-primary pull-right'

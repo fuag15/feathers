@@ -2,31 +2,12 @@
   \/dev/boone/clients/#{@job.name}
 - content_for :title do
   = @job.name
-  = render partial: 'shared/authentication'
-%p
-  - if current_user.try :admin?
+- if current_user.try :admin?
+  %p.clearfix
     .btn-group.pull-right
       = link_to 'back', job_category_path(@job.job_category), class: 'btn'
       = link_to 'edit job', edit_job_category_job_path(@job.job_category, @job), class: 'btn btn-primary'
       = link_to 'manage packages', job_packages_path(@job), class: 'btn btn-warning'
       = link_to 'manage pictures', job_pictures_path(@job), class: 'btn btn-warning'
     = button_to 'destroy job', [@job.job_category, @job], method: :delete, class: 'btn btn-danger'
-    .clear
-.projectDetailImage
-  - if @job.pictures.present?
-    = link_to @job.pictures.first.try(:image).url(:bestfit), class: 'lightbox', rel: "job_#{@job.id}" do
-      = image_tag @job.pictures.first.try(:image).url :bestfit
-.projectDetailSubImageHolder
-  - @job.pictures.each do |picture|
-    .projectDetailSubImage
-      = link_to picture.image.url(:bestfit), class: 'lightbox', rel: "job_#{@job.id}" do
-        = image_tag picture.image.url(:small)
-  .clear
-%p= markdown @job.detail
-%p
-  .employerTag
-    Employer: #{@job.employer}
-  .clear
-%ul
-  - @job.packages.each do |package|
-    %li= link_to package.version, package.file.url
+= render partial: 'shared/category_item_display', locals: { item: @job }
