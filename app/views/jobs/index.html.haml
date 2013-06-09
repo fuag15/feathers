@@ -2,10 +2,8 @@
   \/dev/boone/clients
 - content_for :title do
   Clients
-  = render partial: 'shared/authentication'
-.main-banner= image_tag 'DavisDeathStar.jpg'
+.main-banner= image_tag 'davis_death_star.jpg'
 - if current_user.try :admin?
-  %p
-    .clearfix= link_to 'manage jobs', job_categories_path, class: 'btn pull-right'
+  %p.clearfix= link_to 'manage jobs', job_categories_path, class: 'btn pull-right'
 = render partial: 'shared/category', collection: @job_categories
 .text-center= paginate @job_categories, theme: 'twitter-bootstrap'

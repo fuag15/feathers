@@ -2,7 +2,6 @@
   \/dev/boone/clients/#{@job.name}
 - content_for :title do
   = @job.name
-  = render partial: 'shared/authentication'
 - if current_user.try :admin?
   %p.clearfix
     .btn-group.pull-right
