@@ -1,6 +1,6 @@
 .post-output
   .post-date.text-center= post.created_at.to_time.strftime "%B %d, %Y"
-  %p.post-text-container.clearfix
+  .post-text-container.clearfix
     .post-image
       = link_to post.picture.url(:large), class: 'lightbox', rel: "post_#{post.id}" do
         = image_tag post.picture.url :small
