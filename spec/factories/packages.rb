@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :package do
     version
+    rank 0
 
     file do
       File.open Rails.root.join 'spec/support/packages/waterdrop.zip'

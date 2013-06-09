@@ -1,8 +1,10 @@
 # Hosts zip files of projects, mostly meaningless due to github hosting
 class Package < ActiveRecord::Base
-  attr_accessible :file, :version
+  attr_accessible :file, :version, :rank
   # mounts the PackageUploader on the file attribute
   mount_uploader :file, PackageUploader
+  # default order by rank ascending
+  default_scope order 'rank asc'
 
   # a join table PackagesProject
   has_many :jobs_packages, dependent: :destroy

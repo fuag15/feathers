@@ -1,5 +1,6 @@
 = form_for [owner, picture], html: { class: 'text-center' } do |f|
   = render partial: 'shared/form_error', collection: picture.errors.full_messages
   %p= f.text_field :name, placeholder: 'name'
+  %p= f.text_field :rank, placeholder: 'rank'
   %p= f.file_field :image
   %p.clearfix= f.submit class: 'btn btn-primary pull-right'

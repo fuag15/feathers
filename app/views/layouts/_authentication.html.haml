@@ -1,2 +1,2 @@
 - if current_user.try :admin?
-  .clearfix= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn pull-right'
+  .authentication.clearfix= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn pull-right'

@@ -5,11 +5,13 @@
     %tr
       %th file
       %th version
+      %th rank
   %tbody
     - @packages.each do |package|
       %tr
         %td= link_to package.file.url, [package.owner, package]
         %td= package.version
+        %td= package.rank
 .btn-group.pull-left.clearfix
   = link_to 'create package', owner_aware_new_package_path(@owner), class: 'btn btn-primary'
   = link_to 'back', @owner, class: 'btn'

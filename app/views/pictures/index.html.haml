@@ -5,11 +5,13 @@
     %tr
       %th image
       %th name
+      %th rank
   %tbody
     - @pictures.each do |picture|
       %tr
         %td= link_to picture.image.url, [picture.owner, picture]
         %td= picture.name
+        %td= picture.rank
 .btn-group.pull-left.clearfix
   = link_to 'back', @owner, class: 'btn'
   = link_to 'create picture', owner_aware_new_picture_path(@owner), class: 'btn btn-primary'

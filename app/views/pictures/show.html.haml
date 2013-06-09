@@ -3,6 +3,7 @@
 .text-center
   %p= @picture.image.url
   %p= @picture.name
+  %p= @picture.rank
 %p.clearfix
   .btn-group.pull-left
     = link_to 'back', owner_aware_pictures_path(@picture.owner), class: 'btn'

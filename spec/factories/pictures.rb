@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :picture do
     name
+    rank 0
 
     image do
       File.open Rails.root.join 'spec/support/pictures/waterdrop.jpg'
