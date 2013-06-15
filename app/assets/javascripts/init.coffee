@@ -10,4 +10,4 @@ $ ->
     center: false
     inline: true
   # fade out alerts
-  $('.alert').fadeOut('slow')
+  $('.alert').fadeOut 'slow'
