@@ -9,3 +9,5 @@ $ ->
     newPage: true
     center: false
     inline: true
+  # fade out alerts
+  $('.alert').fadeOut('slow')

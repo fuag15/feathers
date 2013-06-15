@@ -12,4 +12,9 @@
           = image_tag picture.image.url :thumb
   - if current_user.try :admin?
     %p
-      .clearfix= link_to 'show', post_path(post), class: 'btn pull-right'
+      .clearfix
+        .btn-group.pull-left
+          = link_to 'back', root_path, class: 'btn'
+          = link_to 'edit', edit_post_path(post), class: 'btn btn-primary'
+          = link_to 'manage pictures', post_pictures_path(post), class: 'btn'
+        = button_to 'destroy', post, method: :delete, class: 'btn btn-danger pull-right'
