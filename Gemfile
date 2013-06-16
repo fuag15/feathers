@@ -25,6 +25,7 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.3.0.1' # twitter bootstrap
   gem 'coffee-rails', '~> 3.2.1' # coffee asset pipe support
   gem 'bourbon', '~> 3.1.6' # better sass modernization mixins
+  gem 'neat', '~> 1.3.0' # better mixin than bootstrap
   gem 'therubyracer', '~> 0.11.4', platforms: :ruby # javascript runtime in ruby
   gem 'uglifier', '>= 1.0.3' # asset minification
 end
