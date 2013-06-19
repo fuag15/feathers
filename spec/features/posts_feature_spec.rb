@@ -7,11 +7,6 @@ feature 'list posts' do
     visit posts_path
   end
 
-  scenario 'when I click an post I should be on that show path' do
-    click_link 'show'
-    expect(current_path).to eq post_path @post
-  end
-
   context 'when I click new post' do
     background do
       visit posts_path

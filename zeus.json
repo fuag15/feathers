@@ -12,14 +12,9 @@
           "generate": ["g"],
           "destroy": ["d"],
           "dbconsole": [],
-          "parallel_rspec": [],
-          "parallel_cucumber": []
+          "parallel_rspec": []
         },
         "test_environment": {
-          "cucumber_environment": {
-                  "cucumber": [],
-                  "parallel_cucumber_worker": []
-	  },
           "test_helper": {
                   "test": ["rspec", "testrb"],
                   "parallel_rspec_worker": []
